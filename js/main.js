@@ -11,7 +11,7 @@
 // ============================================
 // CONFIG — edite aqui
 // ============================================
-const WHATSAPP_NUMBER = '5511999999999'; // ← CONFIGURE: ex: 5511987654321
+const WHATSAPP_NUMBER = '5513978099969'; // ← CONFIGURE: ex: 5511987654321
 const RECAPTCHA_SITE_KEY = 'SEU_SITE_KEY'; // ← CONFIGURE: chave do reCAPTCHA v3
 
 // ============================================
