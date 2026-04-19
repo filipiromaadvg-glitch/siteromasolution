@@ -1,15 +1,64 @@
 const modules = [
-  { num: '01', title: 'CRM Completo',                color: '',                  desc: 'Gerencie todo o ciclo do cliente: prospecção, proposta, contrato, manutenção e renovação. Histórico completo em um clique.' },
-  { num: '02', title: 'Orçamentos Profissionais',    color: 'feature-icon-orange', desc: 'Crie propostas com sua logo, envie por e-mail ou WhatsApp e acompanhe o status em tempo real. Feche mais contratos.' },
-  { num: '03', title: 'Gestão de Contratos',         color: 'feature-icon-purple', desc: 'Contratos digitais com assinatura eletrônica, alertas de vencimento e renovação com um clique. Zero papel.' },
-  { num: '04', title: 'Ordens de Serviço',           color: 'feature-icon-orange', desc: 'Crie, atribua e acompanhe cada OS em tempo real. O técnico recebe no celular, executa e assina digitalmente.' },
-  { num: '05', title: 'Agenda Operacional',          color: 'feature-icon-purple', desc: 'Agende instalações, manutenções e visitas técnicas com visualização de calendário e mapa integrado.' },
-  { num: '06', title: 'Gestão de Equipe',            color: 'feature-icon-orange', desc: 'Gerencie colaboradores, cargos, produtividade e comissões. Saiba o desempenho de cada técnico com dados concretos.' },
-  { num: '07', title: 'Financeiro Completo',         color: 'feature-icon-green',  desc: 'Receitas, despesas, DRE, fluxo de caixa e relatórios detalhados. Saiba exatamente quanto sua empresa lucrou — em segundos.' },
-  { num: '08', title: 'Cobrança e Inadimplência',   color: 'feature-icon-red',    desc: 'Boletos automáticos, alertas de vencimento por WhatsApp, régua de cobrança e painel de inadimplentes. Receba o que é seu.' },
-  { num: '09', title: 'Retenção de Clientes',       color: 'feature-icon-red',    desc: 'Protocolo estruturado para cancelamentos. Registre tentativas, motivos e contrapropostas. Reduza churn com dados.' },
-  { num: '10', title: 'WhatsApp Integrado',         color: 'feature-icon-whatsapp', desc: 'Atendimento, confirmações de OS, cobranças e alertas direto do sistema — sem misturar com o WhatsApp pessoal.' },
-  { num: '11', title: 'Relatórios em Tempo Real',   color: 'feature-icon-purple', desc: 'Dashboards com KPIs, gráficos de receita, inadimplência, OS e churn. Tome decisões com dados — não com achismo.' },
+  {
+    num: '01', title: 'CRM de Clientes',
+    color: '',
+    desc: '1.782+ clientes cadastrados com protocolo, status (monitorado, lead, em negociação, cancelado), histórico completo e funil de conversão.',
+  },
+  {
+    num: '02', title: 'Orçamentos Profissionais',
+    color: 'feature-icon-orange',
+    desc: '1.373 orçamentos gerados. Crie propostas com itens do estoque, monitoria e instalação. Aprovados com um clique, R$956k em receita controlada.',
+  },
+  {
+    num: '03', title: 'Ordens de Serviço',
+    color: 'feature-icon-purple',
+    desc: '5.674 OS registradas. Abertas, encaminhadas para técnico, finalizadas com assinatura. Histórico completo por cliente e por técnico.',
+  },
+  {
+    num: '04', title: 'Agenda Operacional',
+    color: 'feature-icon-orange',
+    desc: 'Visitas de orçamento, instalações monitoradas/não-monitoradas e comodatos. Visualização mensal e semanal com legenda por tipo de evento.',
+  },
+  {
+    num: '05', title: 'Estoque Completo',
+    color: 'feature-icon-green',
+    desc: '271 itens cadastrados em 22 categorias. Controle de entradas e saídas, alerta de estoque baixo, valor de compra e venda por item.',
+  },
+  {
+    num: '06', title: 'Gestão de Colaboradores',
+    color: 'feature-icon-purple',
+    desc: '29 colaboradores em 11 departamentos — monitores, técnicos, administrativo. Controle de status ativo/inativo e data de entrada.',
+  },
+  {
+    num: '07', title: 'Financeiro Completo',
+    color: 'feature-icon-orange',
+    desc: 'Recebimentos, despesas, fluxo de caixa, dashboard financeiro, categorias e contas bancárias. Saiba em segundos quanto sua empresa está gerando.',
+  },
+  {
+    num: '08', title: 'Gestão de Cancelamentos',
+    color: 'feature-icon-red',
+    desc: 'Protocolo estruturado: EM TRATATIVA → CANCELADO → REVERTIDO. Controle de valor em risco por mês. Reduza churn com dados concretos.',
+  },
+  {
+    num: '09', title: 'Comunicação Interna',
+    color: 'feature-icon-purple',
+    desc: 'Mensagens internas entre a equipe. Caixa de entrada e enviadas, tudo dentro do sistema — sem misturar com WhatsApp pessoal.',
+  },
+  {
+    num: '10', title: 'Gestão de Instalações',
+    color: 'feature-icon-orange',
+    desc: 'Controle de instalações agendadas, em andamento e finalizadas. Cada instalação vinculada ao cliente, técnico e ordem de serviço.',
+  },
+  {
+    num: '11', title: 'Gestão de Frotas',
+    color: 'feature-icon-green',
+    desc: '11 veículos monitorados (carros e motos). Status disponível/em uso/manutenção, fotos e placas. Saiba onde cada veículo da equipe está.',
+  },
+  {
+    num: '12', title: 'Administração e Permissões',
+    color: 'feature-icon-purple',
+    desc: 'Gestão de usuários com níveis de acesso por módulo. Importação de clientes e orçamentos via CSV com mapeamento inteligente de colunas.',
+  },
 ]
 
 export default function Features() {
@@ -18,11 +67,12 @@ export default function Features() {
       <div className="container">
         <div className="section-label">O ROMASYSTEM</div>
         <h2 id="features-title" className="section-title">
-          11 módulos.<br /><span className="gradient-text">Um sistema só.</span>
+          12 módulos.<br /><span className="gradient-text">Um sistema só.</span>
         </h2>
         <p className="section-sub text-center">
-          O ROMASYSTEM cobre 100% dos processos de uma empresa de segurança eletrônica — do primeiro
-          contato com o cliente até a cobrança automática. Sem precisar de outro sistema.
+          Do primeiro contato com o cliente até o controle de frotas e permissões de equipe —
+          o ROMASYSTEM cobre 100% da operação de uma empresa de segurança eletrônica.
+          Testado em produção com 1.782 clientes reais.
         </p>
 
         <div className="features-grid-wide">

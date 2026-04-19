@@ -1,15 +1,15 @@
 const pillars = [
-  { num: '+500',     label: 'empresas atendidas no setor' },
-  { num: '+15 anos', label: 'de expertise em segurança eletrônica' },
-  { num: '100%',     label: 'focado no setor de segurança' },
-  { num: '99.9%',    label: 'de uptime garantido' },
+  { num: '1.782+',  label: 'clientes gerenciados no sistema' },
+  { num: '5.674',   label: 'ordens de serviço no histórico' },
+  { num: 'R$956k+', label: 'em orçamentos controlados' },
+  { num: '12',      label: 'módulos integrados na plataforma' },
 ]
 
 const points = [
+  'Criado por quem opera uma empresa de segurança eletrônica real — não por consultores externos',
   'Implantação guiada — não te abandonamos após contratar',
   'Suporte com especialistas que entendem do seu negócio',
-  'Atualizações constantes baseadas em feedback real dos clientes',
-  'Sistema que escala junto com o crescimento da sua empresa',
+  'Atualizações constantes baseadas em uso real do sistema',
   'Sem contrato de fidelidade — ficamos porque entregamos valor',
 ]
 
@@ -22,18 +22,19 @@ export default function Company() {
           <div className="company-text">
             <div className="section-label">A EMPRESA</div>
             <h2 id="company-title" className="section-title">
-              Criado por quem conhece<br />o setor de segurança<br />
-              <span className="gradient-text">por dentro.</span>
+              Criado por quem opera<br />uma empresa de segurança<br />
+              <span className="gradient-text">todos os dias.</span>
             </h2>
             <p>
-              A <strong>Roma Solution</strong> não é uma software house que resolveu entrar no mercado
-              de segurança. Somos especialistas com mais de 15 anos operando no setor — conhecemos cada
-              gargalo, cada processo e cada dor de quem gerencia uma empresa de segurança eletrônica.
+              O <strong>ROMASYSTEM</strong> não nasceu numa sala de reunião. Nasceu da necessidade real
+              de gerir a <strong>Alarmes Roma</strong> — empresa de segurança eletrônica com mais de
+              1.700 clientes ativos. Antes eram planilhas Google e AppSheet. Chegou um momento em que
+              isso não dava conta.
             </p>
             <p>
-              O ROMASYSTEM nasceu dessa experiência. Cada módulo foi desenvolvido com base em operações
-              reais, em conversas com donos de empresas e em processos que já testamos, quebramos e
-              reconstruímos até funcionar de verdade.
+              Filipi Roma, fundador e desenvolvedor, construiu o sistema do zero para resolver os próprios
+              problemas operacionais. Cada módulo foi desenhado a partir de processos reais, dores reais e
+              decisões que só quem vive o negócio consegue tomar.
             </p>
 
             <div className="company-pillars">
@@ -48,10 +49,17 @@ export default function Company() {
 
           {/* RIGHT */}
           <div className="company-statement">
+            <div className="company-founder-card">
+              <div className="company-founder-avatar">FR</div>
+              <div className="company-founder-info">
+                <strong>Filipi Martins</strong>
+                <span>Desenvolvedor &amp; Fundador</span>
+              </div>
+            </div>
             <div className="company-statement-quote">
-              "Não vendemos software. Vendemos{' '}
-              <span>controle sobre a operação</span>{' '}
-              de quem construiu uma empresa de segurança do zero e não pode se dar ao luxo de operar no escuro."
+              "O ROMASYSTEM foi feito para resolver o que eu vivia no dia a dia da Alarmes Roma —
+              OS perdida, cliente sem retorno, financeiro confuso, técnico sem informação.{' '}
+              <span>Feito por quem vive o negócio.</span>"
             </div>
             <div className="company-statement-points">
               {points.map(p => (
@@ -61,7 +69,7 @@ export default function Company() {
                 </div>
               ))}
             </div>
-            <div style={{ marginTop: '0.5rem' }}>
+            <div style={{ marginTop: '1.5rem' }}>
               <a href="#demo" className="btn btn-primary">
                 Agendar demonstração gratuita
                 <ArrowIcon />

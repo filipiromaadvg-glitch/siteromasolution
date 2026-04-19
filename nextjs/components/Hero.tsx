@@ -22,8 +22,8 @@ export default function Hero() {
             <span className="gradient-text">Sua operação, não.</span>
           </h1>
           <p className="hero-sub">
-            O <strong>ROMASYSTEM</strong> centraliza CRM, orçamentos, contratos, OS, agenda,
-            financeiro, cobrança e WhatsApp em um único sistema — criado exclusivamente para
+            O <strong>ROMASYSTEM</strong> centraliza CRM, orçamentos, OS, agenda,
+            financeiro, cobrança, frotas e equipe em um único sistema — criado exclusivamente para
             empresas de segurança eletrônica.
           </p>
           <div className="hero-ctas">
@@ -48,7 +48,7 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* DASHBOARD MOCKUP */}
+        {/* DASHBOARD MOCKUP — fiel ao ROMASYSTEM real */}
         <div className="hero-mockup" aria-label="Prévia do ROMASYSTEM">
           <div className="mockup-browser">
             <div className="browser-bar" aria-hidden="true">
@@ -65,62 +65,80 @@ export default function Hero() {
                 </svg>
               </div>
             </div>
-            <div className="dashboard" aria-hidden="true">
-              <aside className="dash-sidebar">
-                <div className="dash-logo">RS</div>
-                <nav className="dash-nav">
-                  {[
-                    { label: 'Dashboard', active: true },
-                    { label: 'CRM / Clientes' },
-                    { label: 'Ordens de Serviço' },
-                    { label: 'Financeiro' },
-                    { label: 'Agenda' },
-                    { label: 'WhatsApp' },
-                  ].map(({ label, active }) => (
-                    <div key={label} className={`dash-nav-item${active ? ' active' : ''}`}>
-                      <span>{label}</span>
+
+            <div className="dashboard rs-dashboard" aria-hidden="true">
+              {/* SIDEBAR */}
+              <aside className="dash-sidebar rs-sidebar">
+                <div className="rs-logo-wrap">
+                  <div className="rs-logo-icon">
+                    <svg viewBox="0 0 32 32" width="26" height="26" fill="none">
+                      <rect width="32" height="32" rx="8" fill="#f97316"/>
+                      <path d="M8 22l5-10 4 7 3-5 4 8" stroke="#fff" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </div>
+                  <div className="rs-logo-text">
+                    <div className="rs-logo-name">
+                      <span className="rs-roma">ROMA</span>
+                      <span className="rs-system">SYSTEM</span>
                     </div>
-                  ))}
+                    <div className="rs-logo-sub">SEGURANÇA ELETRÔNICA</div>
+                  </div>
+                </div>
+
+                <nav className="rs-nav">
+                  <div className="rs-nav-label">GESTÃO</div>
+                  <NavItem label="Clientes" active />
+                  <NavItem label="Colaboradores" />
+                  <NavItem label="Orçamentos" />
+                  <NavItem label="Agenda" />
+                  <NavItem label="Estoque" />
+                  <div className="rs-nav-label">FINANCEIRO</div>
+                  <NavItem label="Financeiro" />
+                  <NavItem label="Cancelamentos" />
+                  <div className="rs-nav-label">OPERAÇÃO</div>
+                  <NavItem label="Ordem de Serviço" />
+                  <NavItem label="Instalações" />
+                  <NavItem label="Gestão de Frotas" />
                 </nav>
+
+                <div className="rs-user-bar">
+                  <div className="rs-avatar">FR</div>
+                  <div>
+                    <div className="rs-user-name">Filipi Roma</div>
+                    <div className="rs-user-role">Admin</div>
+                  </div>
+                </div>
               </aside>
 
-              <div className="dash-main">
-                <div className="dash-header-bar">
-                  <div className="dash-title">Dashboard — Visão Geral</div>
-                  <div className="dash-avatar">RS</div>
-                </div>
-
-                <div className="dash-stats">
-                  <StatCard icon="cyan" value="342" label="Clientes Ativos" trend="▲ 12% este mês" />
-                  <StatCard icon="orange" value="28" label="OS em Aberto" trend="▲ 3 hoje" />
-                  <StatCard icon="green" value="R$98k" label="Faturamento/mês" trend="▲ 8%" />
-                </div>
-
-                <div className="dash-chart">
-                  <div className="chart-title">Receita Mensal — 2025</div>
-                  <div className="chart-bars">
-                    {[
-                      { label: 'Jan', h: '55%' },
-                      { label: 'Fev', h: '70%' },
-                      { label: 'Mar', h: '60%' },
-                      { label: 'Abr', h: '80%' },
-                      { label: 'Mai', h: '75%' },
-                      { label: 'Jun', h: '95%', active: true },
-                    ].map(({ label, h, active }) => (
-                      <div key={label} className={`chart-bar${active ? ' active' : ''}`} style={{ '--h': h } as React.CSSProperties}>
-                        <span>{label}</span>
-                      </div>
-                    ))}
+              {/* MAIN CONTENT */}
+              <div className="dash-main rs-main">
+                <div className="rs-topbar">
+                  <div>
+                    <div className="rs-greeting">Boa noite, Filipi 👋</div>
+                    <div className="rs-date">sábado, 18 de abril de 2026</div>
                   </div>
+                  <div className="rs-online">● Sistema online</div>
                 </div>
 
-                <div className="dash-table">
-                  <div className="table-row table-header">
-                    <span>Cliente</span><span>Status</span><span>Valor</span>
-                  </div>
-                  <div className="table-row"><span>Seg. Alfa LTDA</span><span className="badge-green">Ativo</span><span>R$450</span></div>
-                  <div className="table-row"><span>Casa Forte</span><span className="badge-green">Ativo</span><span>R$320</span></div>
-                  <div className="table-row"><span>Comércio BH</span><span className="badge-yellow">Pendente</span><span>R$280</span></div>
+                <div className="rs-cards">
+                  <RSCard label="CLIENTES" value="1.782" sub="1.343 monitorados" accent="#3b82f6" />
+                  <RSCard label="ORÇAMENTOS" value="1.373" sub="797 aprovados" accent="#f97316" />
+                  <RSCard label="OS TOTAL" value="5.674" sub="992 finalizadas" accent="#22c55e" />
+                  <RSCard label="ESTOQUE" value="178" sub="itens ativos" accent="#8b5cf6" />
+                </div>
+
+                <div className="rs-alert">
+                  <span className="rs-alert-icon">📋</span>
+                  <span><strong>10 ordens de serviço finalizadas</strong> · #e6650d · #36043a · +7 mais</span>
+                  <span>→</span>
+                </div>
+
+                <div className="rs-section-title">AÇÕES RÁPIDAS</div>
+                <div className="rs-quick">
+                  <QuickBtn label="Novo Cliente" bg="#eff6ff" />
+                  <QuickBtn label="Novo Orçamento" bg="#fff7ed" />
+                  <QuickBtn label="Nova O.S." bg="#fef2f2" />
+                  <QuickBtn label="Agendamento" bg="#f0fdf4" />
                 </div>
               </div>
             </div>
@@ -128,11 +146,38 @@ export default function Hero() {
           <div className="mockup-glow" aria-hidden="true" />
           <div className="mockup-badge" aria-hidden="true">
             <span className="badge-dot" />
-            ROMASYSTEM — Produto Roma Solution
+            ROMASYSTEM — 1.782 clientes gerenciados em produção real
           </div>
         </div>
       </div>
     </section>
+  )
+}
+
+function NavItem({ label, active }: { label: string; active?: boolean }) {
+  return (
+    <div className={`rs-nav-item${active ? ' rs-nav-active' : ''}`}>
+      <span>{label}</span>
+      {active && <span className="rs-nav-dot" />}
+    </div>
+  )
+}
+
+function RSCard({ label, value, sub, accent }: { label: string; value: string; sub: string; accent: string }) {
+  return (
+    <div className="rs-card" style={{ borderTopColor: accent } as React.CSSProperties}>
+      <div className="rs-card-label" style={{ color: accent } as React.CSSProperties}>{label}</div>
+      <div className="rs-card-value">{value}</div>
+      <div className="rs-card-sub">{sub}</div>
+    </div>
+  )
+}
+
+function QuickBtn({ label, bg }: { label: string; bg: string }) {
+  return (
+    <div className="rs-quick-btn" style={{ background: bg } as React.CSSProperties}>
+      <span>{label}</span>
+    </div>
   )
 }
 
@@ -143,17 +188,6 @@ function TrustItem({ text }: { text: string }) {
         <polyline points="20 6 9 17 4 12" />
       </svg>
       {text}
-    </div>
-  )
-}
-
-function StatCard({ icon, value, label, trend }: { icon: string; value: string; label: string; trend: string }) {
-  return (
-    <div className="dash-stat-card">
-      <div className={`stat-icon stat-${icon}`} />
-      <div className="stat-value">{value}</div>
-      <div className="stat-label">{label}</div>
-      <div className="stat-trend up">{trend}</div>
     </div>
   )
 }

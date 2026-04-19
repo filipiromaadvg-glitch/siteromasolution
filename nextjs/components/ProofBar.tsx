@@ -1,8 +1,8 @@
 const items = [
-  { num: '+500',     label: 'Empresas de segurança no sistema' },
-  { num: '+15 anos', label: 'No setor de segurança eletrônica' },
-  { num: '99.9%',   label: 'Uptime garantido' },
-  { num: '11',      label: 'Módulos integrados em 1 sistema' },
+  { num: '1.782+',   label: 'Clientes gerenciados na plataforma' },
+  { num: '5.674',    label: 'Ordens de serviço no histórico' },
+  { num: 'R$956k+',  label: 'Em orçamentos controlados' },
+  { num: '12',       label: 'Módulos integrados em 1 sistema' },
 ]
 
 export default function ProofBar() {

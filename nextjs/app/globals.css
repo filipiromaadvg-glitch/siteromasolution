@@ -543,6 +543,59 @@ section { padding:6rem 0; }
 .footer-bottom p { font-size:0.8rem; color:var(--text-3); }
 .footer-legal a { color:var(--indigo); }
 
+/* =============================================
+   ROMASYSTEM MOCKUP — FIEL AO SISTEMA REAL
+   ============================================= */
+.rs-dashboard { display:grid; grid-template-columns:160px 1fr; height:100%; background:#0d0d0f; }
+.rs-sidebar { background:#111115; border-right:1px solid rgba(255,255,255,0.07); display:flex; flex-direction:column; padding:0.75rem 0; overflow:hidden; }
+.rs-logo-wrap { display:flex; align-items:center; gap:0.5rem; padding:0.5rem 0.75rem 1rem; }
+.rs-logo-icon { flex-shrink:0; }
+.rs-logo-text { line-height:1.1; }
+.rs-logo-name { display:flex; gap:0.2rem; font-family:'Outfit',sans-serif; font-size:0.72rem; font-weight:800; }
+.rs-roma { color:#fff; }
+.rs-system { color:#f97316; }
+.rs-logo-sub { font-size:0.45rem; color:#555; letter-spacing:0.5px; margin-top:1px; }
+
+.rs-nav { flex:1; overflow:hidden; padding:0 0.4rem; display:flex; flex-direction:column; gap:0.15rem; }
+.rs-nav-label { font-size:0.42rem; font-weight:700; letter-spacing:1px; color:#555; text-transform:uppercase; padding:0.5rem 0.4rem 0.2rem; }
+.rs-nav-item { display:flex; align-items:center; justify-content:space-between; padding:0.3rem 0.5rem; border-radius:6px; font-size:0.55rem; color:#888; cursor:default; transition:background 0.15s; }
+.rs-nav-item:hover { background:rgba(255,255,255,0.05); }
+.rs-nav-active { background:rgba(249,115,22,0.15); color:#f97316; font-weight:600; }
+.rs-nav-dot { width:5px; height:5px; border-radius:50%; background:#f97316; }
+
+.rs-user-bar { display:flex; align-items:center; gap:0.4rem; padding:0.6rem 0.75rem; border-top:1px solid rgba(255,255,255,0.06); margin-top:auto; }
+.rs-avatar { width:22px; height:22px; border-radius:6px; background:#f97316; display:flex; align-items:center; justify-content:center; font-size:0.48rem; font-weight:700; color:#fff; flex-shrink:0; }
+.rs-user-name { font-size:0.55rem; font-weight:600; color:#e2e8f0; line-height:1.2; }
+.rs-user-role { font-size:0.45rem; color:#555; }
+
+.rs-main { display:flex; flex-direction:column; gap:0.6rem; padding:0.75rem; overflow:hidden; background:#0d0d0f; }
+.rs-topbar { display:flex; justify-content:space-between; align-items:flex-start; }
+.rs-greeting { font-size:0.7rem; font-weight:700; color:#f1f5f9; font-family:'Outfit',sans-serif; }
+.rs-date { font-size:0.45rem; color:#555; margin-top:1px; }
+.rs-online { font-size:0.45rem; color:#22c55e; font-weight:600; background:rgba(34,197,94,0.1); padding:0.2rem 0.4rem; border-radius:50px; border:1px solid rgba(34,197,94,0.2); }
+
+.rs-cards { display:grid; grid-template-columns:repeat(4,1fr); gap:0.4rem; }
+.rs-card { background:#17181d; border:1px solid rgba(255,255,255,0.07); border-top-width:2px; border-radius:7px; padding:0.5rem 0.5rem; }
+.rs-card-label { font-size:0.42rem; font-weight:700; letter-spacing:0.8px; text-transform:uppercase; margin-bottom:0.2rem; }
+.rs-card-value { font-size:0.85rem; font-weight:800; color:#f1f5f9; font-family:'Outfit',sans-serif; line-height:1; }
+.rs-card-sub { font-size:0.4rem; color:#555; margin-top:0.15rem; }
+
+.rs-alert { display:flex; align-items:center; gap:0.4rem; background:rgba(99,102,241,0.08); border:1px solid rgba(99,102,241,0.2); border-radius:7px; padding:0.4rem 0.6rem; font-size:0.48rem; color:#a5b4fc; }
+.rs-alert-icon { flex-shrink:0; font-size:0.6rem; }
+.rs-alert span:first-of-type { flex:1; }
+.rs-alert span:last-child { flex-shrink:0; color:#818cf8; }
+
+.rs-section-title { font-size:0.42rem; font-weight:700; letter-spacing:1px; color:#555; text-transform:uppercase; }
+.rs-quick { display:grid; grid-template-columns:repeat(4,1fr); gap:0.35rem; }
+.rs-quick-btn { border-radius:7px; padding:0.45rem 0.3rem; text-align:center; font-size:0.42rem; font-weight:600; color:#374151; border:1px solid rgba(0,0,0,0.06); }
+
+/* company founder card */
+.company-founder-card { display:flex; align-items:center; gap:1rem; background:rgba(249,115,22,0.08); border:1px solid rgba(249,115,22,0.2); border-radius:var(--radius); padding:1rem 1.25rem; margin-bottom:1.25rem; }
+.company-founder-avatar { width:44px; height:44px; border-radius:10px; background:#f97316; display:flex; align-items:center; justify-content:center; font-size:0.9rem; font-weight:800; color:#fff; flex-shrink:0; }
+.company-founder-info { display:flex; flex-direction:column; gap:0.2rem; }
+.company-founder-info strong { font-size:0.95rem; font-weight:700; color:var(--text-1); }
+.company-founder-info span { font-size:0.78rem; color:#f97316; }
+
 /* SCROLL ANIMATIONS */
 .fade-up { opacity:0; transform:translateY(28px); transition:opacity 0.75s cubic-bezier(0.16,1,0.3,1), transform 0.75s cubic-bezier(0.16,1,0.3,1); }
 .fade-up.visible { opacity:1; transform:translateY(0); }
@@ -591,6 +644,8 @@ section { padding:6rem 0; }
   .section-title { font-size:1.85rem; }
   .dashboard { grid-template-columns:1fr; height:auto; }
   .dash-sidebar { display:none; }
+  .rs-sidebar { display:none; }
+  .rs-dashboard { grid-template-columns:1fr; }
   .compare-col { padding:1.75rem; }
   .company-pillars { grid-template-columns:1fr 1fr; }
   .footer-grid { grid-template-columns:1fr; gap:2rem; }
