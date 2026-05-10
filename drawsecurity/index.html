@@ -1,0 +1,1513 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DrawSecurity | Projetos técnicos de segurança com IA, planta e 3D</title>
+  <meta name="description" content="Crie projetos técnicos de segurança eletrônica com planta, IA, memorial técnico, orçamento e visualização 3D. Produto da Roma Solution.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://romasolution.com/drawsecurity/">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
+  <style>
+    :root {
+      --navy:#071120;
+      --navy-2:#0b1729;
+      --ink:#09111f;
+      --muted:#5b697c;
+      --muted-2:#7b8798;
+      --line:#dce6ef;
+      --line-soft:#e7eef5;
+      --surface:#f7fafc;
+      --teal:#287c72;
+      --teal-2:#34c8b8;
+      --blue:#2f67d8;
+      --blue-2:#79a8ff;
+      --mint:#b9fff2;
+      --lime:#d9f86c;
+      --amber:#ffd44d;
+      --red:#e05252;
+      --radius:18px;
+      --shadow:0 26px 80px rgba(2,9,25,.22);
+    }
+
+    * { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body {
+      min-height:100vh;
+      font-family:Inter, system-ui, sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(circle at 50% -12%, rgba(47,103,216,.24), transparent 34%),
+        linear-gradient(180deg, #071120 0%, #081426 55%, #06101d 100%);
+      line-height:1.55;
+      overflow-x:hidden;
+    }
+    a { color:inherit; text-decoration:none; }
+    button, input, select { font:inherit; }
+    .page {
+      width:min(1520px, calc(100% - 36px));
+      margin:18px auto 34px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.13);
+      border-radius:22px;
+      background:#fff;
+      box-shadow:var(--shadow);
+    }
+
+    .hero {
+      position:relative;
+      min-height:630px;
+      padding:26px 44px 42px;
+      display:flex;
+      flex-direction:column;
+      color:#fff;
+      background:
+        linear-gradient(115deg, rgba(32,114,107,.96), rgba(47,103,216,.96)),
+        #1b6ab3;
+      isolation:isolate;
+    }
+    .hero::before {
+      content:"";
+      position:absolute;
+      inset:0;
+      z-index:-4;
+      background-image:
+        linear-gradient(rgba(255,255,255,.075) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.075) 1px, transparent 1px);
+      background-size:48px 48px;
+    }
+    .hero::after {
+      content:"";
+      position:absolute;
+      inset:auto 0 -1px 0;
+      z-index:-1;
+      height:86px;
+      background:linear-gradient(180deg, transparent 0%, rgba(255,255,255,.06) 48%, #fff 49%);
+      pointer-events:none;
+    }
+    .nav {
+      position:relative;
+      z-index:5;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+    }
+    .brand {
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:900;
+      letter-spacing:-.02em;
+    }
+    .brand-mark {
+      width:44px;
+      height:44px;
+      display:grid;
+      place-items:center;
+      border:1px solid rgba(185,255,242,.46);
+      border-radius:14px;
+      background:rgba(255,255,255,.13);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.18), 0 16px 36px rgba(0,0,0,.16);
+    }
+    .nav-links {
+      display:flex;
+      align-items:center;
+      gap:22px;
+      color:rgba(255,255,255,.78);
+      font-size:.92rem;
+      font-weight:800;
+    }
+    .nav-links a:hover { color:#fff; }
+    .nav-cta {
+      min-height:42px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:0 16px;
+      border:1px solid rgba(255,255,255,.24);
+      border-radius:999px;
+      color:#fff;
+      background:rgba(255,255,255,.12);
+      font-weight:900;
+      backdrop-filter:blur(12px);
+    }
+
+    .hero-grid {
+      position:relative;
+      z-index:2;
+      flex:1;
+      display:grid;
+      grid-template-columns:minmax(0, 1fr) minmax(380px, .78fr);
+      gap:44px;
+      align-items:center;
+      padding-top:24px;
+    }
+    .badge-row {
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      gap:10px;
+      margin-bottom:20px;
+    }
+    .badge {
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      min-height:36px;
+      padding:7px 12px;
+      border:1px solid rgba(255,255,255,.26);
+      border-radius:999px;
+      background:rgba(255,255,255,.12);
+      color:#fff;
+      font-size:.78rem;
+      font-weight:900;
+      letter-spacing:.02em;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.12);
+    }
+    .badge i {
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:var(--amber);
+      box-shadow:0 0 0 5px rgba(255,212,77,.16);
+    }
+    .eyebrow {
+      color:#d5fff8;
+      font-size:.84rem;
+      font-weight:900;
+      letter-spacing:.2em;
+      text-transform:uppercase;
+    }
+    h1 {
+      max-width:860px;
+      margin-top:14px;
+      font-size:clamp(2.9rem, 5.1vw, 4.9rem);
+      line-height:1;
+      letter-spacing:-.055em;
+      font-weight:900;
+    }
+    .hero-copy {
+      max-width:760px;
+      margin-top:18px;
+      color:rgba(255,255,255,.88);
+      font-size:1.15rem;
+      line-height:1.72;
+      font-weight:560;
+    }
+    .hero-actions {
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:24px;
+    }
+    .btn {
+      min-height:54px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:9px;
+      padding:0 20px;
+      border:1px solid transparent;
+      border-radius:14px;
+      font-weight:900;
+      transition:transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease;
+      cursor:pointer;
+    }
+    .btn:hover { transform:translateY(-2px); }
+    .btn-primary {
+      color:#113347;
+      background:#fff;
+      box-shadow:0 20px 42px rgba(255,255,255,.18), 0 18px 40px rgba(0,20,55,.18);
+    }
+    .btn-primary:hover { background:#f3fbff; }
+    .btn-secondary {
+      color:#fff;
+      background:rgba(255,255,255,.12);
+      border-color:rgba(255,255,255,.28);
+      backdrop-filter:blur(12px);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.12);
+    }
+    .btn-secondary:hover { background:rgba(255,255,255,.18); border-color:rgba(255,255,255,.38); }
+    .btn-gradient {
+      width:100%;
+      color:#fff;
+      background:linear-gradient(135deg, var(--teal), var(--blue));
+      box-shadow:0 18px 34px rgba(47,103,216,.2);
+    }
+    .btn-light {
+      color:#38506a;
+      background:#eef4f8;
+      border-color:#dae5ee;
+    }
+    .trust {
+      display:flex;
+      flex-wrap:wrap;
+      gap:9px;
+      margin-top:20px;
+    }
+    .trust span {
+      display:inline-flex;
+      min-height:34px;
+      align-items:center;
+      padding:6px 12px;
+      border:1px solid rgba(255,255,255,.22);
+      border-radius:999px;
+      background:rgba(255,255,255,.1);
+      color:rgba(255,255,255,.86);
+      font-size:.8rem;
+      font-weight:850;
+    }
+
+    .visual {
+      position:relative;
+      min-height:535px;
+      display:grid;
+      place-items:center;
+    }
+    .mark-large {
+      position:absolute;
+      top:0;
+      left:50%;
+      width:168px;
+      height:168px;
+      transform:translateX(-50%);
+      opacity:.92;
+      filter:drop-shadow(0 0 20px rgba(185,255,242,.36));
+    }
+    .phone {
+      position:relative;
+      width:min(350px, 100%);
+      margin-top:48px;
+      padding:12px;
+      border:1px solid rgba(255,255,255,.28);
+      border-radius:38px;
+      background:linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,.08));
+      box-shadow:0 32px 90px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.2);
+      backdrop-filter:blur(18px);
+    }
+    .phone-screen {
+      min-height:570px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:28px;
+      background:#071424;
+      color:#fff;
+    }
+    .phone-top {
+      height:56px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0 16px;
+      border-bottom:1px solid rgba(255,255,255,.1);
+      background:rgba(255,255,255,.04);
+    }
+    .phone-top strong { font-size:.88rem; }
+    .phone-top span {
+      min-height:25px;
+      display:inline-flex;
+      align-items:center;
+      padding:0 9px;
+      border-radius:999px;
+      background:rgba(215,248,114,.14);
+      color:#e7ff94;
+      font-size:.68rem;
+      font-weight:900;
+    }
+    .app-body { padding:14px; }
+    .mini-plan {
+      position:relative;
+      height:222px;
+      border:3px solid rgba(92,216,148,.72);
+      border-radius:14px;
+      background-image:
+        linear-gradient(rgba(255,255,255,.075) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.075) 1px, transparent 1px);
+      background-size:24px 24px;
+      box-shadow:0 0 22px rgba(92,216,148,.16);
+    }
+    .mini-wall { position:absolute; background:rgba(92,216,148,.7); box-shadow:0 0 10px rgba(92,216,148,.18); }
+    .mini-wall.w1 { left:0; top:41%; width:100%; height:3px; }
+    .mini-wall.w2 { left:36%; top:41%; width:3px; height:59%; }
+    .mini-wall.w3 { left:68%; top:0; width:3px; height:100%; }
+    .mini-wall.w4 { left:0; top:75%; width:52%; height:3px; }
+    .point {
+      position:absolute;
+      width:28px;
+      height:28px;
+      display:grid;
+      place-items:center;
+      border:2px solid rgba(219,247,255,.9);
+      border-radius:8px;
+      color:#dff8ff;
+      font-size:.55rem;
+      font-weight:900;
+      background:rgba(255,255,255,.08);
+    }
+    .point::after {
+      content:"";
+      position:absolute;
+      left:50%;
+      bottom:-42px;
+      width:64px;
+      height:64px;
+      transform:translateX(-50%);
+      border:2px solid rgba(219,247,255,.42);
+      border-top:0;
+      border-radius:0 0 60px 60px;
+      clip-path:polygon(0 0, 100% 0, 82% 72%, 50% 100%, 18% 72%);
+    }
+    .p1 { left:10%; top:16%; }
+    .p2 { right:8%; top:13%; }
+    .sensor {
+      position:absolute;
+      left:48%;
+      top:45%;
+      width:34px;
+      height:34px;
+      border:2px solid rgba(219,247,255,.88);
+      border-radius:9px;
+    }
+    .alarm {
+      position:absolute;
+      right:12%;
+      bottom:10%;
+      width:48px;
+      height:36px;
+      border:2px solid rgba(219,247,255,.88);
+      border-radius:9px 9px 5px 5px;
+    }
+    .ai-card,
+    .estimate-card {
+      margin-top:12px;
+      padding:12px;
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:16px;
+      background:rgba(255,255,255,.075);
+    }
+    .ai-card strong,
+    .estimate-card strong {
+      display:block;
+      font-size:.86rem;
+    }
+    .ai-card p,
+    .estimate-card p {
+      margin-top:4px;
+      color:rgba(255,255,255,.7);
+      font-size:.76rem;
+      line-height:1.45;
+      font-weight:650;
+    }
+    .estimate-line {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:8px;
+      margin-top:10px;
+      color:#e9fbff;
+      font-size:.86rem;
+      font-weight:900;
+    }
+    .equipment-list {
+      display:grid;
+      gap:6px;
+      margin-top:10px;
+    }
+    .equipment-list div {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:8px;
+      color:rgba(255,255,255,.78);
+      font-size:.72rem;
+      font-weight:750;
+    }
+    .equipment-list b { color:#fff; }
+    .phone-actions {
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:8px;
+      margin-top:12px;
+    }
+    .phone-actions span {
+      min-height:42px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:12px;
+      font-size:.73rem;
+      font-weight:900;
+      text-align:center;
+    }
+    .phone-actions span:first-child {
+      background:#fff;
+      color:#113347;
+    }
+    .phone-actions span:last-child {
+      color:#fff;
+      border:1px solid rgba(255,255,255,.18);
+      background:rgba(255,255,255,.09);
+    }
+    .floating-note {
+      position:absolute;
+      right:0;
+      bottom:76px;
+      width:220px;
+      padding:13px;
+      border:1px solid rgba(255,255,255,.22);
+      border-radius:18px;
+      background:rgba(255,255,255,.16);
+      color:#fff;
+      box-shadow:0 20px 52px rgba(0,0,0,.2);
+      backdrop-filter:blur(16px);
+    }
+    .floating-note strong { display:block; font-size:.9rem; }
+    .floating-note span { display:block; margin-top:4px; color:rgba(255,255,255,.74); font-size:.78rem; font-weight:650; }
+
+    .content {
+      background:#fff;
+      color:var(--ink);
+      padding:62px 52px 68px;
+    }
+    .section {
+      width:min(1240px, 100%);
+      margin:0 auto;
+    }
+    .section + .section { margin-top:58px; }
+    .kicker {
+      color:var(--teal);
+      font-size:.78rem;
+      font-weight:900;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      margin-bottom:12px;
+    }
+    .section h2 {
+      max-width:900px;
+      font-size:clamp(2.15rem, 4vw, 3.6rem);
+      line-height:1.08;
+      letter-spacing:-.045em;
+      font-weight:900;
+      color:#101828;
+    }
+    .section-lead {
+      max-width:790px;
+      margin-top:14px;
+      color:var(--muted);
+      font-size:1.06rem;
+      line-height:1.75;
+      font-weight:650;
+    }
+    .pain {
+      display:grid;
+      grid-template-columns:.9fr 1.1fr;
+      gap:26px;
+      align-items:center;
+      padding:30px;
+      border:1px solid #e2eaf2;
+      border-radius:24px;
+      background:
+        radial-gradient(circle at 18% 12%, rgba(224,82,82,.08), transparent 28%),
+        linear-gradient(135deg, #fff, #f8fbff);
+      box-shadow:0 18px 54px rgba(16,24,40,.055);
+    }
+    .pain-cards {
+      display:grid;
+      gap:12px;
+    }
+    .pain-card {
+      min-height:82px;
+      display:flex;
+      align-items:center;
+      gap:14px;
+      padding:16px;
+      border:1px solid #e8dce0;
+      border-radius:18px;
+      background:#fff;
+      box-shadow:0 10px 26px rgba(16,24,40,.035);
+      color:#38465b;
+      font-weight:900;
+    }
+    .pain-card i {
+      width:10px;
+      height:10px;
+      border-radius:50%;
+      background:var(--red);
+      box-shadow:0 0 0 6px rgba(224,82,82,.1);
+      flex:0 0 auto;
+    }
+    .audience-grid {
+      display:grid;
+      grid-template-columns:repeat(5, minmax(0,1fr));
+      gap:12px;
+      margin-top:28px;
+    }
+    .audience-card {
+      min-height:112px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      padding:16px;
+      border:1px solid #e2eaf2;
+      border-radius:18px;
+      background:linear-gradient(180deg, #fff, #f8fbff);
+      box-shadow:0 12px 28px rgba(16,24,40,.04);
+    }
+    .audience-card span {
+      width:36px;
+      height:36px;
+      display:grid;
+      place-items:center;
+      border-radius:12px;
+      background:linear-gradient(135deg, rgba(40,124,114,.12), rgba(47,103,216,.11));
+      color:var(--teal);
+      font-size:.8rem;
+      font-weight:900;
+    }
+    .audience-card strong {
+      color:#101828;
+      font-size:.98rem;
+      line-height:1.22;
+      font-weight:900;
+    }
+    .audience-card p {
+      margin-top:8px;
+      color:#66758a;
+      font-size:.84rem;
+      line-height:1.45;
+      font-weight:650;
+    }
+    .steps {
+      display:grid;
+      grid-template-columns:repeat(5, minmax(0,1fr));
+      gap:12px;
+      margin-top:32px;
+    }
+    .step {
+      position:relative;
+      min-height:176px;
+      padding:16px;
+      border:1px solid #e2eaf2;
+      border-radius:18px;
+      background:linear-gradient(180deg, #fff, #f8fbff);
+      box-shadow:0 12px 28px rgba(16,24,40,.04);
+    }
+    .step.final-step {
+      border-color:rgba(40,124,114,.26);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.98), rgba(244,252,250,.98)),
+        #fff;
+      box-shadow:0 18px 38px rgba(40,124,114,.09);
+    }
+    .step:not(:last-child)::after {
+      content:"→";
+      position:absolute;
+      top:22px;
+      right:-13px;
+      z-index:2;
+      color:#82a8c8;
+      font-weight:900;
+    }
+    .num {
+      width:34px;
+      height:34px;
+      display:grid;
+      place-items:center;
+      border-radius:11px;
+      background:linear-gradient(135deg, rgba(40,124,114,.14), rgba(47,103,216,.12));
+      color:var(--teal);
+      font-weight:900;
+    }
+    .step.final-step .num {
+      background:linear-gradient(135deg, var(--teal), var(--blue));
+      color:#fff;
+    }
+    .step h3 {
+      margin-top:15px;
+      color:#101828;
+      font-size:1rem;
+      line-height:1.24;
+      font-weight:900;
+    }
+    .step p {
+      margin-top:8px;
+      color:#607086;
+      font-size:.9rem;
+      line-height:1.62;
+      font-weight:620;
+    }
+    .cards {
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0, 1fr));
+      gap:16px;
+      margin-top:34px;
+    }
+    .outputs {
+      display:grid;
+      grid-template-columns:1.12fr .88fr;
+      gap:18px;
+      align-items:stretch;
+      margin-top:34px;
+    }
+    .output-stage {
+      position:relative;
+      min-height:430px;
+      overflow:hidden;
+      border:1px solid #dce6ef;
+      border-radius:24px;
+      background:
+        linear-gradient(115deg, rgba(32,114,107,.96), rgba(47,103,216,.96)),
+        #1b6ab3;
+      box-shadow:0 22px 60px rgba(16,24,40,.09);
+    }
+    .output-stage::before {
+      content:"";
+      position:absolute;
+      inset:0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.075) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.075) 1px, transparent 1px);
+      background-size:34px 34px;
+      opacity:.58;
+    }
+    .sheet {
+      position:absolute;
+      right:30px;
+      top:42px;
+      width:250px;
+      min-height:320px;
+      padding:18px;
+      border-radius:18px;
+      background:#fff;
+      box-shadow:0 26px 60px rgba(0,0,0,.22);
+      transform:rotate(2deg);
+      color:#101828;
+    }
+    .sheet small {
+      color:var(--teal);
+      font-weight:900;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+    .sheet h3 {
+      margin-top:8px;
+      font-size:1.15rem;
+      line-height:1.18;
+      font-weight:900;
+    }
+    .sheet-line {
+      height:10px;
+      margin-top:14px;
+      border-radius:999px;
+      background:#e7eef5;
+    }
+    .sheet-line:nth-of-type(2) { width:86%; }
+    .sheet-line:nth-of-type(3) { width:68%; }
+    .sheet-total {
+      display:flex;
+      justify-content:space-between;
+      margin-top:24px;
+      padding-top:16px;
+      border-top:1px solid #e7eef5;
+      font-weight:900;
+    }
+    .output-plan {
+      position:absolute;
+      left:34px;
+      bottom:34px;
+      width:360px;
+      height:240px;
+      border:4px solid rgba(185,255,242,.72);
+      border-radius:16px;
+      transform:rotate(-5deg);
+      background-image:
+        linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px);
+      background-size:26px 26px;
+      box-shadow:0 0 24px rgba(185,255,242,.18);
+    }
+    .output-dot {
+      position:absolute;
+      width:22px;
+      height:22px;
+      border:2px solid #dff8ff;
+      border-radius:8px;
+      background:rgba(255,255,255,.12);
+    }
+    .output-dot.d1 { left:18%; top:18%; }
+    .output-dot.d2 { right:16%; top:20%; }
+    .output-dot.d3 { left:47%; bottom:25%; border-radius:50%; background:rgba(217,248,108,.28); }
+    .output-cards {
+      display:grid;
+      gap:12px;
+    }
+    .output-card {
+      min-height:112px;
+      padding:16px;
+      border:1px solid #e2eaf2;
+      border-radius:18px;
+      background:linear-gradient(180deg, #fff, #f8fbff);
+      box-shadow:0 12px 28px rgba(16,24,40,.04);
+    }
+    .output-card b {
+      display:block;
+      color:#101828;
+      font-size:.98rem;
+      font-weight:900;
+    }
+    .output-card p {
+      margin-top:7px;
+      color:#607086;
+      font-size:.9rem;
+      font-weight:620;
+      line-height:1.55;
+    }
+    .card {
+      min-height:210px;
+      padding:20px;
+      border:1px solid #e2eaf2;
+      border-radius:18px;
+      background:linear-gradient(180deg, #fff, #f8fbff);
+      box-shadow:0 14px 34px rgba(16,24,40,.045);
+      transition:transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+    }
+    .card:hover {
+      transform:translateY(-4px);
+      border-color:rgba(47,103,216,.22);
+      box-shadow:0 20px 44px rgba(16,24,40,.075);
+    }
+    .card.featured {
+      border-color:rgba(40,124,114,.26);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.96), rgba(246,252,251,.96)),
+        #fff;
+    }
+    .card-top {
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:12px;
+    }
+    .icon {
+      width:46px;
+      height:46px;
+      display:grid;
+      place-items:center;
+      border-radius:14px;
+      background:linear-gradient(135deg, rgba(40,124,114,.13), rgba(47,103,216,.12));
+      color:var(--teal);
+      font-size:.84rem;
+      font-weight:900;
+    }
+    .label {
+      min-height:26px;
+      display:inline-flex;
+      align-items:center;
+      padding:0 9px;
+      border-radius:999px;
+      background:#eef6ff;
+      color:#2f67d8;
+      font-size:.68rem;
+      font-weight:900;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+    }
+    .card h3 {
+      margin-top:16px;
+      color:#101828;
+      font-size:1.15rem;
+      line-height:1.25;
+      font-weight:900;
+      letter-spacing:-.015em;
+    }
+    .card p {
+      margin-top:10px;
+      color:#5f6f84;
+      font-size:.95rem;
+      line-height:1.7;
+      font-weight:600;
+    }
+    .split {
+      display:grid;
+      grid-template-columns:.9fr 1.1fr;
+      gap:28px;
+      align-items:center;
+      padding:30px;
+      border:1px solid #e2eaf2;
+      border-radius:24px;
+      background:
+        radial-gradient(circle at 18% 12%, rgba(40,124,114,.14), transparent 28%),
+        linear-gradient(135deg, #fbfdff, #f3f8fd);
+      box-shadow:0 18px 54px rgba(16,24,40,.06);
+    }
+    .split h2 { font-size:clamp(2rem, 3.6vw, 3.2rem); }
+    .flow {
+      display:grid;
+      grid-template-columns:repeat(6, minmax(0, 1fr));
+      gap:8px;
+    }
+    .flow span {
+      position:relative;
+      min-height:78px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:10px;
+      border:1px solid rgba(40,124,114,.18);
+      border-radius:16px;
+      background:#fff;
+      color:#29415d;
+      font-size:.82rem;
+      font-weight:900;
+      box-shadow:0 10px 24px rgba(16,24,40,.035);
+    }
+    .flow span:not(:last-child)::after {
+      content:"→";
+      position:absolute;
+      right:-11px;
+      z-index:2;
+      color:#7ca6c6;
+    }
+    .authority {
+      display:grid;
+      grid-template-columns:1fr .82fr;
+      gap:28px;
+      align-items:center;
+      padding:30px;
+      border:1px solid #e2eaf2;
+      border-radius:24px;
+      background:linear-gradient(135deg, #fff, #f7fbff);
+      box-shadow:0 18px 54px rgba(16,24,40,.05);
+    }
+    .authority-card {
+      display:grid;
+      gap:12px;
+      padding:22px;
+      border:1px solid rgba(47,103,216,.15);
+      border-radius:20px;
+      background:
+        linear-gradient(135deg, rgba(40,124,114,.08), rgba(47,103,216,.09)),
+        #fff;
+    }
+    .authority-card strong {
+      display:block;
+      color:#101828;
+      font-size:1.35rem;
+      line-height:1.18;
+      font-weight:900;
+      letter-spacing:-.02em;
+    }
+    .authority-card span {
+      color:#5f6f84;
+      font-weight:650;
+      line-height:1.65;
+    }
+    .waitlist {
+      display:grid;
+      grid-template-columns:.86fr 1.14fr;
+      gap:30px;
+      padding:32px;
+      border-radius:26px;
+      color:#fff;
+      background:
+        linear-gradient(115deg, rgba(35,110,103,.97), rgba(42,91,198,.97)),
+        #2267b1;
+      box-shadow:0 22px 60px rgba(47,103,216,.2);
+      position:relative;
+      overflow:hidden;
+    }
+    .waitlist::before {
+      content:"";
+      position:absolute;
+      inset:0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.07) 1px, transparent 1px);
+      background-size:38px 38px;
+      opacity:.5;
+    }
+    .waitlist > * { position:relative; z-index:1; }
+    .waitlist h2 {
+      color:#fff;
+      max-width:620px;
+      font-size:clamp(2.2rem, 4vw, 3.4rem);
+    }
+    .waitlist p {
+      max-width:610px;
+      margin-top:14px;
+      color:rgba(255,255,255,.82);
+      line-height:1.75;
+      font-weight:620;
+    }
+    .bullets {
+      display:grid;
+      gap:10px;
+      margin-top:22px;
+      color:#eefcff;
+      font-weight:850;
+    }
+    .bullets span {
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .bullets span::before {
+      content:"";
+      width:9px;
+      height:9px;
+      flex:0 0 auto;
+      border-radius:50%;
+      background:var(--lime);
+      box-shadow:0 0 0 6px rgba(215,248,114,.14);
+    }
+    .form {
+      display:grid;
+      gap:12px;
+      padding:14px;
+      border:1px solid rgba(255,255,255,.24);
+      border-radius:20px;
+      background:rgba(255,255,255,.96);
+      box-shadow:0 22px 60px rgba(0,0,0,.16);
+    }
+    .form-row {
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+    }
+    .field label {
+      display:block;
+      margin-bottom:6px;
+      color:#21314a;
+      font-size:.88rem;
+      font-weight:900;
+    }
+    .field input,
+    .field select {
+      width:100%;
+      min-height:54px;
+      padding:0 14px;
+      border:1px solid #d9e3ef;
+      border-radius:14px;
+      background:#f9fbfd;
+      color:#101828;
+      font-weight:720;
+      outline:none;
+      transition:border-color .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+    .field input::placeholder { color:#98a2b3; }
+    .field input:focus,
+    .field select:focus {
+      border-color:rgba(40,124,114,.5);
+      background:#fff;
+      box-shadow:0 0 0 4px rgba(40,124,114,.11);
+    }
+    .waitlist .form-note {
+      color:#46586f;
+      font-size:.82rem;
+      line-height:1.55;
+      font-weight:720;
+      margin-top:0;
+    }
+    .waitlist .early-note {
+      color:#32465c;
+      font-size:.88rem;
+      line-height:1.6;
+      font-weight:750;
+      padding:9px 11px;
+      border:1px solid #d9e3ef;
+      border-radius:14px;
+      background:#f8fbff;
+      margin-top:0;
+    }
+
+    .footer {
+      width:min(1520px, calc(100% - 36px));
+      margin:0 auto 28px;
+      display:grid;
+      grid-template-columns:1fr auto;
+      align-items:center;
+      gap:24px;
+      color:#a8b6ca;
+      font-size:.92rem;
+      font-weight:700;
+    }
+    .footer-brand {
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+    .footer-logo {
+      width:40px;
+      height:40px;
+      display:grid;
+      place-items:center;
+      border:1px solid rgba(185,255,242,.28);
+      border-radius:12px;
+      background:rgba(255,255,255,.08);
+    }
+    .footer strong {
+      display:block;
+      color:#fff;
+      margin-bottom:2px;
+      font-size:1rem;
+    }
+    .footer-links {
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+      gap:16px;
+    }
+    .footer a:hover { color:#fff; }
+    .android {
+      color:#d6fff8;
+      font-size:.82rem;
+      font-weight:900;
+    }
+    .sticky-mobile {
+      display:none;
+      position:fixed;
+      left:12px;
+      right:12px;
+      bottom:12px;
+      z-index:30;
+      min-height:54px;
+      align-items:center;
+      justify-content:center;
+      border-radius:16px;
+      background:linear-gradient(135deg, var(--teal), var(--blue));
+      color:#fff;
+      font-weight:900;
+      box-shadow:0 18px 42px rgba(0,0,0,.28);
+    }
+
+    @media (max-width:1180px) {
+      .hero-grid { grid-template-columns:1fr; gap:20px; }
+      .visual { min-height:570px; }
+      .phone { margin-top:58px; }
+      .floating-note { right:14%; }
+      .cards { grid-template-columns:repeat(2, minmax(0, 1fr)); }
+      .audience-grid { grid-template-columns:repeat(3, minmax(0,1fr)); }
+      .outputs { grid-template-columns:1fr; }
+      .pain, .split, .authority, .waitlist { grid-template-columns:1fr; }
+      .steps { grid-template-columns:repeat(3, minmax(0,1fr)); }
+      .flow { grid-template-columns:repeat(3, minmax(0,1fr)); }
+      .flow span:not(:last-child)::after { display:none; }
+      .footer { grid-template-columns:1fr; align-items:flex-start; }
+      .footer-links { justify-content:flex-start; }
+    }
+    @media (max-width:760px) {
+      .page { width:min(100% - 16px, 1520px); margin-top:8px; border-radius:16px; }
+      .hero { min-height:auto; padding:18px 18px 36px; }
+      .nav { align-items:flex-start; }
+      .nav-links { display:none; }
+      .nav-cta { font-size:.78rem; padding:0 12px; }
+      .hero-grid { padding-top:34px; }
+      .eyebrow { font-size:.74rem; }
+      h1 { font-size:2.42rem; line-height:1.08; }
+      .hero-copy { font-size:1rem; line-height:1.68; }
+      .hero-actions .btn { width:100%; }
+      .trust { gap:7px; }
+      .trust span { font-size:.72rem; }
+      .visual { min-height:auto; }
+      .mark-large { width:118px; height:118px; top:0; }
+      .phone { width:min(326px, 100%); margin-top:72px; }
+      .phone-screen { min-height:570px; }
+      .floating-note { display:none; }
+      .content { padding:42px 16px 52px; }
+      .section + .section { margin-top:44px; }
+      .cards, .steps, .flow, .form-row, .audience-grid { grid-template-columns:1fr; }
+      .outputs { grid-template-columns:1fr; }
+      .output-stage { min-height:360px; }
+      .sheet { right:18px; top:28px; width:220px; }
+      .output-plan { left:18px; bottom:28px; width:280px; height:190px; }
+      .card, .step { min-height:0; }
+      .step:not(:last-child)::after { display:none; }
+      .pain, .split, .authority, .waitlist { padding:18px; border-radius:20px; }
+      .form { padding:12px; }
+      .footer {
+        width:min(100% - 24px, 1520px);
+        padding-bottom:70px;
+      }
+      .footer-brand { align-items:flex-start; }
+      .footer-links { gap:12px; }
+      .sticky-mobile { display:flex; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <header class="nav">
+        <a class="brand" href="../">
+          <span class="brand-mark" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 220 220" fill="none">
+              <path d="M110 20 176 48v52c0 47-26 78-66 100-40-22-66-53-66-100V48l66-28Z" stroke="#B9FFF2" stroke-width="16" stroke-linejoin="round"/>
+              <path d="M52 112c22-28 51-31 87 0 18 16 36 17 57 0" stroke="#FFD84D" stroke-width="15" stroke-linecap="round"/>
+            </svg>
+          </span>
+          DrawSecurity
+        </a>
+        <nav class="nav-links" aria-label="Navegação principal">
+          <a href="#dor">Dor</a>
+          <a href="#como-funciona">Como funciona</a>
+          <a href="#funcionalidades">Funcionalidades</a>
+          <a href="#lista-espera">Lista de espera</a>
+        </nav>
+        <a class="nav-cta" href="#lista-espera">Em breve para Android</a>
+      </header>
+
+      <div class="hero-grid">
+        <div>
+          <div class="badge-row">
+            <span class="badge"><i aria-hidden="true"></i> Em desenvolvimento</span>
+            <span class="badge">Produto da Roma Solution</span>
+          </div>
+          <div class="eyebrow">App mobile para projeto técnico</div>
+          <h1>Projetos técnicos de segurança com planta, IA, orçamento e 3D.</h1>
+          <p class="hero-copy">Transforme a visita técnica em uma proposta profissional: marque câmeras, sensores, centrais e cabos na planta, gere memorial técnico, simule o projeto em 3D e prepare o orçamento direto no celular.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#lista-espera">Entrar na lista de espera</a>
+            <a class="btn btn-secondary" href="#como-funciona">Ver como funciona</a>
+          </div>
+          <div class="trust" aria-label="Pilares do produto">
+            <span>IA técnica</span>
+            <span>CFTV</span>
+            <span>3D</span>
+            <span>App mobile</span>
+            <span>Orçamento</span>
+          </div>
+        </div>
+
+        <div class="visual" aria-label="Mockup do app DrawSecurity">
+          <svg class="mark-large" viewBox="0 0 220 220" fill="none" aria-hidden="true">
+            <path d="M110 20 176 48v52c0 47-26 78-66 100-40-22-66-53-66-100V48l66-28Z" stroke="#B9FFF2" stroke-width="7" stroke-linejoin="round"/>
+            <path d="M66 78h72c20 0 36 16 36 36s-16 36-36 36H93c-22 0-40-18-40-40V78h13Z" stroke="#B9FFF2" stroke-width="7" stroke-linejoin="round"/>
+            <path d="M97 78V58h44v44" stroke="#B9FFF2" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="111" cy="111" r="27" stroke="#B9FFF2" stroke-width="7"/>
+            <path d="M52 112c22-28 51-31 87 0 18 16 36 17 57 0" stroke="#FFD84D" stroke-width="6" stroke-linecap="round"/>
+          </svg>
+
+          <div class="phone">
+            <div class="phone-screen">
+              <div class="phone-top">
+                <strong>Projeto #024</strong>
+                <span>IA ativa</span>
+              </div>
+              <div class="app-body">
+                <div class="mini-plan">
+                  <div class="mini-wall w1"></div>
+                  <div class="mini-wall w2"></div>
+                  <div class="mini-wall w3"></div>
+                  <div class="mini-wall w4"></div>
+                  <div class="point p1">CAM</div>
+                  <div class="point p2">CAM</div>
+                  <div class="sensor"></div>
+                  <div class="alarm"></div>
+                </div>
+                <div class="ai-card">
+                  <strong>IA sugeriu ajustes</strong>
+                  <p>Reposicionar câmera da garagem e adicionar sensor no corredor lateral.</p>
+                </div>
+                <div class="estimate-card">
+                  <strong>Valor estimado do projeto</strong>
+                  <div class="estimate-line"><span>Equipamentos + instalação</span><span>R$ 4.870</span></div>
+                  <div class="equipment-list">
+                    <div><span>4 câmeras IP</span><b>R$ 1.960</b></div>
+                    <div><span>Central + sensores</span><b>R$ 1.240</b></div>
+                    <div><span>Mão de obra</span><b>R$ 1.670</b></div>
+                  </div>
+                </div>
+                <div class="phone-actions">
+                  <span>Gerar orçamento</span>
+                  <span>Gerar memorial PDF</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="floating-note">
+            <strong>Prova visual da proposta</strong>
+            <span>O cliente entende o que será instalado antes de aprovar.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content">
+      <div class="section pain" id="dor">
+        <div>
+          <div class="kicker">Dor comercial</div>
+          <h2>Chega de orçamento feito no improviso.</h2>
+          <p class="section-lead">Vendedor volta da rua sem padrão, técnico desenha no papel, orçamento demora para sair, cliente não entende a proposta e a empresa perde venda por falta de apresentação. O DrawSecurity nasce para transformar a vistoria em um projeto visual, técnico e pronto para aprovação.</p>
+        </div>
+        <div class="pain-cards">
+          <div class="pain-card"><i></i>Projetos feitos no papel ou no WhatsApp</div>
+          <div class="pain-card"><i></i>Orçamentos demorados e pouco visuais</div>
+          <div class="pain-card"><i></i>Cliente sem clareza do que será instalado</div>
+        </div>
+      </div>
+
+      <div class="section" id="para-quem">
+        <div class="kicker">Para quem é</div>
+        <h2>Feito para quem transforma visita técnica em venda.</h2>
+        <p class="section-lead">O DrawSecurity é pensado para profissionais e empresas que precisam padronizar projetos, encurtar o ciclo comercial e apresentar propostas com mais clareza.</p>
+        <div class="audience-grid">
+          <div class="audience-card"><span>VE</span><strong>Vendedores externos</strong><p>Saem da visita com uma proposta visual.</p></div>
+          <div class="audience-card"><span>TC</span><strong>Técnicos</strong><p>Padronizam pontos, cabos e instalação.</p></div>
+          <div class="audience-card"><span>PR</span><strong>Projetistas</strong><p>Criam memorial e documentação técnica.</p></div>
+          <div class="audience-card"><span>IN</span><strong>Integradores</strong><p>Apresentam soluções com mais clareza.</p></div>
+          <div class="audience-card"><span>SE</span><strong>Empresas de segurança eletrônica</strong><p>Organizam a venda técnica desde a vistoria.</p></div>
+        </div>
+      </div>
+
+      <div class="section" id="como-funciona">
+        <div class="kicker">Como funciona na prática</div>
+        <h2>Da visita técnica à proposta em poucos passos.</h2>
+        <p class="section-lead">A proposta do DrawSecurity é transformar a rotina de vistoria em um fluxo simples, visual e padronizado para times comerciais e técnicos.</p>
+        <div class="steps">
+          <article class="step">
+            <div class="num">1</div>
+            <h3>Envie a planta, tire uma foto ou use um croqui.</h3>
+            <p>Comece com o material disponível no momento da visita.</p>
+          </article>
+          <article class="step">
+            <div class="num">2</div>
+            <h3>Marque câmeras, sensores, centrais, sirenes e cabos.</h3>
+            <p>Organize pontos técnicos e áreas de cobertura em uma tela mobile.</p>
+          </article>
+          <article class="step">
+            <div class="num">3</div>
+            <h3>Receba sugestões inteligentes da IA.</h3>
+            <p>A IA é pensada para apoiar posicionamento, cobertura e padrão técnico.</p>
+          </article>
+          <article class="step">
+            <div class="num">4</div>
+            <h3>Gere memorial técnico, lista e orçamento.</h3>
+            <p>Prepare documentos mais claros sem refazer tudo manualmente.</p>
+          </article>
+          <article class="step final-step">
+            <div class="num">5</div>
+            <h3>Proposta pronta para aprovação.</h3>
+            <p>Ajude o cliente a entender e aprovar com mais confiança.</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="section" id="funcionalidades">
+        <div class="kicker">Funcionalidades</div>
+        <h2>Um app de campo pensado para projeto, venda técnica e aprovação.</h2>
+        <p class="section-lead">O produto está em desenvolvimento, mas a direção é clara: dar ao time de campo uma forma mais rápida e visual de transformar vistoria em proposta.</p>
+        <div class="cards">
+          <article class="card">
+            <div class="card-top"><div class="icon">PL</div></div>
+            <h3>Plantas e pontos técnicos</h3>
+            <p>Use planta, imagem ou croqui para marcar câmeras, sensores, centrais, sirenes, cabos e áreas de cobertura.</p>
+          </article>
+          <article class="card featured">
+            <div class="card-top"><div class="icon">IA</div><span class="label">Destaque</span></div>
+            <h3>Sugestões com IA</h3>
+            <p>A IA ajuda a sugerir posicionamento, cobertura e padrão de projeto, reduzindo erros técnicos na proposta.</p>
+          </article>
+          <article class="card">
+            <div class="card-top"><div class="icon">3D</div></div>
+            <h3>Visualização 3D</h3>
+            <p>Mostre o projeto de forma mais tangível para o cliente entender onde cada ponto será instalado.</p>
+          </article>
+          <article class="card">
+            <div class="card-top"><div class="icon">PDF</div></div>
+            <h3>Memorial técnico</h3>
+            <p>Gere um documento organizado com equipamentos, pontos, observações técnicas e resumo do projeto.</p>
+          </article>
+          <article class="card featured">
+            <div class="card-top"><div class="icon">R$</div><span class="label">Comercial</span></div>
+            <h3>Orçamento automático</h3>
+            <p>Monte propostas com equipamentos, materiais, mão de obra e serviços sem refazer tudo manualmente.</p>
+          </article>
+          <article class="card">
+            <div class="card-top"><div class="icon">APP</div></div>
+            <h3>Uso mobile em campo</h3>
+            <p>Fluxo pensado para vistoria, atendimento externo e venda técnica no local do cliente.</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="section" id="entregas">
+        <div class="kicker">Saídas do produto</div>
+        <h2>Mais do que desenhar: entregar uma proposta que o cliente entende.</h2>
+        <p class="section-lead">A proposta do DrawSecurity é gerar materiais comerciais e técnicos a partir da vistoria, reduzindo retrabalho e melhorando a percepção profissional da empresa.</p>
+        <div class="outputs">
+          <div class="output-stage" aria-label="Composição visual das entregas do DrawSecurity">
+            <div class="output-plan">
+              <span class="output-dot d1"></span>
+              <span class="output-dot d2"></span>
+              <span class="output-dot d3"></span>
+            </div>
+            <div class="sheet">
+              <small>Memorial técnico</small>
+              <h3>Projeto CFTV + Alarme residencial</h3>
+              <div class="sheet-line"></div>
+              <div class="sheet-line"></div>
+              <div class="sheet-line"></div>
+              <div class="sheet-total"><span>Total</span><span>R$ 4.870</span></div>
+            </div>
+          </div>
+          <div class="output-cards">
+            <div class="output-card"><b>Planta com pontos marcados</b><p>Câmeras, sensores, cabos e áreas de cobertura organizados visualmente.</p></div>
+            <div class="output-card"><b>Memorial técnico em PDF</b><p>Resumo do projeto, equipamentos e observações técnicas para aprovação e execução.</p></div>
+            <div class="output-card"><b>Orçamento profissional</b><p>Materiais, equipamentos, serviços e mão de obra em uma proposta mais clara.</p></div>
+            <div class="output-card"><b>Visualização 3D</b><p>Uma forma mais tangível de mostrar ao cliente o que será instalado.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section split" id="ecossistema">
+        <div>
+          <div class="kicker">Ecossistema Roma Solution</div>
+          <h2>DrawSecurity acelera o projeto. RomaSystem organiza a operação.</h2>
+          <p class="section-lead">O DrawSecurity foi pensado para transformar a vistoria técnica em uma proposta visual, clara e profissional. Dentro do ecossistema Roma Solution, a ideia é que projetos aprovados possam evoluir para processos completos no RomaSystem, como cliente, orçamento, instalação, ordem de serviço, estoque e financeiro.</p>
+        </div>
+        <div class="flow" aria-label="Fluxo entre DrawSecurity e RomaSystem">
+          <span>Vistoria técnica</span>
+          <span>Projeto em planta</span>
+          <span>Orçamento</span>
+          <span>Aprovação</span>
+          <span>Execução</span>
+          <span>Gestão no RomaSystem</span>
+        </div>
+        <div class="hero-actions" style="margin-top:22px;">
+          <a class="btn btn-light" href="../romasystem/">Conhecer o RomaSystem</a>
+        </div>
+      </div>
+
+      <div class="section authority">
+        <div>
+          <div class="kicker">Autoridade do setor</div>
+          <h2>Criado por quem vive segurança eletrônica na prática.</h2>
+          <p class="section-lead">O DrawSecurity é desenvolvido pela Roma Solution a partir da experiência operacional da Alarmes Roma, uma empresa que lida todos os dias com clientes, projetos, instalações, técnicos, orçamentos e monitoramento. Não é uma ferramenta genérica: é tecnologia pensada para a rotina real do setor.</p>
+        </div>
+        <div class="authority-card">
+          <strong>Produto da Roma Solution</strong>
+          <span>Baseado em problemas reais de operação, venda e instalação no setor de segurança eletrônica.</span>
+        </div>
+      </div>
+
+      <div class="section waitlist" id="lista-espera">
+        <div>
+          <div class="kicker" style="color:#d8fff8;">Acesso antecipado</div>
+          <h2>Entre na lista de espera do DrawSecurity.</h2>
+          <p>Estamos construindo uma ferramenta de campo para empresas de segurança eletrônica criarem projetos técnicos mais rápidos, visuais e profissionais.</p>
+          <div class="bullets">
+            <span>Em breve para Android</span>
+            <span>Os primeiros inscritos poderão participar da fase inicial de testes</span>
+            <span>Ajude a moldar uma ferramenta feita para a rotina real do setor</span>
+          </div>
+        </div>
+
+        <form class="form" id="waitlistForm" onsubmit="return submitWaitlist(this)">
+          <div class="form-row">
+            <div class="field">
+              <label for="name">Nome</label>
+              <input id="name" name="name" type="text" placeholder="Seu nome" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="company">Empresa</label>
+              <input id="company" name="company" type="text" placeholder="Nome da empresa" autocomplete="organization" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="whatsapp">WhatsApp</label>
+              <input id="whatsapp" name="whatsapp" type="tel" placeholder="(13) 99999-9999" autocomplete="tel" required>
+            </div>
+            <div class="field">
+              <label for="size">Porte da empresa</label>
+              <select id="size" name="size" required>
+                <option value="">Selecione uma opção</option>
+                <option>Autônomo ou técnico independente</option>
+                <option>Até 50 clientes</option>
+                <option>51 a 150 clientes</option>
+                <option>151 a 500 clientes</option>
+                <option>Mais de 500 clientes</option>
+              </select>
+            </div>
+          </div>
+          <button class="btn btn-gradient" type="submit">Quero acesso antecipado</button>
+          <p class="early-note">Os primeiros inscritos poderão participar da fase inicial de testes e ajudar a moldar a ferramenta.</p>
+          <p class="form-note">Ao enviar, abriremos o WhatsApp com uma mensagem pronta para confirmar seu interesse no acesso antecipado ao DrawSecurity.</p>
+        </form>
+      </div>
+
+      <div class="section" id="faq">
+        <div class="kicker">Perguntas frequentes</div>
+        <h2>Dúvidas rápidas sobre o DrawSecurity.</h2>
+        <div class="cards">
+          <article class="card">
+            <div class="card-top"><div class="icon">01</div></div>
+            <h3>O DrawSecurity já está disponível?</h3>
+            <p>Ainda está em desenvolvimento e em breve chegará ao Android. A lista de espera garante que você receba as novidades, acompanhe a evolução do produto e possa ter acesso antecipado à fase inicial de testes.</p>
+          </article>
+          <article class="card">
+            <div class="card-top"><div class="icon">02</div></div>
+            <h3>Quem pode usar?</h3>
+            <p>Empresas de segurança eletrônica, vendedores externos, técnicos, projetistas e integradores que fazem vistoria e proposta técnica.</p>
+          </article>
+          <article class="card">
+            <div class="card-top"><div class="icon">03</div></div>
+            <h3>O DrawSecurity depende do RomaSystem?</h3>
+            <p>Não. O DrawSecurity está sendo pensado como uma solução própria para projetos técnicos e propostas em campo. Dentro do ecossistema Roma Solution, a direção é permitir integração com o RomaSystem para empresas que também quiserem organizar a operação completa.</p>
+          </article>
+          <article class="card">
+            <div class="card-top"><div class="icon">04</div></div>
+            <h3>Como participar da lista de espera?</h3>
+            <p>Preencha o formulário de acesso antecipado. O WhatsApp abrirá com uma mensagem pronta para confirmar seu interesse.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-brand">
+      <span class="footer-logo" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 220 220" fill="none">
+          <path d="M110 20 176 48v52c0 47-26 78-66 100-40-22-66-53-66-100V48l66-28Z" stroke="#B9FFF2" stroke-width="16" stroke-linejoin="round"/>
+          <path d="M52 112c22-28 51-31 87 0 18 16 36 17 57 0" stroke="#FFD84D" stroke-width="15" stroke-linecap="round"/>
+        </svg>
+      </span>
+      <div>
+        <strong>DrawSecurity</strong>
+        <span>Produto da Roma Solution · <span class="android">Em breve para Android</span></span>
+      </div>
+    </div>
+    <nav class="footer-links" aria-label="Links do rodapé">
+      <a href="../">Roma Solution</a>
+      <a href="../romasystem/">RomaSystem</a>
+      <a href="#lista-espera">Lista de espera</a>
+      <a href="mailto:contato@romasolution.com.br">Contato</a>
+    </nav>
+  </footer>
+
+  <a class="sticky-mobile" href="#lista-espera">Quero acesso antecipado</a>
+
+  <script>
+    function submitWaitlist(form) {
+      const data = new FormData(form);
+      const message = encodeURIComponent(
+        `Olá, quero acesso antecipado ao DrawSecurity.\n\n` +
+        `Nome: ${data.get('name') || ''}\n` +
+        `Empresa: ${data.get('company') || ''}\n` +
+        `WhatsApp: ${data.get('whatsapp') || ''}\n` +
+        `Porte da empresa: ${data.get('size') || ''}`
+      );
+      window.location.href = `https://wa.me/5513978099969?text=${message}`;
+      return false;
+    }
+  </script>
+</body>
+</html>

@@ -93,6 +93,7 @@ const Track = {
       mobile_whatsapp: { name:'WhatsApp_Click', category:'Mobile Menu', label:'WhatsApp Mobile' },
       mid_cta_1:       { name:'CTA_Click', category:'Mid CTA 1', label:'Organizar empresa' },
       mid_cta_2:       { name:'CTA_Click', category:'Mid CTA 2', label:'Escalar operação' },
+      company_demo:    { name:'CTA_Click', category:'Company', label:'Agendar demonstração' },
       form_submit:     { name:'Lead_Submit', category:'Form', label:'Lead Form' },
       final_demo:      { name:'CTA_Click', category:'Final CTA', label:'Agendar Demo' },
       final_whatsapp:  { name:'WhatsApp_Click', category:'Final CTA', label:'WhatsApp Final' },
@@ -363,6 +364,7 @@ function initLeadForm() {
         `Olá! Vim pelo site da RomaSolution.\n\n` +
         `👤 Nome: ${name}\n` +
         `🏢 Empresa: ${company}\n` +
+        `📱 WhatsApp: ${phone}\n` +
         `👥 Clientes: ${clients}\n\n` +
         `Gostaria de agendar uma demonstração do ROMASYSTEM.`
       );

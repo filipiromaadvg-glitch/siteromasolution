@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RomaSystem | Sistema de gestão para empresas de segurança</title>
+  <meta name="description" content="Controle CRM, orçamentos, O.S., estoque, frota, cobranças e equipe técnica sem planilhas soltas ou informação perdida.">
+  <meta name="application-name" content="RomaSystem">
+  <meta name="keywords" content="sistema de gestão, empresa de segurança, ordem de serviço, CRM, controle financeiro, portal técnico">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://romasolution.com/romasystem/">
+
+  <meta property="og:title" content="RomaSystem">
+  <meta property="og:description" content="Controle sua empresa de segurança sem depender de planilhas, grupos e cobranças manuais.">
+  <meta property="og:url" content="https://romasolution.com/romasystem/">
+  <meta property="og:site_name" content="Roma Solution">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:image" content="https://romasolution.com/assets/logo-roma-otimizado.png">
+  <meta property="og:type" content="website">
+
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
+
+  <style>
+    :root {
+      --bg:#050712;
+      --panel:#090d1d;
+      --panel-2:#0f1428;
+      --ink:#ffffff;
+      --muted:#cbd5e1;
+      --soft:#94a3b8;
+      --line:rgba(255,255,255,0.10);
+      --line-2:rgba(255,255,255,0.16);
+      --purple:#8e6bff;
+      --purple-2:#a58aff;
+      --purple-3:#c8bbff;
+      --blue:#5f8dff;
+      --radius:14px;
+      --header:76px;
+    }
+
+    * { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body {
+      min-height:100vh;
+      overflow-x:hidden;
+      background:var(--bg);
+      color:var(--ink);
+      font-family:Inter, system-ui, sans-serif;
+      line-height:1.6;
+    }
+    body::before {
+      content:"";
+      position:fixed;
+      inset:0;
+      z-index:-2;
+      background:
+        radial-gradient(circle at 25% 18%, rgba(142,107,255,0.28), transparent 30%),
+        radial-gradient(circle at 82% 12%, rgba(95,141,255,0.20), transparent 26%),
+        linear-gradient(180deg, rgba(5,7,18,0.70) 0%, #050712 100%);
+    }
+    body::after {
+      content:"";
+      position:fixed;
+      top:1rem;
+      right:-9rem;
+      z-index:-1;
+      width:38rem;
+      height:38rem;
+      background:url("/assets/logo-roma-otimizado.png") center / contain no-repeat;
+      opacity:0.10;
+      pointer-events:none;
+    }
+    a { color:inherit; text-decoration:none; }
+    .container { width:min(1280px, calc(100% - 32px)); margin:0 auto; }
+
+    .hero {
+      min-height:92vh;
+      padding:1.25rem 0 4rem;
+      display:flex;
+      flex-direction:column;
+    }
+    .site-header {
+      height:var(--header);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1rem;
+    }
+    .brand {
+      display:flex;
+      align-items:center;
+      gap:0.75rem;
+      font-size:1.08rem;
+      font-weight:900;
+      letter-spacing:0;
+    }
+    .brand img {
+      width:48px;
+      height:48px;
+      border-radius:12px;
+      object-fit:contain;
+    }
+    .nav {
+      display:flex;
+      align-items:center;
+      gap:1rem;
+      color:var(--muted);
+      font-size:0.92rem;
+      font-weight:700;
+    }
+    .nav a {
+      padding:0.62rem 0.2rem;
+    }
+    .nav a:hover { color:#fff; }
+    .header-actions { display:flex; gap:0.7rem; align-items:center; }
+
+    .btn {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:0.55rem;
+      min-height:44px;
+      border-radius:12px;
+      padding:0.78rem 1.1rem;
+      border:1px solid transparent;
+      font-size:0.9rem;
+      font-weight:900;
+      transition:transform .18s ease, border-color .18s ease, background .18s ease;
+    }
+    .btn:hover { transform:translateY(-2px); }
+    .btn-white {
+      background:#fff;
+      color:#11152a;
+      box-shadow:0 18px 40px rgba(255,255,255,0.16);
+    }
+    .btn-white:hover { background:#f4f1ff; }
+    .btn-ghost {
+      color:#fff;
+      border-color:var(--line-2);
+      background:rgba(255,255,255,0.08);
+      backdrop-filter:blur(12px);
+    }
+    .btn-ghost:hover { border-color:rgba(255,255,255,0.28); background:rgba(255,255,255,0.12); }
+
+    .hero-grid {
+      flex:1;
+      display:grid;
+      grid-template-columns:1fr 0.78fr;
+      gap:3rem;
+      align-items:center;
+      padding:3rem 0 1rem;
+    }
+    .counter-pill {
+      display:inline-flex;
+      align-items:center;
+      gap:0.8rem;
+      border:1px solid rgba(255,255,255,0.14);
+      background:rgba(255,255,255,0.08);
+      border-radius:999px;
+      padding:0.52rem 0.75rem;
+      box-shadow:0 16px 40px rgba(0,0,0,0.22);
+      backdrop-filter:blur(12px);
+      margin-bottom:1rem;
+    }
+    .counter-pill strong {
+      display:grid;
+      place-items:center;
+      min-width:2.1rem;
+      height:2rem;
+      border-radius:999px;
+      background:#fff;
+      color:#11152a;
+      font-weight:900;
+      font-variant-numeric:tabular-nums;
+    }
+    .counter-pill span {
+      color:#d9d1ff;
+      font-size:0.75rem;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:0.16em;
+    }
+    .eyebrow {
+      display:inline-flex;
+      align-items:center;
+      gap:0.48rem;
+      color:#cfc4ff;
+      border:1px solid rgba(255,255,255,0.14);
+      background:rgba(255,255,255,0.08);
+      border-radius:999px;
+      padding:0.43rem 0.75rem;
+      font-size:0.72rem;
+      font-weight:900;
+      letter-spacing:0.16em;
+      text-transform:uppercase;
+      margin-bottom:1.25rem;
+    }
+    h1 {
+      max-width:820px;
+      font-size:clamp(2.75rem, 6vw, 4.35rem);
+      line-height:1.06;
+      letter-spacing:-0.02em;
+      font-weight:900;
+    }
+    .hero-copy {
+      max-width:720px;
+      margin-top:1.45rem;
+      color:#d1d5db;
+      font-size:1.1rem;
+      line-height:1.8;
+    }
+    .hero-actions {
+      display:flex;
+      flex-wrap:wrap;
+      gap:0.8rem;
+      margin-top:2rem;
+    }
+
+    .dashboard {
+      position:relative;
+      min-height:34rem;
+      border:1px solid rgba(255,255,255,0.12);
+      border-radius:2rem;
+      background:linear-gradient(180deg, rgba(13,17,34,0.92), rgba(7,10,22,0.98));
+      padding:1.25rem;
+      box-shadow:0 34px 90px rgba(0,0,0,0.45);
+    }
+    .dashboard-head {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1rem;
+      padding-bottom:1rem;
+      border-bottom:1px solid rgba(255,255,255,0.10);
+    }
+    .dashboard-head p {
+      color:#64748b;
+      font-size:0.72rem;
+      font-weight:800;
+      letter-spacing:0.18em;
+      text-transform:uppercase;
+    }
+    .dashboard-head h2 {
+      margin-top:0.1rem;
+      font-size:1.55rem;
+      font-weight:900;
+    }
+    .lock {
+      width:38px;
+      height:38px;
+      border-radius:12px;
+      display:grid;
+      place-items:center;
+      color:var(--purple-2);
+      background:rgba(142,107,255,0.12);
+      border:1px solid rgba(142,107,255,0.2);
+    }
+    .stat-grid {
+      margin-top:1.25rem;
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:0.8rem;
+    }
+    .stat {
+      border:1px solid rgba(255,255,255,0.10);
+      background:rgba(255,255,255,0.04);
+      border-radius:1rem;
+      padding:1rem;
+    }
+    .stat strong {
+      display:block;
+      font-size:1.9rem;
+      line-height:1;
+      font-weight:900;
+    }
+    .stat span {
+      display:block;
+      margin-top:0.45rem;
+      color:#94a3b8;
+      font-size:0.88rem;
+    }
+    .alert-card {
+      margin-top:1.25rem;
+      border:1px solid rgba(142,107,255,0.24);
+      background:rgba(142,107,255,0.10);
+      border-radius:1rem;
+      padding:1.1rem;
+    }
+    .alert-card h3 {
+      display:flex;
+      align-items:center;
+      gap:0.55rem;
+      font-size:1rem;
+      font-weight:900;
+    }
+    .alert-list {
+      display:grid;
+      gap:0.7rem;
+      margin-top:1rem;
+    }
+    .alert-list div {
+      display:flex;
+      justify-content:space-between;
+      gap:1rem;
+      border-radius:0.75rem;
+      padding:0.62rem 0.75rem;
+      background:rgba(0,0,0,0.18);
+      color:#e5e7eb;
+      font-size:0.9rem;
+    }
+    .alert-list b { color:var(--purple-3); }
+    .module-grid {
+      margin-top:1.25rem;
+      display:grid;
+      grid-template-columns:repeat(4, minmax(0, 1fr));
+      gap:0.5rem;
+    }
+    .module {
+      min-height:78px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:0.35rem;
+      text-align:center;
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:0.75rem;
+      background:rgba(255,255,255,0.03);
+      color:#cbd5e1;
+      font-size:0.68rem;
+      font-weight:800;
+      line-height:1.15;
+    }
+    .module::before {
+      content:attr(data-icon);
+      display:grid;
+      place-items:center;
+      width:24px;
+      height:24px;
+      border-radius:8px;
+      background:rgba(142,107,255,0.14);
+      color:var(--purple-3);
+      font-size:0.72rem;
+      font-weight:900;
+    }
+
+    section {
+      padding:4.5rem 0;
+    }
+    .proof-band {
+      border-block:1px solid rgba(255,255,255,0.08);
+      background:rgba(255,255,255,0.03);
+    }
+    .proof-grid {
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0, 1fr));
+      gap:1rem;
+    }
+    .proof {
+      border:1px solid rgba(255,255,255,0.10);
+      background:var(--panel);
+      border-radius:1rem;
+      padding:1.25rem;
+    }
+    .proof strong {
+      display:block;
+      color:var(--purple-3);
+      font-size:1.45rem;
+      line-height:1.1;
+      font-weight:900;
+    }
+    .proof span {
+      display:block;
+      margin-top:0.55rem;
+      color:#94a3b8;
+      font-size:0.92rem;
+      line-height:1.55;
+    }
+
+    .section-head {
+      max-width:820px;
+      margin-bottom:2rem;
+    }
+    .section-kicker {
+      color:var(--purple-2);
+      font-size:0.82rem;
+      font-weight:900;
+      letter-spacing:0.18em;
+      text-transform:uppercase;
+    }
+    h2 {
+      margin-top:0.75rem;
+      font-size:clamp(2rem, 4vw, 3rem);
+      line-height:1.08;
+      letter-spacing:-0.02em;
+      font-weight:900;
+    }
+    .benefit-grid {
+      display:grid;
+      grid-template-columns:repeat(4, minmax(0, 1fr));
+      gap:1rem;
+    }
+    .benefit {
+      border:1px solid rgba(255,255,255,0.10);
+      border-radius:1rem;
+      background:linear-gradient(180deg, rgba(15,20,40,0.88), rgba(8,11,24,0.96));
+      padding:1.35rem;
+    }
+    .benefit-icon {
+      width:34px;
+      height:34px;
+      display:grid;
+      place-items:center;
+      border-radius:10px;
+      background:rgba(142,107,255,0.13);
+      color:var(--purple-2);
+      font-size:0.8rem;
+      font-weight:900;
+    }
+    .benefit h3 {
+      margin-top:1rem;
+      font-size:1.08rem;
+      font-weight:900;
+    }
+    .benefit p {
+      margin-top:0.65rem;
+      color:#94a3b8;
+      font-size:0.9rem;
+      line-height:1.7;
+    }
+
+    .implant-card {
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:1.5rem;
+      align-items:center;
+      border:1px solid rgba(255,255,255,0.10);
+      border-radius:2rem;
+      background:linear-gradient(135deg, rgba(142,107,255,0.20), rgba(95,141,255,0.10) 44%, rgba(8,11,24,0.96));
+      padding:2rem;
+    }
+    .implant-card p {
+      max-width:760px;
+      margin-top:0.85rem;
+      color:#d1d5db;
+    }
+    .implant-actions {
+      display:flex;
+      flex-direction:column;
+      gap:0.8rem;
+      min-width:220px;
+    }
+
+    .site-footer {
+      border-top:1px solid rgba(255,255,255,0.08);
+      padding:2rem 0;
+      color:#94a3b8;
+    }
+    .footer-inner {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:2rem;
+      flex-wrap:wrap;
+    }
+    .footer-links {
+      display:flex;
+      gap:1rem;
+      flex-wrap:wrap;
+      font-size:0.9rem;
+      font-weight:700;
+    }
+    .footer-links a:hover { color:#fff; }
+
+    @media (max-width:1080px) {
+      .hero-grid { grid-template-columns:1fr; }
+      .dashboard { max-width:720px; }
+      .benefit-grid { grid-template-columns:repeat(2, minmax(0, 1fr)); }
+      .implant-card { grid-template-columns:1fr; }
+      .implant-actions { flex-direction:row; flex-wrap:wrap; }
+    }
+    @media (max-width:760px) {
+      .nav { display:none; }
+      .hero { padding-top:0.5rem; }
+      .header-actions .btn-ghost { display:none; }
+      h1 { font-size:2.65rem; }
+      .hero-actions, .implant-actions { flex-direction:column; }
+      .hero-actions .btn, .implant-actions .btn { width:100%; }
+      .proof-grid, .benefit-grid { grid-template-columns:1fr; }
+      .module-grid { grid-template-columns:repeat(2, minmax(0, 1fr)); }
+      .dashboard { min-height:0; border-radius:1.25rem; padding:1rem; }
+      body::after { width:28rem; height:28rem; right:-12rem; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <div class="container">
+        <header class="site-header">
+          <a class="brand" href="/">
+            <img src="/assets/logo-roma-otimizado.png" alt="RomaSystem">
+            <span>RomaSystem</span>
+          </a>
+          <nav class="nav" aria-label="Navegação principal">
+            <a href="/">Roma Solution</a>
+            <a href="#beneficios">Benefícios</a>
+            <a href="#implantacao">Implantação</a>
+            <a href="/drawsecurity/">DrawSecurity</a>
+          </nav>
+          <div class="header-actions">
+            <a class="btn btn-ghost" href="https://app.romasolution.com" target="_blank" rel="noopener">Entrar</a>
+            <a class="btn btn-white" href="https://wa.me/5513978099969?text=Ol%C3%A1!%20Quero%20agendar%20uma%20demonstra%C3%A7%C3%A3o%20do%20RomaSystem%20para%20minha%20empresa%20de%20seguran%C3%A7a." target="_blank" rel="noopener">Agendar demo</a>
+          </div>
+        </header>
+
+        <div class="hero-grid">
+          <div>
+            <div class="counter-pill">
+              <strong>0</strong>
+              <span>Nossos clientes hoje</span>
+            </div>
+            <div class="eyebrow">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M20 7 9 18l-5-5"></path><path d="M12 3 4 7v5c0 5 3.4 8 8 9 4.6-1 8-4 8-9V7l-8-4Z"></path></svg>
+              Gestão para operação de segurança
+            </div>
+            <h1>Controle sua empresa de segurança sem depender de planilhas, grupos e cobranças manuais.</h1>
+            <p class="hero-copy">CRM, orçamentos, O.S., estoque, frota, cobranças e equipe técnica em um só lugar, sem planilhas soltas, sem informação perdida e sem depender de controle manual.</p>
+            <div class="hero-actions">
+              <a class="btn btn-white" href="https://wa.me/5513978099969?text=Ol%C3%A1!%20Quero%20agendar%20uma%20demonstra%C3%A7%C3%A3o%20do%20RomaSystem%20para%20minha%20empresa%20de%20seguran%C3%A7a." target="_blank" rel="noopener">Agendar demonstração</a>
+              <a class="btn btn-ghost" href="https://wa.me/5513978099969?text=Ol%C3%A1!%20Quero%20falar%20sobre%20o%20RomaSystem%20para%20minha%20empresa%20de%20seguran%C3%A7a." target="_blank" rel="noopener">Falar no WhatsApp</a>
+              <a class="btn btn-ghost" href="https://wa.me/5513978099969?text=Ol%C3%A1!%20Quero%20implantar%20o%20RomaSystem%20na%20minha%20empresa%20de%20seguran%C3%A7a." target="_blank" rel="noopener">Quero implantar</a>
+            </div>
+          </div>
+
+          <aside class="dashboard" aria-label="Prévia do painel operacional RomaSystem">
+            <div class="dashboard-head">
+              <div>
+                <p>Painel operacional</p>
+                <h2>Sua empresa</h2>
+              </div>
+              <div class="lock" aria-hidden="true">
+                <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="10" width="18" height="11" rx="2"></rect><path d="M7 10V7a5 5 0 0 1 10 0v3"></path><circle cx="12" cy="16" r="1"></circle></svg>
+              </div>
+            </div>
+
+            <div class="stat-grid">
+              <div class="stat"><strong>3.478</strong><span>clientes</span></div>
+              <div class="stat"><strong>2.876</strong><span>orçamentos</span></div>
+              <div class="stat"><strong>39</strong><span>O.S. abertas</span></div>
+              <div class="stat"><strong>2</strong><span>contratos pendentes</span></div>
+            </div>
+
+            <div class="alert-card">
+              <h3>
+                <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M3 3v18h18"></path><path d="m19 9-5 5-4-4-3 3"></path></svg>
+                Alertas antes do prejuízo
+              </h3>
+              <div class="alert-list">
+                <div><span>Clientes em risco</span><b>priorizar</b></div>
+                <div><span>O.S. sem fechamento</span><b>priorizar</b></div>
+                <div><span>Cobranças pendentes</span><b>priorizar</b></div>
+              </div>
+            </div>
+
+            <div class="module-grid">
+              <div class="module" data-icon="CRM">CRM comercial</div>
+              <div class="module" data-icon="OC">Orçamentos e contratos</div>
+              <div class="module" data-icon="AG">Agenda e instalações</div>
+              <div class="module" data-icon="PT">Portal técnico</div>
+              <div class="module" data-icon="ES">Estoque e kits</div>
+              <div class="module" data-icon="FR">Frota e revisões</div>
+              <div class="module" data-icon="FI">Financeiro</div>
+              <div class="module" data-icon="GD">Gerência e diretoria</div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="proof-band">
+      <div class="container proof-grid">
+        <div class="proof"><strong>CRM + O.S.</strong><span>Cliente, orçamento, contrato e atendimento no mesmo fluxo.</span></div>
+        <div class="proof"><strong>Campo no trilho</strong><span>Técnico, fotos, viatura e execução acompanhados pela gestão.</span></div>
+        <div class="proof"><strong>Dono com visão</strong><span>Financeiro, pendências e alertas críticos sem controle manual.</span></div>
+      </div>
+    </section>
+
+    <section id="beneficios">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-kicker">Benefícios</p>
+          <h2>Pare de perder dinheiro por falta de controle na operação.</h2>
+        </div>
+
+        <div class="benefit-grid">
+          <article class="benefit">
+            <div class="benefit-icon">OP</div>
+            <h3>Controle sua operação</h3>
+            <p>De cliente novo à ordem de serviço finalizada: tudo conectado, rastreável e organizado.</p>
+          </article>
+          <article class="benefit">
+            <div class="benefit-icon">RT</div>
+            <h3>Reduza perda de clientes</h3>
+            <p>Cancelamentos, contratos pendentes e falhas de atendimento viram alertas antes de virar prejuízo.</p>
+          </article>
+          <article class="benefit">
+            <div class="benefit-icon">TC</div>
+            <h3>Acompanhe técnicos</h3>
+            <p>Veja instalações, fotos, execuções, viaturas e rotina de campo sem depender de ligação ou grupo.</p>
+          </article>
+          <article class="benefit">
+            <div class="benefit-icon">FN</div>
+            <h3>Centralize financeiro</h3>
+            <p>Recebimentos, parcelas, cobranças, inadimplência e visão da diretoria no mesmo painel.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="implantacao">
+      <div class="container">
+        <div class="implant-card">
+          <div>
+            <p class="section-kicker">Implantação guiada</p>
+            <h2>Veja o RomaSystem com a sua operação em mente.</h2>
+            <p>Agende uma demonstração para enxergar onde sua empresa perde tempo, dinheiro e cliente, e como colocar comercial, campo e financeiro no mesmo fluxo.</p>
+          </div>
+          <div class="implant-actions">
+            <a class="btn btn-white" href="https://wa.me/5513978099969?text=Ol%C3%A1!%20Quero%20falar%20sobre%20o%20RomaSystem%20para%20minha%20empresa%20de%20seguran%C3%A7a." target="_blank" rel="noopener">Falar no WhatsApp</a>
+            <a class="btn btn-ghost" href="https://wa.me/5513978099969?text=Ol%C3%A1!%20Quero%20agendar%20uma%20demonstra%C3%A7%C3%A3o%20do%20RomaSystem%20para%20minha%20empresa%20de%20seguran%C3%A7a." target="_blank" rel="noopener">Agendar demonstração</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a class="brand" href="/">
+        <img src="/assets/logo-roma-otimizado.png" alt="RomaSystem">
+        <span>RomaSystem</span>
+      </a>
+      <nav class="footer-links" aria-label="Links do rodapé">
+        <a href="/">Roma Solution</a>
+        <a href="/drawsecurity/">DrawSecurity</a>
+        <a href="https://app.romasolution.com" target="_blank" rel="noopener">Entrar no sistema</a>
+        <a href="mailto:contato@romasolution.com.br">contato@romasolution.com.br</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>
