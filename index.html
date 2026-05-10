@@ -130,6 +130,7 @@
     .nav-links a:hover { color:var(--text); }
     .header-actions { display:flex; align-items:center; gap:0.75rem; }
     .menu-button { display:none; }
+    .mobile-menu { display:none; }
 
     .btn {
       display:inline-flex;
@@ -242,6 +243,30 @@
       font-size:0.92rem;
     }
 
+    .audience-strip {
+      display:grid;
+      grid-template-columns:0.8fr 1.2fr;
+      gap:2rem;
+      align-items:start;
+      margin-top:3rem;
+      padding:1.2rem;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:rgba(255,255,255,0.035);
+    }
+    .audience-strip h3 { font-size:1.55rem; margin-bottom:0.4rem; }
+    .audience-strip p { color:var(--muted); }
+    .audience-tags { display:flex; flex-wrap:wrap; gap:0.65rem; }
+    .audience-tags span {
+      padding:0.72rem 0.85rem;
+      border:1px solid rgba(59,130,246,0.18);
+      border-radius:var(--radius);
+      background:rgba(59,130,246,0.07);
+      color:#dbeafe;
+      font-weight:800;
+      font-size:0.88rem;
+    }
+
     .solutions-grid { display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:1.1rem; margin-top:2rem; }
     .solution-card {
       display:flex;
@@ -313,13 +338,60 @@
       background:rgba(17,23,42,0.84);
       padding:1.35rem;
     }
-    .authority-card img {
-      width:100%;
-      max-height:320px;
-      object-fit:cover;
-      border-radius:var(--radius);
+    .software-board {
+      min-height:320px;
+      display:grid;
+      grid-template-rows:auto 1fr auto;
+      gap:1rem;
       border:1px solid rgba(255,255,255,0.1);
-      opacity:0.9;
+      border-radius:var(--radius);
+      padding:1rem;
+      background:
+        radial-gradient(circle at 80% 12%, rgba(34,211,238,0.16), transparent 34%),
+        linear-gradient(180deg, rgba(6,12,27,0.96), rgba(10,16,32,0.92));
+      overflow:hidden;
+    }
+    .board-header { display:flex; justify-content:space-between; align-items:center; color:#cbd5e1; font-size:0.82rem; font-weight:800; }
+    .board-status { color:#86efac; }
+    .board-grid {
+      display:grid;
+      grid-template-columns:1.05fr 0.95fr;
+      gap:0.8rem;
+    }
+    .dashboard-card, .monitor-card {
+      border:1px solid rgba(255,255,255,0.1);
+      border-radius:var(--radius);
+      background:rgba(255,255,255,0.045);
+      padding:0.9rem;
+    }
+    .dashboard-card strong, .monitor-card strong { display:block; margin-bottom:0.8rem; }
+    .metric-row { display:grid; grid-template-columns:repeat(3, 1fr); gap:0.55rem; }
+    .metric {
+      padding:0.7rem;
+      border-radius:6px;
+      background:rgba(59,130,246,0.12);
+      color:#dbeafe;
+      font-weight:900;
+      font-size:0.9rem;
+    }
+    .metric small { display:block; margin-top:0.18rem; color:#9ca3af; font-size:0.68rem; font-weight:700; }
+    .monitor-lines { display:grid; gap:0.55rem; }
+    .monitor-lines span { height:10px; border-radius:999px; background:rgba(255,255,255,0.16); }
+    .monitor-lines span:nth-child(1) { width:88%; background:#60a5fa; }
+    .monitor-lines span:nth-child(2) { width:62%; background:#22d3ee; }
+    .monitor-lines span:nth-child(3) { width:76%; background:#22c55e; }
+    .board-flow { display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:0.55rem; }
+    .board-flow span {
+      min-height:44px;
+      display:grid;
+      place-items:center;
+      text-align:center;
+      border:1px solid rgba(255,255,255,0.1);
+      border-radius:6px;
+      background:rgba(34,197,94,0.08);
+      color:#d9f7ff;
+      font-size:0.75rem;
+      font-weight:850;
     }
     .proof-points { display:grid; gap:0.8rem; margin-top:1rem; }
     .proof-points div { padding:0.9rem 1rem; border-left:2px solid var(--cyan); background:rgba(34,211,238,0.07); color:#d9f7ff; }
@@ -335,8 +407,17 @@
     .final-actions { display:flex; justify-content:center; flex-wrap:wrap; gap:0.85rem; }
 
     .site-footer { padding:3rem 0; color:var(--muted); }
-    .footer-grid { display:flex; justify-content:space-between; gap:2rem; border-top:1px solid var(--line); padding-top:2rem; }
-    .footer-links { display:flex; flex-wrap:wrap; gap:1rem; }
+    .footer-grid {
+      display:grid;
+      grid-template-columns:1.2fr repeat(3, minmax(140px, 0.35fr));
+      gap:2rem;
+      border-top:1px solid var(--line);
+      padding-top:2rem;
+    }
+    .footer-column { display:grid; align-content:start; gap:0.55rem; }
+    .footer-column strong { color:#fff; font-family:Outfit, sans-serif; font-size:1rem; }
+    .footer-column p { max-width:360px; }
+    .footer-links { display:grid; gap:0.55rem; }
     .footer-links a:hover { color:#fff; }
 
     @media (max-width:980px) {
@@ -368,10 +449,11 @@
       .mobile-menu.open { display:flex; }
       .mobile-menu a { padding:0.9rem; border-radius:var(--radius); color:var(--muted); }
       .mobile-menu a:hover { background:rgba(255,255,255,0.06); color:#fff; }
-      .hero-grid, .problem-grid, .authority { grid-template-columns:1fr; }
+      .hero-grid, .problem-grid, .authority, .audience-strip { grid-template-columns:1fr; }
       h1 { max-width:12ch; }
       .trust-row, .solutions-grid { grid-template-columns:1fr; }
       .flow { grid-template-columns:repeat(2, minmax(0,1fr)); }
+      .footer-grid { grid-template-columns:1fr 1fr; }
     }
 
     @media (max-width:560px) {
@@ -380,7 +462,8 @@
       h1 { font-size:2.55rem; }
       .hero-actions .btn, .final-actions .btn { width:100%; }
       .pain-list, .flow { grid-template-columns:1fr; }
-      .footer-grid { flex-direction:column; }
+      .board-grid, .board-flow { grid-template-columns:1fr; }
+      .footer-grid { grid-template-columns:1fr; }
     }
   </style>
 </head>
@@ -420,8 +503,8 @@
           <h1>Tecnologia feita para empresas de segurança crescerem com <span class="gradient-text">controle.</span></h1>
           <p class="hero-sub">A Roma Solution desenvolve sistemas para empresas de segurança controlarem clientes, projetos, orçamentos, ordens de serviço, equipe, financeiro e operação com ferramentas criadas por quem vive o setor na prática.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="/romasystem/">Conhecer RomaSystem</a>
-            <a class="btn btn-green" href="/drawsecurity/">Conhecer DrawSecurity</a>
+            <a class="btn btn-primary" href="#solucoes">Conhecer soluções</a>
+            <a class="btn btn-secondary" href="https://wa.me/5513978099969?text=Olá%2C%20quero%20agendar%20uma%20demonstração%20da%20Roma%20Solution." target="_blank" rel="noopener">Agendar demonstração</a>
           </div>
           <div class="trust-row">
             <div>Da primeira visita técnica ao financeiro</div>
@@ -479,19 +562,34 @@
           <div>Equipe sem informação em tempo real</div>
           <div>Cliente sem acompanhamento pós-venda</div>
         </div>
+        <div class="audience-strip">
+          <div>
+            <h3>Feito para empresas de segurança eletrônica que querem sair do improviso.</h3>
+            <p>Da empresa pequena em crescimento à operação com equipe técnica, a Roma Solution organiza vendas, campo e gestão em um ecossistema mais previsível.</p>
+          </div>
+          <div class="audience-tags" aria-label="Públicos atendidos">
+            <span>Empresas de monitoramento</span>
+            <span>Empresas de CFTV</span>
+            <span>Integradores</span>
+            <span>Instaladores</span>
+            <span>Equipes técnicas</span>
+            <span>Gestores que usam planilhas e WhatsApp</span>
+          </div>
+        </div>
       </div>
     </section>
 
     <section id="solucoes">
       <div class="container">
         <div class="section-kicker">NOSSAS SOLUÇÕES</div>
-        <h2 class="section-title">RomaSystem e DrawSecurity atacam momentos diferentes da mesma operação.</h2>
-        <p class="section-sub">Um controla a empresa inteira. O outro acelera projeto, venda e vistoria em campo. Separados, são produtos fortes. Conectados, formam uma vantagem operacional difícil de copiar.</p>
+        <h2 class="section-title">Produtos para gestão, campo e venda técnica.</h2>
+        <p class="section-sub">RomaSystem organiza a empresa inteira. DrawSecurity acelera projeto, vistoria e proposta em campo. Separados, são produtos fortes. Dentro do ecossistema Roma Solution, criam uma operação mais inteligente.</p>
 
         <div class="solutions-grid">
           <article class="solution-card">
             <h3>RomaSystem</h3>
-            <p>O sistema completo para empresas de segurança eletrônica controlarem clientes, orçamentos, OS, estoque, financeiro, equipe, frota e operação em um único lugar.</p>
+            <p>Gestão completa para empresas de segurança eletrônica.</p>
+            <p>Controle clientes, orçamentos, ordens de serviço, agenda, estoque, financeiro, equipe, frota, contratos e dashboards em uma única plataforma.</p>
             <div class="feature-tags">
               <span>CRM</span><span>Orçamentos</span><span>OS</span><span>Agenda</span><span>Estoque</span><span>Financeiro</span><span>Contratos</span><span>Dashboards</span>
             </div>
@@ -503,7 +601,8 @@
 
           <article class="solution-card">
             <h3>DrawSecurity</h3>
-            <p>O aplicativo para criar projetos técnicos de segurança eletrônica com planta, pontos, orçamento, memorial e visualização 3D direto do celular.</p>
+            <p>Projetos técnicos, planta, IA, orçamento e 3D pelo celular.</p>
+            <p>Transforme a vistoria técnica em proposta visual, memorial técnico e orçamento profissional direto no campo.</p>
             <div class="feature-tags">
               <span>Planta</span><span>CFTV</span><span>Alarmes</span><span>IA</span><span>PDF</span><span>3D</span><span>Biblioteca</span><span>Mobile</span>
             </div>
@@ -549,7 +648,32 @@
           </div>
         </div>
         <div class="authority-card">
-          <img src="/assets/viatura.webp" alt="Viatura representando operação real de segurança eletrônica">
+          <div class="software-board" aria-label="Painel visual de operação Roma Solution">
+            <div class="board-header">
+              <strong>Operação em tempo real</strong>
+              <span class="board-status">Online</span>
+            </div>
+            <div class="board-grid">
+              <div class="dashboard-card">
+                <strong>Dashboard</strong>
+                <div class="metric-row">
+                  <div class="metric">342<small>clientes</small></div>
+                  <div class="metric">28<small>OS abertas</small></div>
+                  <div class="metric">89%<small>cobrança</small></div>
+                </div>
+              </div>
+              <div class="monitor-card">
+                <strong>Fluxo técnico</strong>
+                <div class="monitor-lines"><span></span><span></span><span></span></div>
+              </div>
+            </div>
+            <div class="board-flow">
+              <span>Cliente</span>
+              <span>Projeto</span>
+              <span>Instalação</span>
+              <span>Financeiro</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -568,16 +692,32 @@
 
   <footer class="site-footer">
     <div class="container footer-grid">
-      <div>
+      <div class="footer-column">
         <div class="logo">ROMA<span>SOLUTION</span></div>
-        <p>Roma Solution é a empresa. RomaSystem é o sistema de gestão. DrawSecurity é o app de projeto técnico.</p>
+        <p>Tecnologia para empresas de segurança eletrônica venderem mais, errarem menos e operarem com controle.</p>
       </div>
-      <nav class="footer-links" aria-label="Links do rodapé">
-        <a href="/romasystem/">RomaSystem</a>
-        <a href="/drawsecurity/">DrawSecurity</a>
-        <a href="https://app.romasolution.com" target="_blank" rel="noopener">Entrar</a>
-        <a href="mailto:contato@romasolution.com.br">contato@romasolution.com.br</a>
-      </nav>
+      <div class="footer-column">
+        <strong>Produtos</strong>
+        <nav class="footer-links" aria-label="Produtos">
+          <a href="/romasystem/">RomaSystem</a>
+          <a href="/drawsecurity/">DrawSecurity</a>
+        </nav>
+      </div>
+      <div class="footer-column">
+        <strong>Empresa</strong>
+        <nav class="footer-links" aria-label="Empresa">
+          <a href="#empresa">Sobre</a>
+          <a href="mailto:contato@romasolution.com.br">Contato</a>
+          <a href="https://app.romasolution.com" target="_blank" rel="noopener">Entrar</a>
+        </nav>
+      </div>
+      <div class="footer-column">
+        <strong>CTA</strong>
+        <nav class="footer-links" aria-label="Chamada para ação">
+          <a href="https://wa.me/5513978099969?text=Olá%2C%20quero%20agendar%20uma%20demonstração%20da%20Roma%20Solution." target="_blank" rel="noopener">Agendar demonstração</a>
+          <a href="https://wa.me/5513978099969?text=Olá%2C%20quero%20falar%20com%20a%20Roma%20Solution." target="_blank" rel="noopener">WhatsApp</a>
+        </nav>
+      </div>
     </div>
   </footer>
 
