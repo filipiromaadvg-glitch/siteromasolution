@@ -284,25 +284,24 @@
     .feature-tags span { padding:0.35rem 0.55rem; border:1px solid rgba(255,255,255,0.12); border-radius:999px; color:#cbd5e1; font-size:0.78rem; font-weight:700; }
     .solution-visual {
       margin:auto 0 1.2rem;
-      min-height:132px;
+      min-height:190px;
       border:1px solid rgba(255,255,255,0.09);
       border-radius:var(--radius);
       background:
         linear-gradient(135deg, rgba(59,130,246,0.16), rgba(34,211,238,0.08)),
         rgba(255,255,255,0.035);
-      padding:1rem;
+      overflow:hidden;
     }
-    .draw-visual { background:linear-gradient(135deg, rgba(34,197,94,0.14), rgba(249,115,22,0.1)), rgba(255,255,255,0.035); }
-    .mini-bars { display:grid; gap:0.55rem; }
-    .mini-bars i { display:block; height:12px; border-radius:999px; background:rgba(255,255,255,0.16); }
-    .mini-bars i:nth-child(1) { width:82%; background:#60a5fa; }
-    .mini-bars i:nth-child(2) { width:62%; background:#22d3ee; }
-    .mini-bars i:nth-child(3) { width:74%; background:#22c55e; }
-    .plan-preview { position:relative; height:112px; border:1px solid rgba(255,255,255,0.18); border-radius:6px; background:repeating-linear-gradient(90deg, rgba(255,255,255,0.07) 0 1px, transparent 1px 22px), repeating-linear-gradient(0deg, rgba(255,255,255,0.07) 0 1px, transparent 1px 22px); }
-    .plan-preview span { position:absolute; width:16px; height:16px; border-radius:50%; background:#22c55e; box-shadow:0 0 0 6px rgba(34,197,94,0.16); }
-    .plan-preview span:nth-child(1) { left:20%; top:24%; }
-    .plan-preview span:nth-child(2) { right:22%; top:28%; }
-    .plan-preview span:nth-child(3) { left:45%; bottom:20%; background:#f97316; box-shadow:0 0 0 6px rgba(249,115,22,0.16); }
+    .solution-visual img {
+      width:100%;
+      height:100%;
+      min-height:190px;
+      object-fit:cover;
+      object-position:center;
+      opacity:0.96;
+      transition:transform .28s ease, opacity .28s ease;
+    }
+    .solution-card:hover .solution-visual img { transform:scale(1.035); opacity:1; }
 
     .flow {
       display:grid;
@@ -461,6 +460,7 @@
       .hero { padding-top:calc(var(--header) + 2.5rem); }
       h1 { font-size:2.55rem; }
       .hero-actions .btn, .final-actions .btn { width:100%; }
+      .solution-visual, .solution-visual img { min-height:150px; }
       .pain-list, .flow { grid-template-columns:1fr; }
       .board-grid, .board-flow { grid-template-columns:1fr; }
       .footer-grid { grid-template-columns:1fr; }
@@ -594,7 +594,7 @@
               <span>CRM</span><span>Orçamentos</span><span>OS</span><span>Agenda</span><span>Estoque</span><span>Financeiro</span><span>Contratos</span><span>Dashboards</span>
             </div>
             <div class="solution-visual">
-              <div class="mini-bars"><i></i><i></i><i></i></div>
+              <img src="/assets/romasystem-operacao.png" alt="Painel visual do RomaSystem com módulos, fluxo operacional e indicadores de gestão">
             </div>
             <a class="btn btn-primary" href="/romasystem/">Ver RomaSystem</a>
           </article>
@@ -607,7 +607,7 @@
               <span>Planta</span><span>CFTV</span><span>Alarmes</span><span>IA</span><span>PDF</span><span>3D</span><span>Biblioteca</span><span>Mobile</span>
             </div>
             <div class="solution-visual draw-visual">
-              <div class="plan-preview"><span></span><span></span><span></span></div>
+              <img src="/assets/drawsecurity-projeto.png" alt="Arte do DrawSecurity com planta técnica, câmeras, app mobile, IA e visualização 3D">
             </div>
             <a class="btn btn-green" href="/drawsecurity/">Ver DrawSecurity</a>
           </article>
