@@ -13,14 +13,14 @@
   <meta property="og:url" content="https://romasolution.com/">
   <meta property="og:title" content="Roma Solution — Sistemas sob medida para empresas">
   <meta property="og:description" content="Transformamos processos manuais em plataformas próprias de gestão, automação e controle.">
-  <meta property="og:image" content="https://romasolution.com/assets/romasystem-operacao.png">
+  <meta property="og:image" content="https://romasolution.com/assets/roma-os-hero.png">
   <meta property="og:locale" content="pt_BR">
   <meta property="og:site_name" content="Roma Solution">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Roma Solution — Sistemas sob medida para empresas">
   <meta name="twitter:description" content="A Roma Solution não vende software pronto. Ela cria o sistema que a empresa deveria ter.">
-  <meta name="twitter:image" content="https://romasolution.com/assets/romasystem-operacao.png">
+  <meta name="twitter:image" content="https://romasolution.com/assets/roma-os-hero.png">
 
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -178,8 +178,8 @@
       letter-spacing:-.04em;
     }
     h1 {
-      max-width:920px;
-      font-size:clamp(3rem, 6.8vw, 6.7rem);
+      max-width:840px;
+      font-size:clamp(3rem, 4.7vw, 5rem);
       margin-bottom:22px;
     }
     .hero-title .word {
@@ -246,8 +246,8 @@
     .hero-grid {
       position:relative;
       display:grid;
-      grid-template-columns:minmax(0, .9fr) minmax(420px, 1.1fr);
-      gap:42px;
+      grid-template-columns:minmax(0, 1fr) minmax(520px, 1fr);
+      gap:26px;
       align-items:center;
     }
     .eyebrow {
@@ -300,6 +300,7 @@
       perspective:1200px;
       transform-style:preserve-3d;
       transition:transform .18s ease-out;
+      margin-top:-24px;
     }
     .connection-layer {
       position:absolute;
@@ -479,12 +480,137 @@
       font-weight:900;
     }
 
+    .cinema-frame {
+      position:relative;
+      overflow:hidden;
+      isolation:isolate;
+      border:1px solid rgba(148,163,184,.2);
+      border-radius:34px;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(34,211,238,.14), transparent 42%),
+        linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      box-shadow:0 34px 120px rgba(0,0,0,.42), inset 0 1px 0 rgba(255,255,255,.12);
+      transform:translateZ(0);
+    }
+    .cinema-frame::before {
+      content:"";
+      position:absolute;
+      inset:-1px;
+      z-index:2;
+      background:
+        linear-gradient(115deg, transparent 18%, rgba(34,211,238,.18) 44%, rgba(139,92,246,.16) 54%, transparent 78%);
+      mix-blend-mode:screen;
+      opacity:.54;
+      transform:translateX(-58%);
+      animation:scanMove 8s ease-in-out infinite;
+      pointer-events:none;
+    }
+    .cinema-frame::after {
+      content:"";
+      position:absolute;
+      inset:0;
+      z-index:2;
+      border-radius:inherit;
+      background:linear-gradient(90deg, rgba(5,8,22,.28), transparent 24%, transparent 76%, rgba(5,8,22,.2));
+      box-shadow:inset 0 0 0 1px rgba(255,255,255,.06), inset 0 -80px 110px rgba(5,8,22,.2);
+      pointer-events:none;
+    }
+    .cinema-frame img {
+      display:block;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      filter:saturate(1.1) contrast(1.04);
+      transform:scale(1.015);
+      animation:imageDrift 12s ease-in-out infinite alternate;
+    }
+    .hero-frame {
+      min-height:560px;
+      border-radius:36px;
+    }
+    .hero-frame::after {
+      background:linear-gradient(90deg, rgba(5,8,22,.78), transparent 28%, transparent 78%, rgba(5,8,22,.12));
+    }
+    .hero-frame img { min-height:560px; object-position:100% center; }
+    .wide-showcase {
+      width:100%;
+      min-height:470px;
+      margin-top:42px;
+    }
+    .wide-showcase img { min-height:470px; }
+    .chaos-showcase img { object-position:center top; }
+    .solutions-showcase img { object-position:center; }
+    .floating-icon {
+      position:absolute;
+      z-index:4;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:9px 13px;
+      border:1px solid rgba(34,211,238,.28);
+      border-radius:999px;
+      color:#e0faff;
+      background:rgba(5,8,22,.62);
+      box-shadow:0 16px 45px rgba(34,211,238,.16), inset 0 1px 0 rgba(255,255,255,.12);
+      backdrop-filter:blur(14px);
+      font-size:.76rem;
+      font-weight:950;
+      line-height:1;
+      animation:iconFloat 5.6s ease-in-out infinite;
+    }
+    .floating-icon::before {
+      content:"";
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:var(--cyan);
+      box-shadow:0 0 18px rgba(34,211,238,.95);
+      animation:pulseDot 2.2s ease-in-out infinite;
+    }
+    .fi-1 { left:7%; top:12%; }
+    .fi-2 { right:8%; top:14%; animation-delay:-1.2s; }
+    .fi-3 { right:9%; bottom:18%; animation-delay:-2.1s; }
+    .fi-4 { left:10%; bottom:16%; animation-delay:-3.2s; }
+    .fi-5 { left:43%; top:7%; animation-delay:-2.7s; }
+    .fi-6 { right:38%; bottom:8%; animation-delay:-1.7s; }
+    .cinema-hotspot {
+      position:absolute;
+      z-index:3;
+      width:14px;
+      height:14px;
+      border-radius:50%;
+      background:var(--green);
+      box-shadow:0 0 0 10px rgba(0,245,160,.1), 0 0 32px rgba(0,245,160,.75);
+      animation:pulseRing 2.8s ease-in-out infinite;
+      pointer-events:none;
+    }
+    .hs-1 { left:58%; top:32%; }
+    .hs-2 { left:72%; top:55%; animation-delay:-1.1s; background:var(--violet); box-shadow:0 0 0 10px rgba(139,92,246,.12), 0 0 32px rgba(139,92,246,.8); }
+    .hs-3 { left:30%; top:64%; animation-delay:-1.9s; background:var(--cyan); }
+    .showcase-caption {
+      position:absolute;
+      left:24px;
+      right:24px;
+      bottom:24px;
+      z-index:4;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:16px;
+      padding:14px 16px;
+      border:1px solid rgba(148,163,184,.18);
+      border-radius:20px;
+      background:rgba(5,8,22,.68);
+      backdrop-filter:blur(18px);
+      color:#cbd5e1;
+      font-size:.9rem;
+      font-weight:800;
+    }
+    .showcase-caption strong { color:#fff; }
+
     .chaos-stage {
       margin-top:40px;
-      display:grid;
-      grid-template-columns:1fr .82fr;
-      gap:24px;
-      align-items:stretch;
+      display:block;
     }
     .chaos-board, .ordered-board {
       min-height:450px;
@@ -657,6 +783,16 @@
       padding:24px;
       overflow:hidden;
     }
+    .segment-art {
+      min-height:370px;
+      border-radius:24px;
+      margin-bottom:14px;
+    }
+    .segment-art img { min-height:370px; object-position:center; }
+    .segment-screen.compact {
+      min-height:auto;
+      grid-template-columns:1fr;
+    }
     .segment-title { display:flex; align-items:center; justify-content:space-between; margin-bottom:18px; }
     .segment-title strong { font-family:"Space Grotesk", Inter, sans-serif; font-size:1.5rem; }
     .segment-title span { color:#a5f3fc; font-size:.82rem; font-weight:900; }
@@ -822,13 +958,14 @@
     .product-card p { margin-top:10px; color:#aeb8c8; }
     .product-art {
       margin:auto 0 18px;
-      min-height:190px;
+      min-height:250px;
       border:1px solid rgba(148,163,184,.14);
       border-radius:22px;
       overflow:hidden;
       background:rgba(255,255,255,.045);
     }
-    .product-art img { width:100%; height:100%; min-height:190px; object-fit:cover; }
+    .product-art img { width:100%; height:100%; min-height:250px; object-fit:cover; transition:transform .7s ease, filter .7s ease; }
+    .product-card:hover .product-art img { transform:scale(1.045); filter:saturate(1.16) contrast(1.05); }
     .custom-art {
       min-height:190px;
       display:grid;
@@ -934,6 +1071,27 @@
       0%,100% { transform:translate3d(0,0,0); }
       50% { transform:translate3d(0,-12px,18px); }
     }
+    @keyframes scanMove {
+      0%,100% { transform:translateX(-58%) skewX(-8deg); opacity:.25; }
+      45%,55% { opacity:.64; }
+      50% { transform:translateX(58%) skewX(-8deg); }
+    }
+    @keyframes imageDrift {
+      from { transform:scale(1.015) translate3d(0,0,0); }
+      to { transform:scale(1.04) translate3d(-10px,7px,0); }
+    }
+    @keyframes iconFloat {
+      0%,100% { transform:translate3d(0,0,0); }
+      50% { transform:translate3d(0,-12px,0); }
+    }
+    @keyframes pulseDot {
+      0%,100% { transform:scale(.78); opacity:.7; }
+      50% { transform:scale(1.15); opacity:1; }
+    }
+    @keyframes pulseRing {
+      0%,100% { transform:scale(.92); opacity:.72; }
+      50% { transform:scale(1.28); opacity:1; }
+    }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
         animation-duration:.01ms !important;
@@ -972,8 +1130,9 @@
       }
       .mobile-menu.open { display:flex; }
       .mobile-menu a { padding:14px; border-radius:14px; color:#cbd5e1; font-weight:850; }
-      .hero-grid, .chaos-stage, .segment-shell, .method-wrap { grid-template-columns:1fr; }
+      .hero-grid, .segment-shell, .method-wrap { grid-template-columns:1fr; }
       .os-scene { min-height:560px; }
+      .hero-frame, .hero-frame img { min-height:520px; }
       .timeline, .method-screen { position:relative; top:auto; }
       .bento-grid { grid-template-columns:1fr 1fr; }
       .bento-card.large, .bento-card.tall { grid-column:auto; grid-row:auto; }
@@ -988,7 +1147,16 @@
       h2 { font-size:2.35rem; }
       .hero-copy { font-size:1rem; }
       .hero-actions .btn, .final-actions .btn { width:100%; }
-      .os-scene { min-height:620px; }
+      .os-scene { min-height:auto; }
+      .hero-frame, .hero-frame img { min-height:430px; }
+      .wide-showcase, .wide-showcase img { min-height:260px; }
+      .showcase-caption { position:relative; left:auto; right:auto; bottom:auto; margin:10px; align-items:flex-start; flex-direction:column; }
+      .floating-icon { font-size:.66rem; padding:7px 9px; }
+      .fi-1 { left:5%; top:8%; }
+      .fi-2 { right:5%; top:10%; }
+      .fi-3 { right:6%; bottom:14%; }
+      .fi-4 { left:6%; bottom:12%; }
+      .fi-5, .fi-6 { display:none; }
       .core-panel { width:96%; min-height:330px; transform:translate(-50%,-50%) rotateX(50deg) rotateZ(-8deg) scale(.82); }
       .module { min-width:108px; font-size:.72rem; padding:10px; }
       .m1 { left:0; top:36px; }
@@ -1001,6 +1169,7 @@
       .m8 { left:5%; top:274px; }
       .chip-cloud { bottom:0; }
       .chaos-board, .ordered-board { min-height:520px; }
+      .segment-art, .segment-art img { min-height:260px; }
       .messy-card { width:190px; }
       .pipeline, .bento-grid, .segment-screen, .core-body, .core-footer, .dash-grid, .workflow-preview, .value-grid, .footer-grid { grid-template-columns:1fr; }
       .segment-tabs { grid-template-columns:1fr; }
@@ -1072,32 +1241,18 @@
         </div>
 
         <div class="os-scene" aria-label="Sistema operacional empresarial Roma Solution">
-          <svg class="connection-layer" viewBox="0 0 680 620" fill="none" aria-hidden="true">
-            <path d="M70 128C190 120 225 220 340 300C455 380 530 215 620 140"/>
-            <path d="M88 484C190 410 260 405 340 300C420 195 520 430 625 470"/>
-            <path d="M190 42C250 160 265 236 340 300C405 356 372 480 340 574"/>
-            <path d="M156 290C245 292 282 305 340 300C438 292 455 250 548 265"/>
-          </svg>
-          <div class="core-panel">
-            <div class="core-header">
-              <span>Roma Operating Layer</span>
-              <span>Processos conectados</span>
-            </div>
-            <div class="core-body">
-              <div class="core-map"><span class="node-dot"></span><span class="node-dot"></span><span class="node-dot"></span></div>
-              <div class="core-flow"><span></span><span></span><span></span><span></span></div>
-            </div>
-            <div class="core-footer"><div>Vendas</div><div>Equipe</div><div>Financeiro</div><div>Operação</div></div>
+          <div class="cinema-frame hero-frame">
+            <img src="/assets/roma-os-hero.png" alt="Roma OS conectando vendas, clientes, financeiro, equipe, operação, estoque, atendimento e IA em uma plataforma central" fetchpriority="high" decoding="async">
+            <span class="floating-icon fi-1">Vendas</span>
+            <span class="floating-icon fi-2">Financeiro</span>
+            <span class="floating-icon fi-3">Operação</span>
+            <span class="floating-icon fi-4">IA aplicada</span>
+            <span class="floating-icon fi-5">Dashboard</span>
+            <span class="floating-icon fi-6">Automação</span>
+            <span class="cinema-hotspot hs-1"></span>
+            <span class="cinema-hotspot hs-2"></span>
+            <span class="cinema-hotspot hs-3"></span>
           </div>
-          <div class="module m1">Vendas</div>
-          <div class="module m2">Clientes</div>
-          <div class="module m3">Financeiro</div>
-          <div class="module m4">Operação</div>
-          <div class="module m5">Estoque</div>
-          <div class="module m6">Dashboard</div>
-          <div class="module m7">IA</div>
-          <div class="module m8">Atendimento</div>
-          <div class="chip-cloud"><span>CRM</span><span>ERP</span><span>Automações</span><span>Apps internos</span><span>Portais</span></div>
         </div>
       </div>
     </section>
@@ -1108,26 +1263,15 @@
         <h2 class="reveal">Quando a empresa cresce, improviso vira gargalo.</h2>
         <p class="lead reveal">Se vendas, financeiro, atendimento, equipe e operação estão espalhados em ferramentas diferentes, o empresário perde controle. A Roma transforma essa rotina em uma plataforma própria, clara e conectada.</p>
         <div class="chaos-stage">
-          <div class="chaos-board reveal" aria-label="Operação bagunçada antes do sistema">
-            <div class="messy-card"><b>Planilha solta</b><small>Controle manual duplicado</small></div>
-            <div class="messy-card"><b>WhatsApp</b><small>Histórico perdido</small></div>
-            <div class="messy-card"><b>Tarefas</b><small>Sem responsável claro</small></div>
-            <div class="messy-card"><b>Financeiro</b><small>Dados separados</small></div>
-            <div class="messy-card"><b>Clientes</b><small>Sem visão completa</small></div>
-          </div>
-          <div class="ordered-board reveal" aria-label="Operação reorganizada em sistema">
-            <div class="ordered-top"><strong>Plataforma Roma</strong><span class="automation-pill">clara e conectada</span></div>
-            <div class="pipeline">
-              <div><b>Vendas</b><span>funil e histórico</span></div>
-              <div><b>Operação</b><span>tarefas e execução</span></div>
-              <div><b>Financeiro</b><span>controle e visão</span></div>
-            </div>
-            <div class="data-grid">
-              <div class="data-row"><span>Lead convertido</span><strong>Automação criada</strong></div>
-              <div class="data-row"><span>Tarefa distribuída</span><strong>Equipe avisada</strong></div>
-              <div class="data-row"><span>Indicador atualizado</span><strong>Dashboard vivo</strong></div>
-              <div class="data-row"><span>Cliente acompanhado</span><strong>Histórico único</strong></div>
-            </div>
+          <div class="cinema-frame wide-showcase chaos-showcase reveal" aria-label="Planilhas, WhatsApp e processos manuais sendo transformados em uma plataforma Roma Solution">
+            <img src="/assets/roma-chaos-system.png" alt="Operação bagunçada com planilhas, WhatsApp, tarefas e documentos se reorganizando em uma plataforma de gestão Roma Solution" loading="lazy" decoding="async">
+            <span class="floating-icon fi-1">Planilhas soltas</span>
+            <span class="floating-icon fi-2">WhatsApp</span>
+            <span class="floating-icon fi-3">Dashboard vivo</span>
+            <span class="floating-icon fi-4">Processos conectados</span>
+            <span class="cinema-hotspot hs-1"></span>
+            <span class="cinema-hotspot hs-2"></span>
+            <div class="showcase-caption"><strong>Da bagunça ao sistema próprio.</strong><span>A Roma organiza dados, rotina e decisões em uma plataforma feita para a operação real.</span></div>
           </div>
         </div>
       </div>
@@ -1138,6 +1282,16 @@
         <div class="section-kicker reveal">O que a Roma cria</div>
         <h2 class="reveal">Criamos sistemas que se encaixam no seu processo, não o contrário.</h2>
         <p class="lead reveal">Cada empresa tem uma operação diferente. Por isso, a Roma Solution projeta sistemas próprios para o jeito real do seu negócio vender, atender, produzir, executar e crescer.</p>
+        <div class="cinema-frame wide-showcase solutions-showcase reveal" aria-label="Soluções criadas pela Roma Solution">
+          <img src="/assets/roma-solutions-showcase.png" alt="Sistemas de gestão, CRMs personalizados, ERPs, dashboards, apps internos, portais, automações e IA ao redor de uma plataforma Roma Solution" loading="lazy" decoding="async">
+          <span class="floating-icon fi-1">Sistemas de gestão</span>
+          <span class="floating-icon fi-2">Apps internos</span>
+          <span class="floating-icon fi-3">Automações</span>
+          <span class="floating-icon fi-4">IA na operação</span>
+          <span class="cinema-hotspot hs-1"></span>
+          <span class="cinema-hotspot hs-3"></span>
+          <div class="showcase-caption"><strong>Um sistema desenhado para o seu processo.</strong><span>Gestão, clientes, equipe, financeiro e automações no mesmo lugar.</span></div>
+        </div>
         <div class="bento-grid">
           <article class="bento-card large reveal"><h3>Sistemas de gestão</h3><p>Plataformas próprias para controlar vendas, operação, equipe, financeiro e processos críticos.</p><div class="mini-ui"><span></span><span></span><span></span></div></article>
           <article class="bento-card reveal"><h3>CRMs personalizados</h3><p>Funis, clientes, oportunidades, histórico e tarefas desenhados para seu modelo comercial.</p><div class="mini-table"><div><span>Lead</span><b>Qualificado</b></div><div><span>Proposta</span><b>Enviada</b></div></div></article>
@@ -1170,9 +1324,16 @@
           </div>
           <div class="segment-visual">
             <div class="segment-title"><strong id="segmentTitle">Varejo</strong><span>modelo adaptável</span></div>
-            <div class="segment-screen">
+            <div class="cinema-frame segment-art">
+              <img src="/assets/roma-segments-showcase.png" alt="Segmentos como varejo, serviços, segurança, saúde, educação, indústria, logística, financeiro e equipes externas conectados a uma plataforma Roma Solution" loading="lazy" decoding="async">
+              <span class="floating-icon fi-1">Varejo</span>
+              <span class="floating-icon fi-2">Serviços</span>
+              <span class="floating-icon fi-3">Logística</span>
+              <span class="floating-icon fi-4">Operação técnica</span>
+              <span class="cinema-hotspot hs-1"></span>
+            </div>
+            <div class="segment-screen compact">
               <div class="segment-panel"><h4>Fluxos possíveis</h4><div class="segment-list" id="segmentList"></div></div>
-              <div class="segment-diagram"><div class="diagram-node">Cliente</div><div class="diagram-node">Equipe</div><div class="diagram-node">Sistema Roma</div><div class="diagram-node">Financeiro</div><div class="diagram-node">Dashboard</div></div>
             </div>
           </div>
         </div>
@@ -1210,9 +1371,9 @@
         <h2 class="reveal">Produtos nascidos de problemas reais. Sistemas criados para qualquer operação.</h2>
         <p class="lead reveal">RomaSystem e DrawSecurity mostram como a Roma transforma dores específicas em produtos digitais. A mesma lógica pode ser aplicada a outros segmentos e operações.</p>
         <div class="product-grid">
-          <article class="product-card reveal"><h3>RomaSystem</h3><p>Gestão para empresas de segurança eletrônica: CRM, OS, estoque, financeiro, equipe e dashboards.</p><div class="product-art"><img src="/assets/romasystem-operacao.png" alt="Mockup visual do RomaSystem"></div><a class="btn btn-primary" href="https://app.romasolution.com">Ver RomaSystem</a></article>
-          <article class="product-card reveal"><h3>DrawSecurity</h3><p>Ferramenta de campo para projetos, vistorias, IA, planta, memorial técnico e orçamento.</p><div class="product-art"><img src="/assets/drawsecurity-projeto.png" alt="Mockup visual do DrawSecurity"></div><a class="btn btn-primary" href="https://romasolution.com/drawsecurity/">Ver DrawSecurity</a></article>
-          <article class="product-card reveal"><h3>Sistemas sob medida</h3><p>Plataformas exclusivas para empresas que precisam de gestão própria, automações e dashboards específicos.</p><div class="product-art custom-art" aria-hidden="true"></div><a class="btn btn-secondary" href="https://wa.me/5513978099969?text=Ol%C3%A1%2C%20quero%20criar%20um%20sistema%20sob%20medida%20para%20minha%20empresa." target="_blank" rel="noopener">Criar meu sistema</a></article>
+          <article class="product-card reveal"><h3>RomaSystem</h3><p>Gestão para empresas de segurança eletrônica: CRM, OS, estoque, financeiro, equipe e dashboards.</p><div class="product-art"><img src="/assets/romasystem-showcase.png" alt="RomaSystem com dashboard e módulos conectados de CRM, orçamento, OS, agenda, estoque, financeiro, equipe, frota, contratos e dashboards" loading="lazy" decoding="async"></div><a class="btn btn-primary" href="https://app.romasolution.com">Ver RomaSystem</a></article>
+          <article class="product-card reveal"><h3>DrawSecurity</h3><p>Ferramenta de campo para projetos, vistorias, IA, planta, memorial técnico e orçamento.</p><div class="product-art"><img src="/assets/drawsecurity-showcase.png" alt="DrawSecurity com aplicativo mobile, planta técnica, câmeras, orçamento, memorial, proposta e visualização 3D" loading="lazy" decoding="async"></div><a class="btn btn-primary" href="https://romasolution.com/drawsecurity/">Ver DrawSecurity</a></article>
+          <article class="product-card reveal"><h3>Sistemas sob medida</h3><p>Plataformas exclusivas para empresas que precisam de gestão própria, automações e dashboards específicos.</p><div class="product-art"><img src="/assets/roma-solutions-showcase.png" alt="Sistemas sob medida com módulos de CRM, ERP, portais, apps internos, automações, dashboards e IA" loading="lazy" decoding="async"></div><a class="btn btn-secondary" href="https://wa.me/5513978099969?text=Ol%C3%A1%2C%20quero%20criar%20um%20sistema%20sob%20medida%20para%20minha%20empresa." target="_blank" rel="noopener">Criar meu sistema</a></article>
         </div>
       </div>
     </section>
