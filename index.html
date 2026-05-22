@@ -3,26 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Roma Solution — Sistemas sob medida para empresas</title>
-  <meta name="description" content="A Roma Solution cria plataformas, CRMs, ERPs, dashboards, apps internos e automações para empresas que não cabem em software pronto.">
+  <title>Roma Solution — Sistemas sob medida para empresas e projetos</title>
+  <meta name="description" content="A Roma Solution cria plataformas, CRMs, ERPs, dashboards, apps internos e automações sob medida para empresas e projetos que não cabem em software pronto.">
   <meta name="author" content="Roma Solution">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://romasolution.com/">
 
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://romasolution.com/">
-  <meta property="og:title" content="Roma Solution — Sistemas sob medida para empresas">
+  <meta property="og:title" content="Roma Solution — Sistemas sob medida para empresas e projetos">
   <meta property="og:description" content="Transformamos processos manuais em plataformas próprias de gestão, automação e controle.">
   <meta property="og:image" content="https://romasolution.com/assets/roma-os-hero.png">
   <meta property="og:locale" content="pt_BR">
   <meta property="og:site_name" content="Roma Solution">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Roma Solution — Sistemas sob medida para empresas">
+  <meta name="twitter:title" content="Roma Solution — Sistemas sob medida para empresas e projetos">
   <meta name="twitter:description" content="A Roma Solution não vende software pronto. Ela cria o sistema que a empresa deveria ter.">
   <meta name="twitter:image" content="https://romasolution.com/assets/roma-os-hero.png">
 
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -37,7 +37,7 @@
     "name": "Roma Solution",
     "url": "https://romasolution.com",
     "email": "contato@romasolution.com.br",
-    "description": "Empresa de tecnologia que cria sistemas sob medida, CRMs personalizados, ERPs, dashboards, portais, apps internos e automações para empresas."
+    "description": "Empresa de tecnologia que cria sistemas sob medida, CRMs personalizados, ERPs, dashboards, portais, apps internos e automações para empresas e projetos."
   }
   </script>
 
@@ -122,14 +122,37 @@
       justify-content:space-between;
       gap:20px;
     }
+    .sr-only {
+      position:absolute;
+      width:1px;
+      height:1px;
+      padding:0;
+      margin:-1px;
+      overflow:hidden;
+      clip:rect(0,0,0,0);
+      white-space:nowrap;
+      border:0;
+    }
     .logo {
       font-family:"Space Grotesk", Inter, sans-serif;
       font-weight:800;
       font-size:1.16rem;
       letter-spacing:.01em;
       white-space:nowrap;
+      display:inline-flex;
+      align-items:center;
+      width:212px;
+      height:58px;
+      flex:0 0 auto;
     }
-    .logo span { color:#8ec5ff; }
+    .logo img {
+      display:block;
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      object-position:left center;
+      filter:drop-shadow(0 0 18px rgba(34,211,238,.16));
+    }
     .nav-links, .header-actions { display:flex; align-items:center; gap:18px; }
     .nav-links { color:#b7c2d2; font-size:.88rem; font-weight:700; }
     .nav-links a:hover { color:#fff; }
@@ -2277,6 +2300,10 @@
       grid-template-columns:1.2fr repeat(3, minmax(140px,.35fr));
       gap:28px;
     }
+    .site-footer .logo {
+      width:300px;
+      height:92px;
+    }
     .footer-column { display:grid; align-content:start; gap:10px; }
     .footer-column strong { color:#fff; font-size:.95rem; }
     .footer-column p { max-width:360px; }
@@ -2421,6 +2448,8 @@
     @media (max-width:680px) {
       .container { width:min(100% - 28px, 1180px); }
       .section { padding:76px 0; }
+      .logo { width:178px; height:54px; }
+      .site-footer .logo { width:240px; height:74px; }
       .hero { padding-top:calc(var(--header) + 40px); }
       h1 { font-size:3rem; }
       h2 { font-size:2.35rem; }
@@ -2507,7 +2536,10 @@
 <body>
   <header class="site-header">
     <div class="header-inner">
-      <a class="logo" href="/" aria-label="Roma Solution">ROMA<span>SOLUTION</span></a>
+      <a class="logo" href="/" aria-label="Roma Solution — Sistemas sob medida para empresas e projetos">
+        <img src="/assets/brand/roma-solution-logo.png" alt="" width="3276" height="960">
+        <span class="sr-only">Roma Solution — Sistemas sob medida para empresas e projetos</span>
+      </a>
       <nav class="nav-links" aria-label="Navegação principal">
         <a href="#solucoes">Soluções</a>
         <a href="#segmentos">Segmentos</a>
@@ -2536,7 +2568,7 @@
     <section class="hero">
       <div class="container hero-grid">
         <div class="reveal">
-          <div class="eyebrow"><i aria-hidden="true"></i> Software sob medida para negócios reais</div>
+          <div class="eyebrow"><i aria-hidden="true"></i> Sistemas sob medida para empresas e projetos</div>
           <h1 class="hero-title" aria-label="Vamos desenhar o sistema que sua empresa deveria estar usando?">
             <span class="word" style="--i:0">Vamos</span>
             <span class="word" style="--i:1">desenhar</span>
@@ -2840,8 +2872,11 @@
   <footer class="site-footer">
     <div class="container footer-grid">
       <div class="footer-column">
-        <a class="logo" href="/">ROMA<span>SOLUTION</span></a>
-        <p>Sistemas sob medida para empresas que querem controle, gestão e escala.</p>
+        <a class="logo" href="/" aria-label="Roma Solution — Sistemas sob medida para empresas e projetos">
+          <img src="/assets/brand/roma-solution-logo.png" alt="" width="3276" height="960" loading="lazy" decoding="async">
+          <span class="sr-only">Roma Solution — Sistemas sob medida para empresas e projetos</span>
+        </a>
+        <p>Sistemas sob medida para empresas e projetos que querem controle, gestão e escala.</p>
       </div>
       <div class="footer-column">
         <strong>Links</strong>
