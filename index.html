@@ -207,6 +207,10 @@
       background-clip:text;
       color:transparent;
     }
+    .focus-word {
+      position:relative;
+      text-shadow:0 0 34px rgba(34,211,238,.12);
+    }
 
     .hero {
       min-height:100vh;
@@ -302,6 +306,31 @@
       transition:transform .18s ease-out;
       margin-top:-24px;
     }
+    .particle-field {
+      position:absolute;
+      inset:0;
+      z-index:0;
+      pointer-events:none;
+      overflow:hidden;
+      opacity:.78;
+    }
+    .particle-field i {
+      position:absolute;
+      width:5px;
+      height:5px;
+      border-radius:50%;
+      background:rgba(34,211,238,.84);
+      box-shadow:0 0 22px rgba(34,211,238,.9);
+      animation:particleFloat 9s ease-in-out infinite;
+    }
+    .particle-field i:nth-child(1) { left:14%; top:12%; animation-delay:-1s; }
+    .particle-field i:nth-child(2) { left:42%; top:4%; background:rgba(139,92,246,.86); animation-delay:-3s; }
+    .particle-field i:nth-child(3) { right:16%; top:18%; animation-delay:-5s; }
+    .particle-field i:nth-child(4) { left:8%; bottom:24%; background:rgba(0,245,160,.72); animation-delay:-2.4s; }
+    .particle-field i:nth-child(5) { right:8%; bottom:18%; animation-delay:-6s; }
+    .particle-field i:nth-child(6) { left:54%; bottom:4%; background:rgba(139,92,246,.78); animation-delay:-4.8s; }
+    .particle-field i:nth-child(7) { left:70%; top:46%; animation-delay:-7.2s; }
+    .particle-field i:nth-child(8) { left:24%; top:52%; background:rgba(0,245,160,.7); animation-delay:-8s; }
     .roma-os-visual {
       position:relative;
       min-height:620px;
@@ -331,6 +360,40 @@
       filter:blur(22px);
       animation:auroraPulse 9s ease-in-out infinite alternate;
     }
+    .scene-ring,
+    .core-glow {
+      position:absolute;
+      left:50%;
+      top:50%;
+      pointer-events:none;
+      transform:translate(-50%, -50%);
+      border-radius:50%;
+    }
+    .scene-ring {
+      z-index:0;
+      width:620px;
+      height:420px;
+      border:1px solid rgba(34,211,238,.14);
+      box-shadow:0 0 70px rgba(34,211,238,.08), inset 0 0 40px rgba(139,92,246,.08);
+      transform:translate(-50%, -50%) rotateX(64deg) rotateZ(-8deg);
+      animation:ringSpin 24s linear infinite;
+    }
+    .ring-two {
+      width:760px;
+      height:500px;
+      border-color:rgba(139,92,246,.12);
+      animation-duration:34s;
+      animation-direction:reverse;
+    }
+    .core-glow {
+      z-index:0;
+      width:520px;
+      height:360px;
+      background:radial-gradient(circle, rgba(34,211,238,.22), rgba(139,92,246,.14) 38%, transparent 72%);
+      filter:blur(22px);
+      opacity:.85;
+      animation:coreBreath 7s ease-in-out infinite;
+    }
     .os-connection-layer {
       position:absolute;
       inset:0;
@@ -340,12 +403,19 @@
       opacity:.78;
       pointer-events:none;
     }
-    .os-connection-layer path {
+    .os-connection-layer path,
+    .os-connection-layer circle {
       stroke:rgba(34,211,238,.42);
       stroke-width:1.4;
       stroke-dasharray:8 12;
       animation:dash 13s linear infinite;
       filter:drop-shadow(0 0 8px rgba(34,211,238,.45));
+    }
+    .os-connection-layer circle {
+      stroke:rgba(139,92,246,.25);
+      stroke-width:1;
+      stroke-dasharray:5 16;
+      animation-duration:20s;
     }
     .os-dashboard {
       position:absolute;
@@ -391,6 +461,9 @@
       -webkit-mask-composite:xor;
       mask-composite:exclude;
       padding:1px;
+    }
+    .os-dashboard:hover {
+      box-shadow:0 64px 150px rgba(0,0,0,.54), 0 0 110px rgba(34,211,238,.2), inset 0 1px 0 rgba(255,255,255,.16);
     }
     .dash-window-bar,
     .dash-content,
@@ -512,6 +585,26 @@
     }
     .dash-widget:nth-child(2) span { width:58%; background:linear-gradient(90deg, var(--violet), var(--blue)); animation-delay:-1s; }
     .dash-widget:nth-child(3) span { width:82%; background:linear-gradient(90deg, var(--green), var(--cyan)); animation-delay:-2s; }
+    .dash-grid-flow {
+      position:absolute;
+      inset:0;
+      z-index:0;
+      pointer-events:none;
+    }
+    .dash-grid-flow i {
+      position:absolute;
+      width:11px;
+      height:11px;
+      border-radius:50%;
+      background:var(--cyan);
+      box-shadow:0 0 0 8px rgba(34,211,238,.08), 0 0 26px rgba(34,211,238,.76);
+      animation:nodeTravel 6s ease-in-out infinite;
+    }
+    .dash-grid-flow i:nth-child(1) { left:18%; top:28%; }
+    .dash-grid-flow i:nth-child(2) { left:48%; top:20%; animation-delay:-1.2s; background:var(--violet); }
+    .dash-grid-flow i:nth-child(3) { right:22%; top:42%; animation-delay:-2.4s; }
+    .dash-grid-flow i:nth-child(4) { left:34%; bottom:24%; animation-delay:-3.6s; background:var(--green); }
+    .dash-grid-flow i:nth-child(5) { right:18%; bottom:22%; animation-delay:-4.8s; background:var(--violet); }
     .module-card {
       position:absolute;
       z-index:3;
@@ -524,6 +617,10 @@
       backdrop-filter:blur(16px);
       transform:translateZ(24px);
       animation:floatModule 5.6s ease-in-out infinite;
+    }
+    .module-card:hover {
+      border-color:rgba(34,211,238,.5);
+      box-shadow:0 26px 80px rgba(34,211,238,.16), inset 0 1px 0 rgba(255,255,255,.16);
     }
     .module-card strong {
       display:block;
@@ -891,6 +988,23 @@
       align-items:center;
       min-height:560px;
     }
+    .chaos-lines {
+      position:absolute;
+      inset:0;
+      z-index:2;
+      width:100%;
+      height:100%;
+      pointer-events:none;
+      opacity:calc(.18 + var(--p) * .7);
+    }
+    .chaos-lines path {
+      stroke:rgba(34,211,238,.38);
+      stroke-width:1.5;
+      stroke-dasharray:10 18;
+      stroke-dashoffset:calc((1 - var(--p)) * 220);
+      filter:drop-shadow(0 0 10px rgba(34,211,238,.48));
+      transition:stroke-dashoffset .08s linear;
+    }
     .chaos-live::before {
       content:"";
       position:absolute;
@@ -905,6 +1019,7 @@
     .chaos-cluster,
     .system-platform {
       position:relative;
+      z-index:1;
       min-height:500px;
       border:1px solid var(--line);
       border-radius:30px;
@@ -914,6 +1029,20 @@
       overflow:hidden;
       box-shadow:0 30px 90px rgba(0,0,0,.28);
       backdrop-filter:blur(16px);
+    }
+    .chaos-label {
+      position:absolute;
+      left:18px;
+      top:18px;
+      z-index:2;
+      padding:7px 10px;
+      border:1px solid rgba(255,255,255,.1);
+      border-radius:999px;
+      color:#9fb0c5;
+      background:rgba(255,255,255,.04);
+      font-size:.7rem;
+      font-weight:950;
+      letter-spacing:.12em;
     }
     .chaos-cluster::before,
     .system-platform::before {
@@ -971,6 +1100,7 @@
     .ci-5 { right:42px; bottom:48px; --rot:-6deg; --tx:-78px; --ty:-60px; }
     .story-beam {
       position:relative;
+      z-index:3;
       min-height:360px;
       display:grid;
       place-items:center;
@@ -998,10 +1128,44 @@
       font-weight:950;
       animation:pulseRing 3s ease-in-out infinite;
     }
+    .story-beam b {
+      position:absolute;
+      width:12px;
+      height:12px;
+      border-radius:50%;
+      background:var(--cyan);
+      box-shadow:0 0 0 8px rgba(34,211,238,.08), 0 0 30px rgba(34,211,238,.82);
+      transform:
+        translate3d(calc((var(--p) - .5) * 220px), calc((var(--p) - .5) * -190px), 0)
+        scale(calc(.7 + var(--p) * .5));
+      opacity:calc(.25 + var(--p) * .75);
+      transition:transform .08s linear, opacity .08s linear;
+    }
+    .story-beam b:nth-of-type(2) {
+      background:var(--violet);
+      transform:translate3d(calc((var(--p) - .5) * 180px), calc((var(--p) - .5) * 150px), 0) scale(calc(.72 + var(--p) * .5));
+    }
+    .story-beam b:nth-of-type(3) {
+      background:var(--green);
+      transform:translate3d(calc((var(--p) - .5) * -150px), calc((var(--p) - .5) * 70px), 0) scale(calc(.72 + var(--p) * .5));
+    }
     .system-platform {
       padding:20px;
       transform:translateY(calc((1 - var(--p)) * 18px));
       opacity:calc(.78 + var(--p) * .22);
+    }
+    .system-platform::after {
+      content:"";
+      position:absolute;
+      inset:auto 20px 20px;
+      height:3px;
+      border-radius:999px;
+      background:linear-gradient(90deg, var(--blue), var(--cyan), var(--green));
+      box-shadow:0 0 26px rgba(34,211,238,.32);
+      transform:scaleX(calc(.18 + var(--p) * .82));
+      transform-origin:left;
+      opacity:calc(.4 + var(--p) * .6);
+      z-index:1;
     }
     .platform-header {
       position:relative;
@@ -1216,6 +1380,191 @@
       font-size:.82rem;
       font-weight:800;
     }
+    .mini-command-center,
+    .mini-modules,
+    .mini-portal {
+      margin-top:22px;
+      display:grid;
+      gap:9px;
+    }
+    .mini-command-center {
+      grid-template-columns:repeat(5, minmax(0,1fr));
+      align-items:end;
+      min-height:108px;
+    }
+    .mini-command-center span {
+      position:relative;
+      display:grid;
+      place-items:end center;
+      min-height:62px;
+      padding:10px 6px;
+      border:1px solid rgba(34,211,238,.16);
+      border-radius:16px;
+      background:
+        linear-gradient(180deg, rgba(34,211,238,.12), rgba(255,255,255,.035)),
+        rgba(255,255,255,.035);
+      color:#dffbff;
+      font-size:.7rem;
+      font-weight:950;
+      overflow:hidden;
+    }
+    .mini-command-center span::before {
+      content:"";
+      position:absolute;
+      left:10px;
+      right:10px;
+      bottom:34px;
+      height:calc(18px + var(--h, 20px));
+      border-radius:999px 999px 8px 8px;
+      background:linear-gradient(180deg, var(--cyan), var(--blue));
+      opacity:.68;
+      animation:barPulse 3.4s ease-in-out infinite;
+    }
+    .mini-command-center span:nth-child(1) { --h:14px; }
+    .mini-command-center span:nth-child(2) { --h:38px; }
+    .mini-command-center span:nth-child(3) { --h:24px; }
+    .mini-command-center span:nth-child(4) { --h:46px; }
+    .mini-command-center span:nth-child(5) { --h:30px; }
+    .mini-pipeline {
+      margin-top:24px;
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    .mini-pipeline i {
+      flex:1;
+      min-height:76px;
+      display:grid;
+      place-items:end center;
+      padding:10px 5px;
+      border:1px solid rgba(148,163,184,.14);
+      border-radius:14px;
+      color:#cbd5e1;
+      background:linear-gradient(180deg, rgba(59,130,246,.16), rgba(255,255,255,.035));
+      font-size:.65rem;
+      font-style:normal;
+      font-weight:900;
+      animation:pipelineRise 4s ease-in-out infinite;
+    }
+    .mini-pipeline i:nth-child(2) { min-height:96px; animation-delay:-.8s; background:linear-gradient(180deg, rgba(34,211,238,.16), rgba(255,255,255,.035)); }
+    .mini-pipeline i:nth-child(3) { min-height:112px; animation-delay:-1.6s; background:linear-gradient(180deg, rgba(139,92,246,.16), rgba(255,255,255,.035)); }
+    .mini-pipeline i:nth-child(4) { min-height:86px; animation-delay:-2.4s; background:linear-gradient(180deg, rgba(0,245,160,.13), rgba(255,255,255,.035)); }
+    .mini-modules {
+      grid-template-columns:1fr 1fr;
+    }
+    .mini-modules span,
+    .mini-portal span {
+      padding:11px;
+      border:1px solid rgba(148,163,184,.14);
+      border-radius:13px;
+      background:rgba(255,255,255,.045);
+      color:#dbeafe;
+      font-size:.76rem;
+      font-weight:900;
+    }
+    .mini-chart-bars {
+      margin-top:24px;
+      min-height:118px;
+      display:flex;
+      align-items:end;
+      gap:10px;
+    }
+    .mini-chart-bars i {
+      flex:1;
+      height:var(--bar, 58%);
+      border-radius:999px 999px 10px 10px;
+      background:linear-gradient(180deg, var(--cyan), rgba(59,130,246,.28));
+      box-shadow:0 0 24px rgba(34,211,238,.12);
+      animation:barPulse 3.4s ease-in-out infinite;
+    }
+    .mini-chart-bars i:nth-child(1) { --bar:46%; }
+    .mini-chart-bars i:nth-child(2) { --bar:76%; animation-delay:-.6s; background:linear-gradient(180deg, var(--blue), rgba(59,130,246,.2)); }
+    .mini-chart-bars i:nth-child(3) { --bar:58%; animation-delay:-1.2s; }
+    .mini-chart-bars i:nth-child(4) { --bar:88%; animation-delay:-1.8s; background:linear-gradient(180deg, var(--violet), rgba(139,92,246,.18)); }
+    .mini-chart-bars i:nth-child(5) { --bar:68%; animation-delay:-2.4s; background:linear-gradient(180deg, var(--green), rgba(0,245,160,.14)); }
+    .mini-phone {
+      width:122px;
+      min-height:186px;
+      margin:18px auto 0;
+      padding:14px 10px;
+      border:1px solid rgba(34,211,238,.2);
+      border-radius:24px;
+      background:linear-gradient(180deg, rgba(34,211,238,.11), rgba(255,255,255,.035));
+      box-shadow:0 18px 54px rgba(34,211,238,.08);
+    }
+    .mini-phone span {
+      display:block;
+      width:38px;
+      height:5px;
+      margin:0 auto 18px;
+      border-radius:999px;
+      background:rgba(226,232,240,.4);
+    }
+    .mini-phone b {
+      display:block;
+      margin-bottom:14px;
+      color:#fff;
+      font-size:.74rem;
+    }
+    .mini-phone i {
+      display:block;
+      height:26px;
+      margin-top:8px;
+      border-radius:10px;
+      background:rgba(255,255,255,.07);
+      border:1px solid rgba(148,163,184,.12);
+    }
+    .mini-portal span {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+    .mini-portal span::after {
+      content:"";
+      width:44px;
+      height:7px;
+      border-radius:999px;
+      background:linear-gradient(90deg, var(--blue), var(--cyan));
+    }
+    .automation-flow {
+      margin-top:28px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .automation-flow span {
+      min-height:48px;
+      display:grid;
+      place-items:center;
+      padding:0 14px;
+      border:1px solid rgba(34,211,238,.2);
+      border-radius:16px;
+      color:#e0faff;
+      background:rgba(34,211,238,.07);
+      font-weight:950;
+      font-size:.8rem;
+    }
+    .automation-flow i {
+      flex:1;
+      min-width:46px;
+      height:2px;
+      border-radius:999px;
+      background:linear-gradient(90deg, var(--blue), var(--cyan), var(--violet));
+      box-shadow:0 0 18px rgba(34,211,238,.34);
+      position:relative;
+    }
+    .automation-flow i::after {
+      content:"";
+      position:absolute;
+      right:-1px;
+      top:50%;
+      width:8px;
+      height:8px;
+      border-top:2px solid var(--cyan);
+      border-right:2px solid var(--cyan);
+      transform:translateY(-50%) rotate(45deg);
+    }
 
     .segment-shell {
       margin-top:42px;
@@ -1252,6 +1601,19 @@
         linear-gradient(180deg, rgba(255,255,255,.075), rgba(255,255,255,.035));
       padding:24px;
       overflow:hidden;
+    }
+    .segment-orbit {
+      position:absolute;
+      right:8%;
+      top:50%;
+      width:520px;
+      height:330px;
+      border:1px solid rgba(34,211,238,.12);
+      border-radius:50%;
+      transform:translateY(-50%) rotateX(62deg) rotateZ(-6deg);
+      box-shadow:0 0 70px rgba(34,211,238,.08), inset 0 0 34px rgba(139,92,246,.08);
+      animation:ringSpin 30s linear infinite;
+      pointer-events:none;
     }
     .segment-visual::before {
       content:"";
@@ -1315,6 +1677,13 @@
         rgba(5,8,22,.56);
       overflow:hidden;
       padding:16px;
+      transform:perspective(1000px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) translateZ(0);
+      transition:transform .28s ease, border-color .28s ease, box-shadow .28s ease;
+    }
+    .segment-mockup.is-changing {
+      transform:perspective(1000px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) scale(.985);
+      border-color:rgba(139,92,246,.3);
+      box-shadow:0 0 80px rgba(139,92,246,.1);
     }
     .segment-mockup::before {
       content:"";
@@ -1340,6 +1709,25 @@
       color:#86efff;
       font-size:.78rem;
     }
+    .segment-lanes {
+      position:absolute;
+      inset:64px 18px 18px;
+      pointer-events:none;
+      opacity:.54;
+    }
+    .segment-lanes i {
+      position:absolute;
+      left:10%;
+      right:10%;
+      height:2px;
+      border-radius:999px;
+      background:linear-gradient(90deg, transparent, rgba(34,211,238,.72), rgba(139,92,246,.62), transparent);
+      box-shadow:0 0 18px rgba(34,211,238,.28);
+      animation:laneSweep 5s ease-in-out infinite;
+    }
+    .segment-lanes i:nth-child(1) { top:24%; }
+    .segment-lanes i:nth-child(2) { top:50%; animation-delay:-1.6s; }
+    .segment-lanes i:nth-child(3) { top:76%; animation-delay:-3.2s; }
     .segment-nodes {
       position:relative;
       z-index:1;
@@ -1357,6 +1745,12 @@
       font-weight:900;
       box-shadow:0 18px 50px rgba(34,211,238,.08);
       animation:floatModule 5s ease-in-out infinite;
+      transition:transform .24s ease, opacity .24s ease, border-color .24s ease;
+    }
+    .segment-node:hover {
+      transform:translateY(-8px);
+      border-color:rgba(34,211,238,.48);
+      box-shadow:0 24px 70px rgba(34,211,238,.16);
     }
     .segment-node:nth-child(1) { left:3%; top:8%; }
     .segment-node:nth-child(2) { right:6%; top:14%; animation-delay:-1s; border-color:rgba(139,92,246,.28); background:rgba(139,92,246,.08); }
@@ -1397,6 +1791,7 @@
       grid-template-columns:360px 1fr;
       gap:32px;
       align-items:start;
+      min-height:1500px;
     }
     .timeline { display:grid; gap:10px; position:sticky; top:100px; }
     .timeline button {
@@ -1465,6 +1860,8 @@
       background:rgba(5,8,22,.46);
       overflow:hidden;
       position:relative;
+      transform:perspective(1200px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+      transition:background .28s ease, transform .18s ease;
     }
     .method-dashboard::before {
       content:"";
@@ -1591,24 +1988,86 @@
     }
     .method-title { margin-top:14px; font-family:"Space Grotesk", Inter, sans-serif; font-size:2rem; line-height:1.05; }
     .method-text { margin-top:10px; color:#b8c4d5; max-width:620px; }
+    .method-progress {
+      height:5px;
+      margin-top:18px;
+      border-radius:999px;
+      background:rgba(148,163,184,.12);
+      overflow:hidden;
+    }
+    .method-progress span {
+      display:block;
+      width:calc(var(--method-progress, 14.3) * 1%);
+      height:100%;
+      border-radius:inherit;
+      background:linear-gradient(90deg, var(--blue), var(--cyan), var(--violet));
+      box-shadow:0 0 26px rgba(34,211,238,.36);
+      transition:width .32s ease;
+    }
+    .method-stage-pill {
+      position:absolute;
+      right:18px;
+      top:18px;
+      z-index:2;
+      padding:7px 10px;
+      border:1px solid rgba(34,211,238,.18);
+      border-radius:999px;
+      color:#a5f3fc;
+      background:rgba(34,211,238,.075);
+      font-size:.72rem;
+      font-weight:950;
+      letter-spacing:.04em;
+    }
+    .method-screen[data-step="0"] { --method-progress:14.3; }
+    .method-screen[data-step="1"] { --method-progress:28.6; }
+    .method-screen[data-step="2"] { --method-progress:42.9; }
+    .method-screen[data-step="3"] { --method-progress:57.2; }
+    .method-screen[data-step="4"] { --method-progress:71.5; }
+    .method-screen[data-step="5"] { --method-progress:85.8; }
+    .method-screen[data-step="6"] { --method-progress:100; }
+    .method-screen[data-step="0"] .method-dashboard { background:radial-gradient(circle at 30% 20%, rgba(139,92,246,.12), transparent 38%), rgba(5,8,22,.46); }
+    .method-screen[data-step="1"] .method-dashboard { background:radial-gradient(circle at 45% 35%, rgba(34,211,238,.14), transparent 40%), rgba(5,8,22,.46); }
+    .method-screen[data-step="2"] .method-dashboard { background:radial-gradient(circle at 62% 30%, rgba(59,130,246,.15), transparent 40%), rgba(5,8,22,.46); }
+    .method-screen[data-step="3"] .method-dashboard { background:radial-gradient(circle at 50% 55%, rgba(0,245,160,.1), transparent 40%), rgba(5,8,22,.46); }
+    .method-screen[data-step="4"] .method-dashboard { background:radial-gradient(circle at 70% 30%, rgba(139,92,246,.15), transparent 42%), rgba(5,8,22,.46); }
+    .method-screen[data-step="5"] .method-dashboard { background:radial-gradient(circle at 38% 64%, rgba(34,211,238,.14), transparent 42%), rgba(5,8,22,.46); }
+    .method-screen[data-step="6"] .method-dashboard { background:radial-gradient(circle at 50% 50%, rgba(0,245,160,.12), transparent 42%), rgba(5,8,22,.46); }
 
     .product-grid {
       margin-top:42px;
       display:grid;
-      grid-template-columns:repeat(3, minmax(0,1fr));
-      gap:16px;
+      gap:22px;
     }
     .product-card {
       position:relative;
-      min-height:590px;
-      display:flex;
-      flex-direction:column;
-      padding:22px;
+      min-height:460px;
+      display:grid;
+      grid-template-columns:.82fr 1.18fr;
+      gap:22px;
+      align-items:stretch;
+      padding:24px;
       border:1px solid var(--line);
-      border-radius:30px;
-      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.035));
+      border-radius:34px;
+      background:
+        radial-gradient(circle at 78% 18%, rgba(59,130,246,.18), transparent 34%),
+        linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.035));
       overflow:hidden;
       box-shadow:0 24px 70px rgba(0,0,0,.22);
+      transition:transform .28s ease, border-color .28s ease, box-shadow .28s ease;
+    }
+    .product-card:hover {
+      transform:translateY(-6px);
+      border-color:rgba(34,211,238,.32);
+      box-shadow:0 36px 110px rgba(34,211,238,.12), 0 30px 90px rgba(0,0,0,.28);
+    }
+    .product-copy {
+      position:relative;
+      z-index:2;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:flex-start;
+      min-width:0;
     }
     .product-card h3,
     .product-card p,
@@ -1617,7 +2076,21 @@
       position:relative;
       z-index:2;
     }
+    .product-card h3 { font-size:clamp(2.1rem, 4vw, 4rem); }
     .product-card p { margin-top:10px; color:#aeb8c8; }
+    .product-kicker {
+      display:inline-flex;
+      margin-bottom:14px;
+      padding:8px 11px;
+      border:1px solid rgba(34,211,238,.18);
+      border-radius:999px;
+      color:#a5f3fc;
+      background:rgba(34,211,238,.07);
+      font-size:.76rem;
+      font-weight:950;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
     .product-tags {
       display:flex;
       flex-wrap:wrap;
@@ -1636,12 +2109,12 @@
     .product-art {
       position:relative;
       z-index:1;
-      margin:auto 0 18px;
-      min-height:300px;
+      min-height:410px;
       border:1px solid rgba(148,163,184,.14);
-      border-radius:22px;
+      border-radius:28px;
       overflow:hidden;
       background:rgba(255,255,255,.045);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.1), 0 26px 70px rgba(0,0,0,.24);
     }
     .product-art::after {
       content:"";
@@ -1658,15 +2131,15 @@
       --shift-x:0%;
       width:100%;
       height:100%;
-      min-height:300px;
+      min-height:410px;
       object-fit:cover;
       filter:brightness(.58) saturate(1.02);
       transform:scale(var(--zoom)) translateX(var(--shift-x));
       transition:transform .7s ease, filter .7s ease;
     }
-    .product-art.romasystem img { --zoom:1.34; --hover-zoom:1.42; --shift-x:-9%; object-position:74% center; }
-    .product-art.drawsecurity img { --zoom:1.28; --hover-zoom:1.36; --shift-x:-10%; object-position:78% center; }
-    .product-art.sobmedida img { --zoom:1.14; --hover-zoom:1.2; object-position:center; opacity:.72; }
+    .product-art.romasystem img { --zoom:1.2; --hover-zoom:1.28; --shift-x:-6%; object-position:72% center; }
+    .product-art.drawsecurity img { --zoom:1.14; --hover-zoom:1.22; --shift-x:-8%; object-position:75% center; }
+    .product-art.sobmedida img { --zoom:1.05; --hover-zoom:1.1; object-position:center; opacity:.72; }
     .product-card:hover .product-art img { transform:scale(var(--hover-zoom)) translateX(var(--shift-x)); filter:brightness(.7) saturate(1.12) contrast(1.04); }
     .product-flow {
       position:absolute;
@@ -1732,10 +2205,42 @@
       padding:20px;
       border:1px solid rgba(148,163,184,.15);
       border-radius:22px;
-      background:rgba(255,255,255,.045);
+      background:
+        radial-gradient(circle at 82% 18%, rgba(34,211,238,.12), transparent 32%),
+        rgba(255,255,255,.045);
       color:#e2e8f0;
       font-weight:900;
       font-size:1.05rem;
+      overflow:hidden;
+      transition:transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+    }
+    .value-card span {
+      display:block;
+      margin-bottom:22px;
+      color:#86efff;
+      font-size:.76rem;
+      letter-spacing:.12em;
+    }
+    .value-card::after {
+      content:"";
+      position:absolute;
+      left:20px;
+      right:20px;
+      bottom:18px;
+      height:2px;
+      border-radius:999px;
+      background:linear-gradient(90deg, var(--blue), var(--cyan), transparent);
+      transform:scaleX(.32);
+      transform-origin:left;
+      transition:transform .24s ease;
+    }
+    .value-card:hover {
+      transform:translateY(-5px);
+      border-color:rgba(34,211,238,.32);
+      box-shadow:0 24px 80px rgba(34,211,238,.1);
+    }
+    .value-card:hover::after {
+      transform:scaleX(1);
     }
 
     .final-cta {
@@ -1833,6 +2338,30 @@
       0%,100% { transform:scale(.92); opacity:.72; }
       50% { transform:scale(1.28); opacity:1; }
     }
+    @keyframes particleFloat {
+      0%,100% { transform:translate3d(0,0,0) scale(.8); opacity:.35; }
+      40% { opacity:1; }
+      50% { transform:translate3d(28px,-34px,0) scale(1.18); }
+    }
+    @keyframes ringSpin {
+      to { transform:translate(-50%, -50%) rotateX(64deg) rotateZ(352deg); }
+    }
+    @keyframes coreBreath {
+      0%,100% { transform:translate(-50%, -50%) scale(.92); opacity:.62; }
+      50% { transform:translate(-50%, -50%) scale(1.08); opacity:1; }
+    }
+    @keyframes nodeTravel {
+      0%,100% { transform:translate3d(0,0,0) scale(.86); opacity:.56; }
+      50% { transform:translate3d(16px,-12px,0) scale(1.22); opacity:1; }
+    }
+    @keyframes pipelineRise {
+      0%,100% { transform:translateY(0); filter:saturate(1); }
+      50% { transform:translateY(-8px); filter:saturate(1.32); }
+    }
+    @keyframes laneSweep {
+      0%,100% { transform:translateX(-14px) scaleX(.8); opacity:.32; }
+      50% { transform:translateX(18px) scaleX(1.08); opacity:.86; }
+    }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
         animation-duration:.01ms !important;
@@ -1880,11 +2409,13 @@
       .story-beam::before { width:100%; height:2px; transform:none; }
       .real-segment-screen { grid-template-columns:1fr; }
       .timeline, .method-screen { position:relative; top:auto; }
+      .method-wrap { min-height:auto; }
       .method-dashboard { grid-template-columns:1fr; }
       .method-side { grid-template-columns:repeat(5, minmax(0,1fr)); border-right:0; border-bottom:1px solid rgba(148,163,184,.12); }
       .bento-grid { grid-template-columns:1fr 1fr; }
       .bento-card.large, .bento-card.tall { grid-column:auto; grid-row:auto; }
-      .product-grid, .value-grid { grid-template-columns:1fr; }
+      .product-card { grid-template-columns:1fr; }
+      .value-grid { grid-template-columns:1fr; }
       .footer-grid { grid-template-columns:1fr 1fr; }
     }
     @media (max-width:680px) {
@@ -1898,6 +2429,7 @@
       .os-scene { min-height:auto; }
       .roma-os-visual { min-height:auto; }
       .roma-os-visual::before { inset:0; opacity:.1; }
+      .particle-field, .scene-ring, .core-glow { display:none; }
       .os-connection-layer { display:none; }
       .os-dashboard {
         position:relative;
@@ -1921,6 +2453,11 @@
         animation:none;
       }
       .roma-os-visual .module-card { display:inline-grid; width:calc(50% - 6px); margin-right:6px; vertical-align:top; }
+      .mini-command-center { grid-template-columns:1fr 1fr; }
+      .mini-command-center span { min-height:58px; }
+      .automation-flow { display:grid; grid-template-columns:1fr; }
+      .automation-flow i { min-height:28px; width:2px; justify-self:center; }
+      .automation-flow i::after { right:50%; top:auto; bottom:-1px; transform:translateX(50%) rotate(135deg); }
       .hero-frame, .hero-frame img { min-height:430px; }
       .wide-showcase, .wide-showcase img { min-height:260px; }
       .showcase-caption { position:relative; left:auto; right:auto; bottom:auto; margin:10px; align-items:flex-start; flex-direction:column; }
@@ -2004,13 +2541,13 @@
             <span class="word" style="--i:0">Vamos</span>
             <span class="word" style="--i:1">desenhar</span>
             <span class="word" style="--i:2">o</span>
-            <span class="word" style="--i:3">sistema</span>
+            <span class="word gradient-text focus-word" style="--i:3">sistema</span>
             <span class="word" style="--i:4">que</span>
             <span class="word" style="--i:5">sua</span>
             <span class="word" style="--i:6">empresa</span>
-            <span class="word" style="--i:7">deveria</span>
-            <span class="word" style="--i:8">estar</span>
-            <span class="word gradient-text" style="--i:9">usando?</span>
+            <span class="word gradient-text focus-word" style="--i:7">deveria</span>
+            <span class="word gradient-text focus-word" style="--i:8">estar</span>
+            <span class="word gradient-text focus-word" style="--i:9">usando?</span>
           </h1>
           <p class="hero-copy">A Roma Solution cria sistemas sob medida para empresas que não cabem em software pronto. Transformamos planilhas, WhatsApp, processos manuais e controles espalhados em uma plataforma própria, clara e escalável.</p>
           <div class="hero-actions">
@@ -2029,13 +2566,21 @@
         </div>
 
         <div class="os-scene" aria-label="Sistema operacional empresarial Roma Solution">
+          <div class="particle-field" aria-hidden="true">
+            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          </div>
           <div class="roma-os-visual">
+            <div class="scene-ring ring-one" aria-hidden="true"></div>
+            <div class="scene-ring ring-two" aria-hidden="true"></div>
+            <div class="core-glow" aria-hidden="true"></div>
             <svg class="os-connection-layer" viewBox="0 0 680 620" fill="none" aria-hidden="true">
               <path d="M58 120C162 130 238 222 340 305C464 404 536 218 628 132"/>
               <path d="M70 486C186 408 252 410 340 305C428 200 526 430 624 476"/>
               <path d="M178 48C242 166 264 236 340 305C410 368 374 492 342 574"/>
               <path d="M134 304C244 302 282 310 340 305C448 296 476 250 566 270"/>
               <path d="M92 270C176 250 248 272 340 305C448 344 520 350 616 334"/>
+              <circle cx="340" cy="305" r="138"/>
+              <circle cx="340" cy="305" r="226"/>
             </svg>
 
             <div class="os-dashboard">
@@ -2074,6 +2619,9 @@
                 <div class="dash-widget">Operação<span></span></div>
                 <div class="dash-widget">Dados<span></span></div>
               </div>
+              <div class="dash-grid-flow" aria-hidden="true">
+                <i></i><i></i><i></i><i></i><i></i>
+              </div>
             </div>
 
             <div class="module-card mc-sales" data-icon="VD"><strong>Vendas</strong><span></span></div>
@@ -2095,7 +2643,13 @@
         <h2 class="reveal">Quando a empresa cresce, improviso vira gargalo.</h2>
         <p class="lead reveal">Se vendas, financeiro, atendimento, equipe e operação estão espalhados em ferramentas diferentes, o empresário perde controle. A Roma transforma essa rotina em uma plataforma própria, clara e conectada.</p>
         <div class="chaos-stage chaos-live reveal" id="chaosStory">
+          <svg class="chaos-lines" viewBox="0 0 1180 560" fill="none" aria-hidden="true">
+            <path d="M178 100 C360 96 450 176 578 280 C710 388 798 122 990 112"/>
+            <path d="M950 436 C760 432 696 332 578 280 C428 212 352 356 180 420"/>
+            <path d="M242 252 C386 232 474 246 578 280 C724 326 794 334 994 300"/>
+          </svg>
           <div class="chaos-cluster" aria-label="Operação antes da Roma Solution">
+            <div class="chaos-label">ANTES</div>
             <div class="chaos-item ci-1"><b>Planilha duplicada</b><small>Versões diferentes da mesma verdade</small></div>
             <div class="chaos-item ci-2"><b>WhatsApp perdido</b><small>Cliente, equipe e gestor sem histórico</small></div>
             <div class="chaos-item ci-3"><b>Tarefa sem dono</b><small>O processo depende de memória</small></div>
@@ -2103,7 +2657,7 @@
             <div class="chaos-item ci-5"><b>Documentos soltos</b><small>Informação importante fora do fluxo</small></div>
           </div>
 
-          <div class="story-beam" aria-hidden="true"><span>Roma</span></div>
+          <div class="story-beam" aria-hidden="true"><span>Roma</span><b></b><b></b><b></b></div>
 
           <div class="system-platform" aria-label="Operação reorganizada em plataforma Roma Solution">
             <div class="platform-header"><strong>Plataforma própria</strong><span>organizada</span></div>
@@ -2125,13 +2679,34 @@
         <h2 class="reveal">Criamos sistemas que se encaixam no seu processo, não o contrário.</h2>
         <p class="lead reveal">Cada empresa tem uma operação diferente. Por isso, a Roma Solution projeta sistemas próprios para o jeito real do seu negócio vender, atender, produzir, executar e crescer.</p>
         <div class="bento-grid">
-          <article class="bento-card large reveal"><div class="bento-icon">SG</div><h3>Sistemas de gestão</h3><p>Plataformas próprias para controlar vendas, operação, equipe, financeiro e processos críticos.</p><div class="mini-ui"><span></span><span></span><span></span></div></article>
-          <article class="bento-card reveal"><div class="bento-icon">CRM</div><h3>CRMs personalizados</h3><p>Funis, clientes, oportunidades, histórico e tarefas desenhados para seu modelo comercial.</p><div class="mini-table"><div><span>Lead</span><b>Qualificado</b></div><div><span>Proposta</span><b>Enviada</b></div></div></article>
-          <article class="bento-card tall reveal"><div class="bento-icon">ERP</div><h3>ERPs sob medida</h3><p>Módulos de estoque, contratos, compras, faturamento, ordens e rotinas internas.</p><div class="mini-table"><div><span>Estoque</span><b>Reservado</b></div><div><span>Contrato</span><b>Ativo</b></div><div><span>Faturamento</span><b>Pronto</b></div><div><span>Compras</span><b>Previsto</b></div></div></article>
-          <article class="bento-card reveal"><div class="bento-icon">DB</div><h3>Dashboards executivos</h3><p>Indicadores para enxergar gargalos, produtividade, receita e performance.</p><div class="mini-ui"><span></span><span></span></div></article>
-          <article class="bento-card reveal"><div class="bento-icon">APP</div><h3>Apps internos</h3><p>Ferramentas para operação, equipe externa, vendedores, gestores e atendimento.</p><div class="mini-table"><div><span>Campo</span><b>Online</b></div><div><span>Equipe</span><b>Sincronizada</b></div></div></article>
-          <article class="bento-card reveal"><div class="bento-icon">PT</div><h3>Portais para clientes</h3><p>Ambientes para solicitações, documentos, acompanhamento, pagamentos e suporte.</p><div class="mini-ui"><span></span><span></span><span></span></div></article>
-          <article class="bento-card large reveal"><div class="bento-icon">IA</div><h3>Automações, integrações e IA</h3><p>Fluxos que conectam ferramentas, reduzem trabalho manual e aplicam inteligência à operação.</p><div class="mini-table"><div><span>Evento</span><b>Venda aprovada</b></div><div><span>Ação</span><b>Criar tarefas + atualizar painel</b></div></div></article>
+          <article class="bento-card large reveal">
+            <div class="bento-icon">SG</div><h3>Sistemas de gestão</h3><p>Plataformas próprias para controlar vendas, operação, equipe, financeiro e processos críticos.</p>
+            <div class="mini-command-center"><span>Cliente</span><span>Venda</span><span>Operação</span><span>Financeiro</span><span>Gestão</span></div>
+          </article>
+          <article class="bento-card reveal">
+            <div class="bento-icon">CRM</div><h3>CRMs personalizados</h3><p>Funis, clientes, oportunidades, histórico e tarefas desenhados para seu modelo comercial.</p>
+            <div class="mini-pipeline"><i>Novo</i><i>Qualificado</i><i>Proposta</i><i>Fechamento</i></div>
+          </article>
+          <article class="bento-card tall reveal">
+            <div class="bento-icon">ERP</div><h3>ERPs sob medida</h3><p>Módulos de estoque, contratos, compras, faturamento, ordens e rotinas internas.</p>
+            <div class="mini-modules"><span>Estoque</span><span>Contratos</span><span>Compras</span><span>Faturamento</span><span>Ordens</span><span>Fiscal</span></div>
+          </article>
+          <article class="bento-card reveal">
+            <div class="bento-icon">DB</div><h3>Dashboards executivos</h3><p>Indicadores para enxergar gargalos, produtividade, receita e performance.</p>
+            <div class="mini-chart-bars"><i></i><i></i><i></i><i></i><i></i></div>
+          </article>
+          <article class="bento-card reveal">
+            <div class="bento-icon">APP</div><h3>Apps internos</h3><p>Ferramentas para operação, equipe externa, vendedores, gestores e atendimento.</p>
+            <div class="mini-phone"><span></span><b>Rotina do dia</b><i></i><i></i><i></i></div>
+          </article>
+          <article class="bento-card reveal">
+            <div class="bento-icon">PT</div><h3>Portais para clientes</h3><p>Ambientes para solicitações, documentos, acompanhamento, pagamentos e suporte.</p>
+            <div class="mini-portal"><span>Pedido</span><span>Documento</span><span>Suporte</span></div>
+          </article>
+          <article class="bento-card large reveal">
+            <div class="bento-icon">IA</div><h3>Automações, integrações e IA</h3><p>Fluxos que conectam ferramentas, reduzem trabalho manual e aplicam inteligência à operação.</p>
+            <div class="automation-flow"><span>Evento</span><i></i><span>Ação</span><i></i><span>Resultado</span></div>
+          </article>
         </div>
       </div>
     </section>
@@ -2155,11 +2730,13 @@
             <button type="button" data-segment="Equipes externas">Equipes externas</button>
           </div>
           <div class="segment-visual">
+            <div class="segment-orbit" aria-hidden="true"></div>
             <div class="segment-title"><strong id="segmentTitle">Varejo</strong><span>modelo adaptável</span></div>
             <div class="segment-screen real-segment-screen">
               <div class="segment-panel"><h4>Fluxos possíveis</h4><div class="segment-list" id="segmentList"></div></div>
               <div class="segment-mockup" aria-label="Mockup de sistema por segmento">
                 <div class="segment-mock-header"><strong id="segmentMockTitle">Operação de varejo</strong><span id="segmentMockBadge">Sistema sob medida</span></div>
+                <div class="segment-lanes" aria-hidden="true"><i></i><i></i><i></i></div>
                 <div class="segment-nodes" id="segmentNodes">
                   <div class="segment-node">Clientes</div>
                   <div class="segment-node">Pedidos</div>
@@ -2193,6 +2770,7 @@
             <div class="method-label" id="methodLabel">Diagnóstico</div>
             <div class="method-title" id="methodTitle">Mapa de problemas da operação</div>
             <p class="method-text" id="methodText">Entendemos objetivos, gargalos, ferramentas atuais, usuários e prioridades do negócio antes de desenhar qualquer tela.</p>
+            <div class="method-progress" aria-hidden="true"><span id="methodProgressBar"></span></div>
             <div class="method-dashboard">
               <div class="method-side" aria-hidden="true">
                 <span class="active">Processos</span>
@@ -2203,6 +2781,7 @@
               </div>
               <div class="method-workspace">
                 <h4 id="methodVisualTitle">Problemas virando mapa de decisão</h4>
+                <div class="method-stage-pill" id="methodStagePill">Cena 01 / Diagnóstico</div>
                 <div class="method-flow">
                   <div class="method-node n1" id="blockA">Processos soltos<small>origem do gargalo</small></div>
                   <div class="method-node n2" id="blockB">Fluxos conectados<small>ordem operacional</small></div>
@@ -2223,9 +2802,9 @@
         <h2 class="reveal">Produtos nascidos de problemas reais. Sistemas criados para qualquer operação.</h2>
         <p class="lead reveal">RomaSystem e DrawSecurity mostram como a Roma transforma dores específicas em produtos digitais. A mesma lógica pode ser aplicada a outros segmentos e operações.</p>
         <div class="product-grid">
-          <article class="product-card reveal"><h3>RomaSystem</h3><p>Gestão para empresas de segurança eletrônica: CRM, OS, estoque, financeiro, equipe e dashboards.</p><div class="product-tags"><span>CRM</span><span>OS</span><span>Estoque</span><span>Financeiro</span></div><div class="product-art romasystem"><img src="/assets/romasystem-showcase.png" alt="RomaSystem com dashboard e módulos conectados de CRM, orçamento, OS, agenda, estoque, financeiro, equipe, frota, contratos e dashboards" loading="lazy" decoding="async"><div class="product-flow"><span>Lead vira orçamento</span><span>OS entra na agenda</span><span>Gestão fecha o ciclo</span></div></div><a class="btn btn-primary" href="https://app.romasolution.com">Ver RomaSystem</a></article>
-          <article class="product-card reveal"><h3>DrawSecurity</h3><p>Ferramenta de campo para projetos, vistorias, IA, planta, memorial técnico e orçamento.</p><div class="product-tags"><span>Planta</span><span>IA</span><span>Memorial</span><span>Orçamento</span></div><div class="product-art drawsecurity"><img src="/assets/drawsecurity-showcase.png" alt="DrawSecurity com aplicativo mobile, planta técnica, câmeras, orçamento, memorial, proposta e visualização 3D" loading="lazy" decoding="async"><div class="product-flow"><span>Vistoria em campo</span><span>Projeto visual</span><span>Proposta pronta</span></div></div><a class="btn btn-primary" href="https://romasolution.com/drawsecurity/">Ver DrawSecurity</a></article>
-          <article class="product-card reveal"><h3>Sistemas sob medida</h3><p>Plataformas exclusivas para empresas que precisam de gestão própria, automações e dashboards específicos.</p><div class="product-tags"><span>ERP</span><span>Portal</span><span>App interno</span><span>Dashboard</span></div><div class="product-art sobmedida"><img src="/assets/roma-solutions-showcase.png" alt="Sistemas sob medida com módulos de CRM, ERP, portais, apps internos, automações, dashboards e IA" loading="lazy" decoding="async"><div class="product-flow"><span>Diagnóstico</span><span>Protótipo</span><span>Sistema próprio</span></div></div><a class="btn btn-secondary" href="https://wa.me/5513978099969?text=Ol%C3%A1%2C%20quero%20criar%20um%20sistema%20sob%20medida%20para%20minha%20empresa." target="_blank" rel="noopener">Criar meu sistema</a></article>
+          <article class="product-card reveal product-wide"><div class="product-copy"><span class="product-kicker">Produto vertical</span><h3>RomaSystem</h3><p>Gestão para empresas de segurança eletrônica: CRM, OS, estoque, financeiro, equipe e dashboards.</p><div class="product-tags"><span>CRM</span><span>OS</span><span>Estoque</span><span>Financeiro</span><span>Equipe</span><span>Contratos</span></div><a class="btn btn-primary" href="https://app.romasolution.com">Ver RomaSystem</a></div><div class="product-art romasystem"><img src="/assets/romasystem-showcase.png" alt="RomaSystem com dashboard e módulos conectados de CRM, orçamento, OS, agenda, estoque, financeiro, equipe, frota, contratos e dashboards" loading="lazy" decoding="async"><div class="product-flow"><span>Lead vira orçamento</span><span>OS entra na agenda</span><span>Gestão fecha o ciclo</span></div></div></article>
+          <article class="product-card reveal product-wide"><div class="product-copy"><span class="product-kicker">App de campo</span><h3>DrawSecurity</h3><p>Ferramenta de campo para projetos, vistorias, IA, planta, memorial técnico e orçamento.</p><div class="product-tags"><span>Planta</span><span>IA</span><span>Memorial</span><span>Orçamento</span><span>3D</span><span>Mobile</span></div><a class="btn btn-primary" href="https://romasolution.com/drawsecurity/">Ver DrawSecurity</a></div><div class="product-art drawsecurity"><img src="/assets/drawsecurity-showcase.png" alt="DrawSecurity com aplicativo mobile, planta técnica, câmeras, orçamento, memorial, proposta e visualização 3D" loading="lazy" decoding="async"><div class="product-flow"><span>Vistoria em campo</span><span>Projeto visual</span><span>Proposta pronta</span></div></div></article>
+          <article class="product-card reveal product-wide"><div class="product-copy"><span class="product-kicker">Projeto exclusivo</span><h3>Sistemas sob medida</h3><p>Plataformas exclusivas para empresas que precisam de gestão própria, automações e dashboards específicos.</p><div class="product-tags"><span>ERP</span><span>Portal</span><span>App interno</span><span>Dashboard</span><span>Automação</span><span>IA</span></div><a class="btn btn-secondary" href="https://wa.me/5513978099969?text=Ol%C3%A1%2C%20quero%20criar%20um%20sistema%20sob%20medida%20para%20minha%20empresa." target="_blank" rel="noopener">Criar meu sistema</a></div><div class="product-art sobmedida"><img src="/assets/roma-solutions-showcase.png" alt="Sistemas sob medida com módulos de CRM, ERP, portais, apps internos, automações, dashboards e IA" loading="lazy" decoding="async"><div class="product-flow"><span>Diagnóstico</span><span>Protótipo</span><span>Sistema próprio</span></div></div></article>
         </div>
       </div>
     </section>
@@ -2235,12 +2814,12 @@
         <div class="section-kicker reveal">Prova de valor</div>
         <h2 class="reveal">A Roma Solution não vende software pronto. Ela cria o sistema que a empresa deveria ter.</h2>
         <div class="value-grid">
-          <div class="value-card reveal">Sistema próprio, sem gambiarra.</div>
-          <div class="value-card reveal">Fluxos desenhados para sua operação.</div>
-          <div class="value-card reveal">Gestão, equipe e financeiro no mesmo lugar.</div>
-          <div class="value-card reveal">Dashboards para decisões reais.</div>
-          <div class="value-card reveal">Automações que reduzem trabalho manual.</div>
-          <div class="value-card reveal">Evolução contínua conforme a empresa cresce.</div>
+          <div class="value-card reveal"><span>01</span>Sistema próprio, sem gambiarra.</div>
+          <div class="value-card reveal"><span>02</span>Fluxos desenhados para sua operação.</div>
+          <div class="value-card reveal"><span>03</span>Gestão, equipe e financeiro no mesmo lugar.</div>
+          <div class="value-card reveal"><span>04</span>Dashboards para decisões reais.</div>
+          <div class="value-card reveal"><span>05</span>Automações que reduzem trabalho manual.</div>
+          <div class="value-card reveal"><span>06</span>Evolução contínua conforme a empresa cresce.</div>
         </div>
       </div>
     </section>
@@ -2296,7 +2875,7 @@
     const mobileMenu = document.getElementById('mobileMenu');
     const siteHeader = document.querySelector('.site-header');
     const magneticButtons = document.querySelectorAll('.btn');
-    const glowCards = document.querySelectorAll('.bento-card, .product-card, .value-card, .module-card, .platform-card, .segment-node, .method-node');
+    const glowSelector = '.bento-card, .product-card, .value-card, .module-card, .platform-card, .segment-node, .method-node';
 
     function updateHeader() {
       siteHeader?.classList.toggle('scrolled', window.scrollY > 12);
@@ -2332,11 +2911,27 @@
       });
     }
 
-    glowCards.forEach((card) => {
-      card.addEventListener('pointermove', (event) => {
-        const rect = card.getBoundingClientRect();
-        card.style.setProperty('--mx', `${event.clientX - rect.left}px`);
-        card.style.setProperty('--my', `${event.clientY - rect.top}px`);
+    function bindGlowCards(scope = document) {
+      scope.querySelectorAll(glowSelector).forEach((card) => {
+        if (card.dataset.glowBound) return;
+        card.dataset.glowBound = 'true';
+        card.addEventListener('pointermove', (event) => {
+          const rect = card.getBoundingClientRect();
+          card.style.setProperty('--mx', `${event.clientX - rect.left}px`);
+          card.style.setProperty('--my', `${event.clientY - rect.top}px`);
+        });
+      });
+    }
+    bindGlowCards();
+
+    document.querySelectorAll('.os-scene, .segment-mockup, .method-dashboard').forEach((panel) => {
+      panel.addEventListener('pointermove', (event) => {
+        if (reducedMotion || window.innerWidth < 900) return;
+        const rect = panel.getBoundingClientRect();
+        const x = (event.clientX - rect.left) / rect.width - .5;
+        const y = (event.clientY - rect.top) / rect.height - .5;
+        panel.style.setProperty('--tilt-x', `${y * -3}deg`);
+        panel.style.setProperty('--tilt-y', `${x * 4}deg`);
       });
     });
 
@@ -2410,13 +3005,17 @@
     const segmentMockTitle = document.getElementById('segmentMockTitle');
     const segmentMockBadge = document.getElementById('segmentMockBadge');
     const segmentNodes = document.getElementById('segmentNodes');
+    const segmentMockup = document.querySelector('.segment-mockup');
     function renderSegment(name) {
       const segment = segmentData[name];
+      segmentMockup?.classList.add('is-changing');
       segmentTitle.textContent = name;
       segmentMockTitle.textContent = segment.title;
       segmentMockBadge.textContent = `${name} sob medida`;
       segmentList.innerHTML = segment.items.map((item) => `<div>${item}</div>`).join('');
       segmentNodes.innerHTML = segment.nodes.map((item) => `<div class="segment-node">${item}</div>`).join('');
+      bindGlowCards(segmentNodes);
+      window.setTimeout(() => segmentMockup?.classList.remove('is-changing'), 260);
     }
     renderSegment('Varejo');
     document.querySelectorAll('.segment-tabs button').forEach((button) => {
@@ -2441,6 +3040,7 @@
     const methodText = document.getElementById('methodText');
     const methodScreen = document.querySelector('.method-screen');
     const methodVisualTitle = document.getElementById('methodVisualTitle');
+    const methodStagePill = document.getElementById('methodStagePill');
     const blockA = document.getElementById('blockA');
     const blockB = document.getElementById('blockB');
     const blockC = document.getElementById('blockC');
@@ -2458,6 +3058,10 @@
       methodTitle.textContent = step[1];
       methodText.textContent = step[2];
       methodVisualTitle.textContent = step[1];
+      methodStagePill.textContent = `Cena 0${index + 1} / ${step[0]}`;
+      document.querySelectorAll('.method-side span').forEach((item, itemIndex) => {
+        item.classList.toggle('active', itemIndex === index % 5);
+      });
       blockA.innerHTML = `${step[3]}<small>origem</small>`;
       blockB.innerHTML = `${step[4]}<small>conexão</small>`;
       blockC.innerHTML = `${step[5]}<small>validação</small>`;
