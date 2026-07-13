@@ -30,7 +30,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@600;700;800&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap">
 
   <script type="application/ld+json">
   {
@@ -47,7 +47,6 @@
   <style>
     :root {
       --bg:#050816;
-      --bg-2:#070a13;
       --panel:#0b1020;
       --panel-2:#0e162b;
       --ink:#f8fafc;
@@ -59,20 +58,20 @@
       --violet:#8b5cf6;
       --green:#00f5a0;
       --radius:18px;
-      --header:76px;
+      --header:72px;
     }
 
     * { box-sizing:border-box; margin:0; padding:0; }
     html { scroll-behavior:smooth; }
     body {
-      min-height:100vh;
+      min-height:100dvh;
       overflow-x:hidden;
       color:var(--ink);
       background:
-        radial-gradient(circle at 18% 8%, rgba(59,130,246,.26), transparent 28rem),
-        radial-gradient(circle at 84% 12%, rgba(139,92,246,.24), transparent 25rem),
-        radial-gradient(circle at 58% 58%, rgba(34,211,238,.08), transparent 32rem),
-        linear-gradient(180deg, #050816 0%, #070a13 50%, #050816 100%);
+        radial-gradient(circle at 16% 6%, rgba(59,130,246,.25), transparent 30rem),
+        radial-gradient(circle at 86% 14%, rgba(139,92,246,.22), transparent 26rem),
+        radial-gradient(circle at 60% 80%, rgba(34,211,238,.09), transparent 32rem),
+        linear-gradient(180deg, #050816 0%, #070a13 55%, #050816 100%);
       font-family:Inter, system-ui, sans-serif;
       line-height:1.6;
     }
@@ -80,51 +79,17 @@
       content:"";
       position:fixed;
       inset:0;
-      z-index:-2;
+      z-index:-1;
       background-image:
         linear-gradient(rgba(148,163,184,.05) 1px, transparent 1px),
         linear-gradient(90deg, rgba(148,163,184,.05) 1px, transparent 1px);
       background-size:72px 72px;
-      mask-image:linear-gradient(to bottom, black 0%, transparent 76%);
+      mask-image:linear-gradient(to bottom, black 0%, transparent 82%);
       pointer-events:none;
     }
-    body::after {
-      content:"";
-      position:fixed;
-      inset:0;
-      z-index:-1;
-      background:radial-gradient(circle at 50% 15%, rgba(255,255,255,.06), transparent 24rem);
-      pointer-events:none;
-    }
-    a { color:inherit; text-decoration:none; }
-    img { display:block; max-width:100%; height:auto; }
-    button, input { font:inherit; }
-    .container { width:min(1180px, calc(100% - 40px)); margin:0 auto; }
 
-    .site-header {
-      position:fixed;
-      inset:0 0 auto;
-      z-index:50;
-      height:var(--header);
-      border-bottom:1px solid rgba(148,163,184,.12);
-      background:rgba(5,8,22,.62);
-      backdrop-filter:blur(22px);
-      transition:background .24s ease, border-color .24s ease, box-shadow .24s ease;
-    }
-    .site-header.scrolled {
-      border-color:rgba(34,211,238,.16);
-      background:rgba(5,8,22,.84);
-      box-shadow:0 18px 60px rgba(0,0,0,.28);
-    }
-    .header-inner {
-      height:100%;
-      width:min(1240px, calc(100% - 32px));
-      margin:0 auto;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:20px;
-    }
+    a { color:inherit; text-decoration:none; }
+    button { font:inherit; color:inherit; background:none; border:0; cursor:pointer; }
     .sr-only {
       position:absolute;
       width:1px;
@@ -136,3013 +101,1755 @@
       white-space:nowrap;
       border:0;
     }
-    .logo {
-      font-family:"Space Grotesk", Inter, sans-serif;
-      font-weight:800;
-      font-size:1.16rem;
-      letter-spacing:.01em;
-      white-space:nowrap;
-      display:inline-flex;
+
+    /* ---------- header ---------- */
+    .site-header {
+      position:fixed;
+      inset:0 0 auto 0;
+      height:var(--header);
+      display:flex;
       align-items:center;
-      width:212px;
-      height:58px;
-      flex:0 0 auto;
+      z-index:40;
+      background:rgba(5,8,22,.72);
+      backdrop-filter:blur(18px);
+      border-bottom:1px solid rgba(148,163,184,.1);
+    }
+    .header-inner {
+      width:min(1200px, 100% - 40px);
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
     }
     .logo img {
       display:block;
-      width:100%;
-      height:100%;
-      object-fit:contain;
-      object-position:left center;
-      filter:drop-shadow(0 0 18px rgba(34,211,238,.16));
+      width:190px;
+      height:auto;
+      filter:drop-shadow(0 0 16px rgba(34,211,238,.15));
     }
-    .nav-links, .header-actions { display:flex; align-items:center; gap:18px; }
-    .nav-links { color:#b7c2d2; font-size:.88rem; font-weight:700; }
-    .nav-links a:hover { color:#fff; }
-    .mobile-toggle, .mobile-menu { display:none; }
-
+    .header-actions { display:flex; align-items:center; gap:10px; }
     .btn {
-      min-height:46px;
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      gap:9px;
-      padding:0 16px;
-      border:1px solid transparent;
+      gap:8px;
+      padding:11px 22px;
       border-radius:999px;
-      font-weight:850;
-      font-size:.9rem;
-      transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease, background .22s ease;
-      cursor:pointer;
-      will-change:transform;
+      font-weight:700;
+      font-size:.95rem;
+      white-space:nowrap;
+      transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
     }
-    .btn:hover { transform:translateY(-2px); }
     .btn-primary {
-      color:#fff;
-      background:linear-gradient(135deg, var(--blue), var(--violet));
-      box-shadow:0 18px 50px rgba(59,130,246,.28);
+      background:linear-gradient(120deg, var(--blue), var(--violet));
+      box-shadow:0 10px 28px rgba(59,130,246,.32);
     }
-    .btn-secondary {
-      color:#e2e8f0;
-      border-color:rgba(148,163,184,.22);
-      background:rgba(255,255,255,.06);
-      backdrop-filter:blur(14px);
+    .btn-primary:hover { transform:translateY(-2px); box-shadow:0 14px 34px rgba(139,92,246,.4); }
+    .btn-ghost {
+      border:1px solid var(--line);
+      background:rgba(11,16,32,.55);
+      color:var(--muted);
     }
-    .btn-secondary:hover { border-color:rgba(34,211,238,.34); background:rgba(34,211,238,.08); }
-    .section { padding:110px 0; position:relative; }
-    .section-kicker {
-      color:#86efff;
-      font-size:.78rem;
-      font-weight:900;
-      letter-spacing:.12em;
+    .btn-ghost:hover { color:var(--ink); border-color:rgba(148,163,184,.4); }
+
+    /* ---------- palco único ---------- */
+    .stage {
+      min-height:100dvh;
+      padding:calc(var(--header) + 34px) 0 26px;
+      display:flex;
+      flex-direction:column;
+    }
+    .stage-grid {
+      width:min(1200px, 100% - 40px);
+      margin:auto;
+      display:grid;
+      grid-template-columns:minmax(0, 1.02fr) minmax(0, .98fr);
+      align-items:center;
+      gap:44px;
+    }
+
+    .eyebrow {
+      display:inline-flex;
+      align-items:center;
+      gap:9px;
+      padding:8px 16px;
+      border-radius:999px;
+      border:1px solid rgba(34,211,238,.28);
+      background:rgba(11,16,32,.6);
+      color:#a5f3fc;
+      font-size:.72rem;
+      font-weight:700;
+      letter-spacing:.14em;
       text-transform:uppercase;
-      margin-bottom:14px;
     }
-    h1, h2, h3 {
-      font-family:"Space Grotesk", Inter, sans-serif;
-      line-height:1.02;
-      letter-spacing:-.04em;
+    .eyebrow::before {
+      content:"";
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:var(--green);
+      box-shadow:0 0 12px var(--green);
+      animation:pulse 2.4s ease-in-out infinite;
     }
+    @keyframes pulse { 50% { opacity:.45; } }
+
     h1 {
-      max-width:840px;
-      font-size:clamp(3rem, 4.7vw, 5rem);
-      margin-bottom:22px;
+      margin:20px 0 16px;
+      font-family:"Space Grotesk", Inter, sans-serif;
+      font-size:clamp(2.1rem, 4.6vw, 3.6rem);
+      line-height:1.06;
+      letter-spacing:-.02em;
+      font-weight:800;
     }
-    .hero-title .word {
-      display:inline-block;
-      opacity:0;
-      transform:translateY(24px);
-      filter:blur(10px);
-      animation:wordIn .8s cubic-bezier(.16,1,.3,1) forwards;
-      animation-delay:calc(var(--i) * 70ms + 180ms);
-    }
-    h2 {
-      max-width:830px;
-      font-size:clamp(2.2rem, 4.5vw, 4.8rem);
-      margin-bottom:18px;
-    }
-    h3 { font-size:1.35rem; letter-spacing:-.02em; }
-    .lead {
-      max-width:760px;
-      color:#b8c4d5;
-      font-size:1.12rem;
-    }
-    .gradient-text {
-      background:linear-gradient(135deg, #fff 0%, #9bd8ff 45%, #b9a6ff 72%, #83ffe0 100%);
+    .grad {
+      background:linear-gradient(100deg, #93c5fd, var(--cyan) 45%, var(--violet));
       -webkit-background-clip:text;
       background-clip:text;
       color:transparent;
     }
-    .focus-word {
-      position:relative;
-      text-shadow:0 0 34px rgba(34,211,238,.12);
+    .lede {
+      max-width:520px;
+      color:var(--muted);
+      font-size:1.06rem;
     }
+    .hero-ctas { display:flex; flex-wrap:wrap; gap:12px; margin-top:26px; }
 
-    .hero {
-      min-height:100vh;
-      display:grid;
-      align-items:center;
-      padding:calc(var(--header) + 54px) 0 70px;
-      position:relative;
-      overflow:hidden;
-    }
-    .hero::before {
-      content:"";
-      position:absolute;
-      width:760px;
-      height:760px;
-      right:-260px;
-      top:70px;
-      border-radius:50%;
-      background:radial-gradient(circle, rgba(59,130,246,.22), transparent 63%);
-      filter:blur(8px);
-      pointer-events:none;
-      animation:auroraPulse 10s ease-in-out infinite alternate;
-    }
-    .hero::after {
-      content:"";
-      position:absolute;
-      inset:8% -8% auto -8%;
-      height:70%;
-      background:
-        radial-gradient(ellipse at 30% 28%, rgba(34,211,238,.14), transparent 34%),
-        radial-gradient(ellipse at 72% 34%, rgba(139,92,246,.16), transparent 38%),
-        linear-gradient(115deg, transparent 0%, rgba(59,130,246,.08) 42%, transparent 74%);
-      filter:blur(22px);
-      opacity:.78;
-      pointer-events:none;
-      animation:auroraDrift 16s ease-in-out infinite alternate;
-    }
-    .hero-grid {
-      position:relative;
-      display:grid;
-      grid-template-columns:minmax(0, 1fr) minmax(520px, 1fr);
-      gap:26px;
-      align-items:center;
-    }
-    .eyebrow {
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      margin-bottom:18px;
-      padding:8px 12px;
-      border:1px solid rgba(34,211,238,.22);
-      border-radius:999px;
-      color:#c8f7ff;
-      background:rgba(34,211,238,.08);
-      font-weight:900;
-      font-size:.78rem;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-    }
-    .eyebrow i {
-      width:8px;
-      height:8px;
-      border-radius:50%;
-      background:var(--green);
-      box-shadow:0 0 0 6px rgba(0,245,160,.12), 0 0 28px rgba(0,245,160,.8);
-    }
-    .hero-copy {
-      max-width:760px;
-      color:#c5cfdf;
-      font-size:1.16rem;
-      margin-bottom:26px;
-    }
-    .hero-proof {
+    .hint {
       display:flex;
-      flex-wrap:wrap;
+      align-items:center;
       gap:10px;
-      margin-top:26px;
+      margin-top:30px;
+      color:#7dd3fc;
+      font-size:.9rem;
+      font-weight:600;
     }
-    .hero-proof span {
-      padding:9px 12px;
-      border:1px solid rgba(148,163,184,.18);
-      border-radius:999px;
-      color:#cbd5e1;
-      background:rgba(255,255,255,.045);
-      font-size:.82rem;
-      font-weight:800;
+    .hint svg { flex:none; animation:nudge 2.2s ease-in-out infinite; }
+    @keyframes nudge { 50% { transform:translateX(6px); } }
+    .hint .touch-label { display:none; }
+    @media (hover:none) {
+      .hint .mouse-label { display:none; }
+      .hint .touch-label { display:inline; }
     }
 
-    .os-scene {
+    /* ---------- mapa de módulos ---------- */
+    .os-map {
       position:relative;
-      min-height:620px;
-      perspective:1200px;
-      transform-style:preserve-3d;
-      transition:transform .18s ease-out;
-      margin-top:-24px;
+      aspect-ratio:1 / 1;
+      max-width:560px;
+      margin-inline:auto;
+      width:100%;
+      transform:perspective(1000px) rotateX(var(--tx, 0deg)) rotateY(var(--ty, 0deg));
+      transition:transform .35s ease;
     }
-    .particle-field {
+    .os-map svg.wires {
       position:absolute;
       inset:0;
-      z-index:0;
-      pointer-events:none;
-      overflow:hidden;
-      opacity:.78;
-    }
-    .particle-field i {
-      position:absolute;
-      width:5px;
-      height:5px;
-      border-radius:50%;
-      background:rgba(34,211,238,.84);
-      box-shadow:0 0 22px rgba(34,211,238,.9);
-      animation:particleFloat 9s ease-in-out infinite;
-    }
-    .particle-field i:nth-child(1) { left:14%; top:12%; animation-delay:-1s; }
-    .particle-field i:nth-child(2) { left:42%; top:4%; background:rgba(139,92,246,.86); animation-delay:-3s; }
-    .particle-field i:nth-child(3) { right:16%; top:18%; animation-delay:-5s; }
-    .particle-field i:nth-child(4) { left:8%; bottom:24%; background:rgba(0,245,160,.72); animation-delay:-2.4s; }
-    .particle-field i:nth-child(5) { right:8%; bottom:18%; animation-delay:-6s; }
-    .particle-field i:nth-child(6) { left:54%; bottom:4%; background:rgba(139,92,246,.78); animation-delay:-4.8s; }
-    .particle-field i:nth-child(7) { left:70%; top:46%; animation-delay:-7.2s; }
-    .particle-field i:nth-child(8) { left:24%; top:52%; background:rgba(0,245,160,.7); animation-delay:-8s; }
-    .roma-os-visual {
-      position:relative;
-      min-height:620px;
-      transform-style:preserve-3d;
-      isolation:isolate;
-    }
-    .roma-os-visual::before {
-      content:"";
-      position:absolute;
-      inset:2% -4% 0 8%;
-      z-index:-2;
-      background:url("/assets/roma-os-hero.webp") right center / cover no-repeat;
-      opacity:.16;
-      filter:saturate(1.2) blur(1px);
-      mask-image:linear-gradient(90deg, transparent 0%, black 26%, black 72%, transparent 100%);
-      pointer-events:none;
-    }
-    .roma-os-visual::after {
-      content:"";
-      position:absolute;
-      inset:18% 4% 10% 12%;
-      z-index:-1;
-      border-radius:50%;
-      background:
-        radial-gradient(circle, rgba(34,211,238,.2), transparent 56%),
-        radial-gradient(circle at 70% 45%, rgba(139,92,246,.22), transparent 46%);
-      filter:blur(22px);
-      animation:auroraPulse 9s ease-in-out infinite alternate;
-    }
-    .scene-ring,
-    .core-glow {
-      position:absolute;
-      left:50%;
-      top:50%;
-      pointer-events:none;
-      transform:translate(-50%, -50%);
-      border-radius:50%;
-    }
-    .scene-ring {
-      z-index:0;
-      width:620px;
-      height:420px;
-      border:1px solid rgba(34,211,238,.14);
-      box-shadow:0 0 70px rgba(34,211,238,.08), inset 0 0 40px rgba(139,92,246,.08);
-      transform:translate(-50%, -50%) rotateX(64deg) rotateZ(-8deg);
-      animation:ringSpin 24s linear infinite;
-    }
-    .ring-two {
-      width:760px;
-      height:500px;
-      border-color:rgba(139,92,246,.12);
-      animation-duration:34s;
-      animation-direction:reverse;
-    }
-    .core-glow {
-      z-index:0;
-      width:520px;
-      height:360px;
-      background:radial-gradient(circle, rgba(34,211,238,.22), rgba(139,92,246,.14) 38%, transparent 72%);
-      filter:blur(22px);
-      opacity:.85;
-      animation:coreBreath 7s ease-in-out infinite;
-    }
-    .os-connection-layer {
-      position:absolute;
-      inset:0;
-      z-index:0;
       width:100%;
       height:100%;
-      opacity:.78;
       pointer-events:none;
     }
-    .os-connection-layer path,
-    .os-connection-layer circle {
-      stroke:rgba(34,211,238,.42);
-      stroke-width:1.4;
-      stroke-dasharray:8 12;
-      animation:dash 13s linear infinite;
-      filter:drop-shadow(0 0 8px rgba(34,211,238,.45));
-    }
-    .os-connection-layer circle {
-      stroke:rgba(139,92,246,.25);
+    .os-map svg.wires line {
+      stroke:rgba(96,165,250,.16);
       stroke-width:1;
-      stroke-dasharray:5 16;
-      animation-duration:20s;
     }
-    .os-dashboard {
+    .os-map svg.wires line.lit {
+      stroke:url(#wire-grad);
+      stroke-width:1.6;
+      filter:drop-shadow(0 0 6px rgba(34,211,238,.5));
+    }
+    .wires circle.pulse {
+      fill:#22d3ee;
+      opacity:0;
+      filter:drop-shadow(0 0 4px rgba(34,211,238,.95));
+      pointer-events:none;
+    }
+
+    /* alvos internos das animações de entrada (criados via JS) */
+    .node-core {
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+      gap:3px;
+    }
+    .hub-burst {
+      position:absolute;
+      inset:-5px;
+      border-radius:32px;
+      border:1.5px solid rgba(34,211,238,.85);
+      box-shadow:0 0 24px rgba(34,211,238,.35);
+      opacity:0;
+      pointer-events:none;
+    }
+    h1 .word { display:inline-block; }
+
+    .hub {
       position:absolute;
       left:50%;
       top:50%;
-      z-index:2;
-      width:min(560px, 86%);
-      min-height:370px;
-      transform:translate(-50%, -50%) rotateX(58deg) rotateZ(-9deg);
-      transform-style:preserve-3d;
-      border:1px solid rgba(148,163,184,.24);
-      border-radius:30px;
-      background:
-        linear-gradient(145deg, rgba(255,255,255,.13), rgba(255,255,255,.035)),
-        radial-gradient(circle at 15% 20%, rgba(34,211,238,.2), transparent 34%),
-        rgba(8,13,28,.88);
-      box-shadow:0 54px 130px rgba(0,0,0,.48), 0 0 80px rgba(59,130,246,.16), inset 0 1px 0 rgba(255,255,255,.13);
-      overflow:hidden;
-      backdrop-filter:blur(18px);
-      animation:floatCore 7s ease-in-out infinite;
+      transform:translate(-50%, -50%);
+      width:150px;
+      height:150px;
+      display:grid;
+      place-items:center;
+      text-align:center;
+      border-radius:28px;
+      background:linear-gradient(160deg, rgba(30,41,72,.92), rgba(11,16,32,.94));
+      border:1px solid rgba(96,165,250,.35);
+      box-shadow:0 0 60px rgba(59,130,246,.25), inset 0 0 30px rgba(59,130,246,.08);
     }
-    .os-dashboard::before {
+    /* halo pré-pintado respirando via opacity (barato: sem repaint de sombra) */
+    .hub::after {
       content:"";
       position:absolute;
-      inset:0;
-      background-image:
-        linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
-      background-size:38px 38px;
-      mask-image:linear-gradient(to bottom, black 0%, transparent 86%);
+      inset:-16px;
+      border-radius:36px;
+      box-shadow:0 0 80px rgba(139,92,246,.3);
+      opacity:.35;
       pointer-events:none;
+      animation:breathe 5s ease-in-out infinite;
     }
-    .os-dashboard::after {
-      content:"";
-      position:absolute;
-      inset:-1px;
-      border-radius:inherit;
-      background:linear-gradient(120deg, transparent, rgba(34,211,238,.24), rgba(139,92,246,.2), transparent);
-      opacity:.62;
-      pointer-events:none;
-      mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-      -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-      -webkit-mask-composite:xor;
-      mask-composite:exclude;
-      padding:1px;
+    @keyframes breathe { 50% { opacity:1; } }
+    .hub strong {
+      font-family:"Space Grotesk", Inter, sans-serif;
+      font-size:1rem;
+      letter-spacing:.01em;
+      white-space:nowrap;
     }
-    .os-dashboard:hover {
-      box-shadow:0 64px 150px rgba(0,0,0,.54), 0 0 110px rgba(34,211,238,.2), inset 0 1px 0 rgba(255,255,255,.16);
-    }
-    .dash-window-bar,
-    .dash-content,
-    .dash-dock {
-      position:relative;
-      z-index:1;
-    }
-    .dash-window-bar {
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:16px;
-      padding:16px 18px;
-      border-bottom:1px solid rgba(148,163,184,.13);
-      color:#dbeafe;
-      font-weight:950;
-      font-size:.84rem;
-    }
-    .dash-dots {
-      display:flex;
-      gap:7px;
-    }
-    .dash-dots i {
-      width:8px;
-      height:8px;
-      border-radius:50%;
-      background:rgba(148,163,184,.5);
-    }
-    .dash-dots i:nth-child(1) { background:#22d3ee; }
-    .dash-dots i:nth-child(2) { background:#8b5cf6; }
-    .dash-dots i:nth-child(3) { background:#00f5a0; }
-    .dash-content {
-      display:grid;
-      grid-template-columns:1.1fr .9fr;
-      gap:16px;
-      padding:18px;
-    }
-    .live-chart,
-    .ops-list,
-    .dash-widget,
-    .dash-flow-card {
-      border:1px solid rgba(148,163,184,.14);
-      border-radius:18px;
-      background:rgba(255,255,255,.045);
-      box-shadow:inset 0 1px 0 rgba(255,255,255,.06);
-    }
-    .live-chart {
-      min-height:180px;
-      padding:16px;
-      overflow:hidden;
-    }
-    .chart-title {
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      margin-bottom:14px;
-      color:#e2e8f0;
-      font-size:.82rem;
-      font-weight:900;
-    }
-    .chart-title span { color:#86efff; }
-    .live-chart svg {
-      width:100%;
-      height:122px;
-      overflow:visible;
-    }
-    .chart-line {
-      fill:none;
-      stroke:url(#chartGradient);
-      stroke-width:4;
-      stroke-linecap:round;
-      stroke-dasharray:420;
-      stroke-dashoffset:420;
-      animation:drawLine 3.8s ease-in-out infinite alternate;
-      filter:drop-shadow(0 0 12px rgba(34,211,238,.52));
-    }
-    .chart-area {
-      fill:url(#areaGradient);
-      opacity:.55;
-    }
-    .ops-list {
-      padding:14px;
-      display:grid;
-      gap:10px;
-    }
-    .ops-list div {
-      display:flex;
-      justify-content:space-between;
-      gap:12px;
-      padding:10px;
-      border-radius:13px;
-      color:#cbd5e1;
-      background:rgba(255,255,255,.045);
-      font-size:.78rem;
-      font-weight:800;
-    }
-    .ops-list b { color:#fff; }
-    .dash-dock {
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:10px;
-      padding:0 18px 18px;
-    }
-    .dash-widget {
-      min-height:76px;
-      padding:12px;
-      color:#dbeafe;
-      font-size:.78rem;
-      font-weight:900;
-    }
-    .dash-widget span {
-      display:block;
-      height:8px;
-      width:70%;
-      margin-top:12px;
-      border-radius:999px;
-      background:linear-gradient(90deg, var(--blue), var(--cyan));
-      animation:barPulse 3.2s ease-in-out infinite;
-    }
-    .dash-widget:nth-child(2) span { width:58%; background:linear-gradient(90deg, var(--violet), var(--blue)); animation-delay:-1s; }
-    .dash-widget:nth-child(3) span { width:82%; background:linear-gradient(90deg, var(--green), var(--cyan)); animation-delay:-2s; }
-    .dash-grid-flow {
-      position:absolute;
-      inset:0;
-      z-index:0;
-      pointer-events:none;
-    }
-    .dash-grid-flow i {
-      position:absolute;
-      width:11px;
-      height:11px;
-      border-radius:50%;
+    .hub span { display:block; color:var(--muted); font-size:.72rem; margin-top:2px; }
+    .hub .dot-row { display:flex; gap:5px; justify-content:center; margin-top:8px; }
+    .hub .dot-row i {
+      width:6px; height:6px; border-radius:50%;
       background:var(--cyan);
-      box-shadow:0 0 0 8px rgba(34,211,238,.08), 0 0 26px rgba(34,211,238,.76);
-      animation:nodeTravel 6s ease-in-out infinite;
+      animation:pulse 1.8s ease-in-out infinite;
     }
-    .dash-grid-flow i:nth-child(1) { left:18%; top:28%; }
-    .dash-grid-flow i:nth-child(2) { left:48%; top:20%; animation-delay:-1.2s; background:var(--violet); }
-    .dash-grid-flow i:nth-child(3) { right:22%; top:42%; animation-delay:-2.4s; }
-    .dash-grid-flow i:nth-child(4) { left:34%; bottom:24%; animation-delay:-3.6s; background:var(--green); }
-    .dash-grid-flow i:nth-child(5) { right:18%; bottom:22%; animation-delay:-4.8s; background:var(--violet); }
-    .module-card {
+    .hub .dot-row i:nth-child(2) { background:var(--violet); animation-delay:.3s; }
+    .hub .dot-row i:nth-child(3) { background:var(--green); animation-delay:.6s; }
+
+    .node {
       position:absolute;
-      z-index:3;
-      min-width:132px;
-      padding:12px 13px;
-      border:1px solid rgba(34,211,238,.24);
-      border-radius:18px;
-      background:rgba(8,13,28,.72);
-      box-shadow:0 18px 55px rgba(0,0,0,.3), 0 0 40px rgba(34,211,238,.08), inset 0 1px 0 rgba(255,255,255,.1);
-      backdrop-filter:blur(16px);
-      transform:translateZ(24px);
-      animation:floatModule 5.6s ease-in-out infinite;
+      left:calc(var(--x) * 1%);
+      top:calc(var(--y) * 1%);
+      transform:translate(-50%, -50%);
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+      gap:3px;
+      min-width:118px;
+      padding:12px 15px;
+      border-radius:15px;
+      background:linear-gradient(160deg, rgba(20,28,52,.92), rgba(11,16,32,.9));
+      border:1px solid var(--line);
+      box-shadow:0 12px 30px rgba(2,6,23,.45);
+      text-align:left;
+      transition:border-color .18s ease, box-shadow .18s ease, transform .18s ease;
+      animation:float 7s ease-in-out infinite;
+      animation-delay:var(--d, 0s);
     }
-    .module-card:hover {
-      border-color:rgba(34,211,238,.5);
-      box-shadow:0 26px 80px rgba(34,211,238,.16), inset 0 1px 0 rgba(255,255,255,.16);
+    @keyframes float {
+      50% { transform:translate(-50%, calc(-50% - 7px)); }
     }
-    .module-card strong {
-      display:block;
-      color:#fff;
-      font-size:.82rem;
-      line-height:1.1;
+    .node .tag {
+      font-size:.62rem;
+      font-weight:800;
+      letter-spacing:.12em;
+      color:var(--cyan);
     }
-    .module-card span {
-      display:block;
-      width:72%;
-      height:7px;
-      margin-top:10px;
-      border-radius:999px;
-      background:rgba(148,163,184,.22);
-      position:relative;
+    .node .name { font-weight:700; font-size:.92rem; line-height:1.25; }
+    .node .bar {
+      width:64px;
+      height:4px;
+      border-radius:99px;
+      margin-top:6px;
+      background:rgba(148,163,184,.18);
       overflow:hidden;
     }
-    .module-card span::before {
+    .node .bar::after {
       content:"";
-      position:absolute;
-      inset:0;
+      display:block;
+      height:100%;
       width:62%;
       border-radius:inherit;
       background:linear-gradient(90deg, var(--blue), var(--cyan));
-      animation:barPulse 3s ease-in-out infinite;
     }
-    .module-card::before {
-      content:attr(data-icon);
-      display:grid;
-      place-items:center;
-      width:30px;
-      height:30px;
-      margin-bottom:10px;
-      border-radius:11px;
-      color:#a5f3fc;
-      background:rgba(34,211,238,.1);
-      box-shadow:0 0 22px rgba(34,211,238,.18);
-      font-size:.78rem;
-      font-weight:950;
+    .node:hover, .node:focus-visible, .node.active {
+      border-color:rgba(34,211,238,.55);
+      box-shadow:0 0 0 1px rgba(34,211,238,.28), 0 16px 40px rgba(34,211,238,.16);
+      transform:translate(-50%, -50%) scale(1.05);
+      animation-play-state:paused;
+      z-index:5;
     }
-    .mc-sales { left:2%; top:12%; }
-    .mc-clients { left:40%; top:0; animation-delay:-1.1s; }
-    .mc-finance { right:1%; top:12%; animation-delay:-2.2s; }
-    .mc-team { right:0; top:42%; animation-delay:-3s; }
-    .mc-operation { right:6%; bottom:10%; animation-delay:-1.7s; }
-    .mc-stock { left:39%; bottom:0; animation-delay:-2.8s; }
-    .mc-ai { left:2%; bottom:14%; animation-delay:-.8s; }
-    .mc-auto { left:0; top:44%; animation-delay:-2.5s; }
-    .connection-layer {
-      position:absolute;
-      inset:0;
-      opacity:.86;
+    .node:focus-visible { outline:2px solid var(--cyan); outline-offset:3px; }
+
+    .products-row {
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      align-items:center;
+      gap:10px;
+      margin-top:18px;
+      color:var(--muted);
+      font-size:.82rem;
     }
-    .connection-layer path {
-      stroke:rgba(34,211,238,.46);
-      stroke-width:1.2;
-      stroke-dasharray:7 11;
-      animation:dash 12s linear infinite;
-      filter:drop-shadow(0 0 8px rgba(34,211,238,.5));
+    .chip {
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:9px 16px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(11,16,32,.6);
+      font-weight:700;
+      font-size:.88rem;
+      transition:border-color .18s ease, box-shadow .18s ease, transform .18s ease;
     }
-    .core-panel {
-      position:absolute;
-      left:50%;
-      top:50%;
-      width:min(560px, 92%);
-      min-height:360px;
-      transform:translate(-50%, -50%) rotateX(58deg) rotateZ(-10deg);
-      border:1px solid rgba(148,163,184,.22);
-      border-radius:28px;
-      background:
-        linear-gradient(145deg, rgba(255,255,255,.13), rgba(255,255,255,.035)),
-        radial-gradient(circle at 20% 20%, rgba(34,211,238,.16), transparent 38%),
-        rgba(11,16,32,.78);
-      box-shadow:0 48px 120px rgba(0,0,0,.44), inset 0 1px 0 rgba(255,255,255,.12);
-      backdrop-filter:blur(18px);
-      overflow:hidden;
-      animation:floatCore 7s ease-in-out infinite;
+    .chip .dot { width:7px; height:7px; border-radius:50%; background:var(--violet); box-shadow:0 0 10px var(--violet); }
+    .chip[data-key="drawsecurity"] .dot { background:var(--green); box-shadow:0 0 10px var(--green); }
+    .chip:hover, .chip:focus-visible, .chip.active {
+      border-color:rgba(139,92,246,.55);
+      box-shadow:0 10px 26px rgba(139,92,246,.2);
+      transform:translateY(-2px);
     }
-    .core-panel::before {
-      content:"";
-      position:absolute;
-      inset:0;
-      background-image:
-        linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px);
-      background-size:42px 42px;
-      mask-image:linear-gradient(to bottom, black, transparent 92%);
-    }
-    .core-panel::after {
-      content:"";
-      position:absolute;
-      inset:-1px;
-      padding:1px;
-      border-radius:inherit;
-      background:linear-gradient(120deg, transparent, rgba(34,211,238,.22), rgba(139,92,246,.18), transparent);
-      -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-      -webkit-mask-composite:xor;
-      mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-      mask-composite:exclude;
-      opacity:.55;
+    .chip:focus-visible { outline:2px solid var(--violet); outline-offset:3px; }
+
+    /* ---------- popup ---------- */
+    .popover {
+      position:fixed;
+      z-index:60;
+      width:min(360px, calc(100vw - 32px));
+      max-height:calc(100dvh - 32px);
+      overflow:auto;
+      padding:22px;
+      border-radius:var(--radius);
+      background:linear-gradient(165deg, #18213d, #0a0e1e);
+      border:1px solid rgba(96,165,250,.35);
+      box-shadow:0 30px 70px rgba(2,6,23,.65), 0 0 40px rgba(59,130,246,.12);
+      opacity:0;
+      visibility:hidden;
+      transform:translateY(8px) scale(.97);
+      transition:opacity .18s ease, transform .18s ease, visibility .18s;
       pointer-events:none;
     }
-    .core-header, .core-body, .core-footer { position:relative; z-index:1; }
-    .core-header {
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:18px;
-      border-bottom:1px solid rgba(148,163,184,.14);
-      color:#dbeafe;
-      font-weight:900;
-      font-size:.84rem;
+    .popover.open {
+      opacity:1;
+      visibility:visible;
+      transform:none;
+      pointer-events:auto;
     }
-    .core-body { padding:20px; display:grid; grid-template-columns:1fr .9fr; gap:16px; }
-    .core-map, .core-flow {
-      min-height:178px;
-      border:1px solid rgba(148,163,184,.14);
-      border-radius:18px;
-      background:rgba(255,255,255,.045);
-      padding:14px;
-    }
-    .core-map {
-      position:relative;
-      overflow:hidden;
-      background:
-        radial-gradient(circle at 35% 35%, rgba(59,130,246,.22), transparent 32%),
-        radial-gradient(circle at 70% 70%, rgba(139,92,246,.16), transparent 30%),
-        rgba(255,255,255,.04);
-    }
-    .node-dot {
-      position:absolute;
-      width:14px;
-      height:14px;
-      border-radius:50%;
-      background:var(--green);
-      box-shadow:0 0 0 9px rgba(0,245,160,.08), 0 0 26px rgba(0,245,160,.8);
-    }
-    .node-dot:nth-child(1) { left:22%; top:24%; }
-    .node-dot:nth-child(2) { right:22%; top:32%; background:var(--cyan); }
-    .node-dot:nth-child(3) { left:48%; bottom:24%; background:var(--violet); }
-    .core-flow { display:grid; gap:10px; }
-    .core-flow span {
-      display:block;
-      height:13px;
+    .popover .pop-tag {
+      display:inline-block;
+      padding:4px 11px;
       border-radius:999px;
-      background:rgba(255,255,255,.12);
-      overflow:hidden;
+      background:rgba(34,211,238,.12);
+      border:1px solid rgba(34,211,238,.3);
+      color:#a5f3fc;
+      font-size:.66rem;
+      font-weight:800;
+      letter-spacing:.12em;
+      text-transform:uppercase;
     }
-    .core-flow span::before {
+    .popover h3 {
+      margin:12px 0 6px;
+      font-family:"Space Grotesk", Inter, sans-serif;
+      font-size:1.25rem;
+      letter-spacing:-.01em;
+    }
+    .popover p { color:var(--muted); font-size:.92rem; }
+    .popover ul {
+      list-style:none;
+      margin:14px 0 0;
+      display:grid;
+      gap:8px;
+    }
+    .popover li {
+      display:flex;
+      gap:9px;
+      align-items:flex-start;
+      color:#cbd5e1;
+      font-size:.88rem;
+      line-height:1.45;
+    }
+    .popover li::before {
       content:"";
-      display:block;
-      height:100%;
-      border-radius:inherit;
-      background:linear-gradient(90deg, var(--blue), var(--cyan));
+      flex:none;
+      width:7px;
+      height:7px;
+      border-radius:50%;
+      margin-top:7px;
+      background:linear-gradient(120deg, var(--cyan), var(--violet));
+      box-shadow:0 0 8px rgba(34,211,238,.55);
     }
-    .core-flow span:nth-child(1)::before { width:86%; }
-    .core-flow span:nth-child(2)::before { width:64%; background:linear-gradient(90deg, var(--violet), var(--blue)); }
-    .core-flow span:nth-child(3)::before { width:74%; background:linear-gradient(90deg, var(--green), var(--cyan)); }
-    .core-flow span:nth-child(4)::before { width:52%; }
-    .core-footer {
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:10px;
-      padding:0 20px 20px;
+    .popover .pop-cta {
+      display:inline-flex;
+      align-items:center;
+      gap:7px;
+      margin-top:16px;
+      color:#7dd3fc;
+      font-weight:700;
+      font-size:.9rem;
     }
-    .core-footer div {
-      min-height:56px;
-      display:grid;
-      place-items:center;
-      border:1px solid rgba(148,163,184,.14);
-      border-radius:16px;
-      background:rgba(255,255,255,.045);
-      color:#dbeafe;
-      font-size:.74rem;
-      font-weight:900;
-    }
-    .module {
+    .popover .pop-cta:hover { color:var(--ink); }
+    .popover .pop-close {
       position:absolute;
-      min-width:126px;
-      padding:13px 14px;
-      border:1px solid rgba(148,163,184,.22);
-      border-radius:16px;
-      background:rgba(11,16,32,.72);
-      box-shadow:0 22px 60px rgba(0,0,0,.34);
-      backdrop-filter:blur(16px);
-      color:#e2e8f0;
-      font-size:.82rem;
-      font-weight:900;
-      animation:floatModule 6s ease-in-out infinite;
+      top:10px;
+      right:12px;
+      display:none;
+      width:34px;
+      height:34px;
+      border-radius:50%;
+      background:rgba(148,163,184,.12);
+      color:var(--muted);
+      font-size:1.1rem;
+      line-height:1;
     }
-    .module::before {
+
+    .scrim {
+      position:fixed;
+      inset:0;
+      z-index:50;
+      background:rgba(2,6,23,.55);
+      backdrop-filter:blur(3px);
+      opacity:0;
+      visibility:hidden;
+      transition:opacity .2s ease, visibility .2s;
+    }
+
+    /* ---------- prova social: números + clientes ---------- */
+    .proof {
+      border-top:1px solid rgba(148,163,184,.1);
+      padding:76px 0 0;
+      background:linear-gradient(180deg, rgba(11,16,32,0), rgba(11,16,32,.55));
+      text-align:center;
+    }
+    .proof-inner { width:min(1100px, 100% - 40px); margin:0 auto; }
+    .proof h2 {
+      font-family:"Space Grotesk", Inter, sans-serif;
+      font-size:clamp(1.7rem, 3.4vw, 2.5rem);
+      letter-spacing:-.015em;
+      margin:18px 0 10px;
+    }
+    .proof-note { color:var(--muted); font-size:.95rem; margin-bottom:42px; }
+    .stats-grid {
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      border:1px solid rgba(96,165,250,.35);
+      border-radius:22px;
+      overflow:hidden;
+      background:rgba(9,13,28,.45);
+    }
+    .stat {
+      display:grid;
+      gap:8px;
+      align-content:center;
+      padding:36px 18px;
+      border-left:1px solid rgba(96,165,250,.22);
+    }
+    .stat:first-child { border-left:0; }
+    .stat strong {
+      font-family:"Space Grotesk", Inter, sans-serif;
+      font-size:clamp(2.1rem, 4.4vw, 3.3rem);
+      font-weight:800;
+      line-height:1;
+      background:linear-gradient(120deg, #dbeafe, var(--cyan));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+    .stat span { color:var(--muted); font-size:.92rem; }
+
+    .proof-cta {
+      margin-top:26px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:26px;
+      padding:22px 16px 22px 30px;
+      border-radius:20px;
+      border:1px solid rgba(96,165,250,.3);
+      background:linear-gradient(120deg, rgba(59,130,246,.14), rgba(139,92,246,.12));
+      text-align:left;
+    }
+    .proof-cta-text { display:grid; gap:3px; }
+    .proof-cta-text strong {
+      font-family:"Space Grotesk", Inter, sans-serif;
+      font-size:clamp(1.05rem, 2vw, 1.28rem);
+      letter-spacing:-.01em;
+    }
+    .proof-cta-text span { color:var(--muted); font-size:.92rem; }
+    .proof-cta .btn { flex:none; white-space:nowrap; }
+
+
+    /* ---------- rodapé compacto ---------- */
+    .site-footer {
+      border-top:1px solid rgba(148,163,184,.1);
+      background:rgba(5,8,22,.6);
+      padding:18px 0;
+      font-size:.85rem;
+      color:var(--muted);
+    }
+    .footer-inner {
+      width:min(1200px, 100% - 40px);
+      margin:0 auto;
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px 22px;
+    }
+    .footer-links { display:flex; flex-wrap:wrap; gap:8px 20px; }
+    .footer-links a { color:var(--muted); overflow-wrap:anywhere; }
+    .footer-links a:hover { color:var(--ink); }
+
+    /* ---------- headline: palavra rotativa + portes ---------- */
+    h1 .h1-line { display:block; }
+    .rotator {
+      display:inline-block;
+      position:relative;
+      white-space:nowrap;
+    }
+    .rotator-word { display:inline-block; }
+    .rotator::after {
       content:"";
       display:inline-block;
-      width:8px;
-      height:8px;
-      margin-right:8px;
-      border-radius:50%;
+      width:3px;
+      height:.92em;
+      margin-left:6px;
+      vertical-align:-2px;
+      border-radius:2px;
       background:var(--cyan);
-      box-shadow:0 0 18px rgba(34,211,238,.8);
+      box-shadow:0 0 8px rgba(34,211,238,.8);
+      animation:caret 1.05s steps(1) infinite;
     }
-    .m1 { left:0; top:90px; animation-delay:-.2s; }
-    .m2 { left:34%; top:16px; animation-delay:-1.4s; }
-    .m3 { right:4%; top:84px; animation-delay:-2.4s; }
-    .m4 { left:8%; bottom:116px; animation-delay:-3.1s; }
-    .m5 { right:0; bottom:126px; animation-delay:-4.2s; }
-    .m6 { left:38%; bottom:32px; animation-delay:-5s; }
-    .m7 { right:22%; top:240px; animation-delay:-2.8s; }
-    .m8 { left:22%; top:280px; animation-delay:-3.8s; }
-    .chip-cloud {
-      position:absolute;
-      inset:auto 4% 0 4%;
+    @keyframes caret { 50% { opacity:0; } }
+
+    .segments {
       display:flex;
       flex-wrap:wrap;
-      justify-content:center;
+      align-items:center;
       gap:9px;
+      margin-top:20px;
     }
-    .chip-cloud span {
-      padding:8px 11px;
-      border:1px solid rgba(148,163,184,.18);
-      border-radius:999px;
-      background:rgba(255,255,255,.05);
-      color:#cbd5e1;
-      font-size:.74rem;
-      font-weight:900;
-    }
-
-    .cinema-frame {
-      position:relative;
-      overflow:hidden;
-      isolation:isolate;
-      border:1px solid rgba(148,163,184,.2);
-      border-radius:34px;
-      background:
-        radial-gradient(circle at 50% 0%, rgba(34,211,238,.14), transparent 42%),
-        linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
-      box-shadow:0 34px 120px rgba(0,0,0,.42), inset 0 1px 0 rgba(255,255,255,.12);
-      transform:translateZ(0);
-    }
-    .cinema-frame::before {
-      content:"";
-      position:absolute;
-      inset:-1px;
-      z-index:2;
-      background:
-        linear-gradient(115deg, transparent 18%, rgba(34,211,238,.18) 44%, rgba(139,92,246,.16) 54%, transparent 78%);
-      mix-blend-mode:screen;
-      opacity:.54;
-      transform:translateX(-58%);
-      animation:scanMove 8s ease-in-out infinite;
-      pointer-events:none;
-    }
-    .cinema-frame::after {
-      content:"";
-      position:absolute;
-      inset:0;
-      z-index:2;
-      border-radius:inherit;
-      background:linear-gradient(90deg, rgba(5,8,22,.28), transparent 24%, transparent 76%, rgba(5,8,22,.2));
-      box-shadow:inset 0 0 0 1px rgba(255,255,255,.06), inset 0 -80px 110px rgba(5,8,22,.2);
-      pointer-events:none;
-    }
-    .cinema-frame img {
-      display:block;
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      filter:saturate(1.1) contrast(1.04);
-      transform:scale(1.015);
-      animation:imageDrift 12s ease-in-out infinite alternate;
-    }
-    .hero-frame {
-      min-height:560px;
-      border-radius:36px;
-    }
-    .hero-frame::after {
-      background:linear-gradient(90deg, rgba(5,8,22,.78), transparent 28%, transparent 78%, rgba(5,8,22,.12));
-    }
-    .hero-frame img { min-height:560px; object-position:100% center; }
-    .wide-showcase {
-      width:100%;
-      min-height:470px;
-      margin-top:42px;
-    }
-    .wide-showcase img { min-height:470px; }
-    .chaos-showcase img { object-position:center top; }
-    .solutions-showcase img { object-position:center; }
-    .floating-icon {
-      position:absolute;
-      z-index:4;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:9px 13px;
-      border:1px solid rgba(34,211,238,.28);
-      border-radius:999px;
-      color:#e0faff;
-      background:rgba(5,8,22,.62);
-      box-shadow:0 16px 45px rgba(34,211,238,.16), inset 0 1px 0 rgba(255,255,255,.12);
-      backdrop-filter:blur(14px);
-      font-size:.76rem;
-      font-weight:950;
-      line-height:1;
-      animation:iconFloat 5.6s ease-in-out infinite;
-    }
-    .floating-icon::before {
-      content:"";
-      width:8px;
-      height:8px;
-      border-radius:50%;
-      background:var(--cyan);
-      box-shadow:0 0 18px rgba(34,211,238,.95);
-      animation:pulseDot 2.2s ease-in-out infinite;
-    }
-    .fi-1 { left:7%; top:12%; }
-    .fi-2 { right:8%; top:14%; animation-delay:-1.2s; }
-    .fi-3 { right:9%; bottom:18%; animation-delay:-2.1s; }
-    .fi-4 { left:10%; bottom:16%; animation-delay:-3.2s; }
-    .fi-5 { left:43%; top:7%; animation-delay:-2.7s; }
-    .fi-6 { right:38%; bottom:8%; animation-delay:-1.7s; }
-    .cinema-hotspot {
-      position:absolute;
-      z-index:3;
-      width:14px;
-      height:14px;
-      border-radius:50%;
-      background:var(--green);
-      box-shadow:0 0 0 10px rgba(0,245,160,.1), 0 0 32px rgba(0,245,160,.75);
-      animation:pulseRing 2.8s ease-in-out infinite;
-      pointer-events:none;
-    }
-    .hs-1 { left:58%; top:32%; }
-    .hs-2 { left:72%; top:55%; animation-delay:-1.1s; background:var(--violet); box-shadow:0 0 0 10px rgba(139,92,246,.12), 0 0 32px rgba(139,92,246,.8); }
-    .hs-3 { left:30%; top:64%; animation-delay:-1.9s; background:var(--cyan); }
-    .showcase-caption {
-      position:absolute;
-      left:24px;
-      right:24px;
-      bottom:24px;
-      z-index:4;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:16px;
-      padding:14px 16px;
-      border:1px solid rgba(148,163,184,.18);
-      border-radius:20px;
-      background:rgba(5,8,22,.68);
-      backdrop-filter:blur(18px);
-      color:#cbd5e1;
-      font-size:.9rem;
-      font-weight:800;
-    }
-    .showcase-caption strong { color:#fff; }
-
-    .chaos-stage {
-      margin-top:40px;
-      display:block;
-    }
-    .chaos-live {
-      --p:0;
-      position:relative;
-      display:grid;
-      grid-template-columns:1fr 120px 1.05fr;
-      gap:24px;
-      align-items:center;
-      min-height:560px;
-    }
-    .chaos-lines {
-      position:absolute;
-      inset:0;
-      z-index:2;
-      width:100%;
-      height:100%;
-      pointer-events:none;
-      opacity:calc(.18 + var(--p) * .7);
-    }
-    .chaos-lines path {
-      stroke:rgba(34,211,238,.38);
-      stroke-width:1.5;
-      stroke-dasharray:10 18;
-      stroke-dashoffset:calc((1 - var(--p)) * 220);
-      filter:drop-shadow(0 0 10px rgba(34,211,238,.48));
-      transition:stroke-dashoffset .08s linear;
-    }
-    .chaos-live::before {
-      content:"";
-      position:absolute;
-      inset:3% -3%;
-      z-index:-1;
-      background:url("/assets/roma-chaos-system.webp") center / cover no-repeat;
-      opacity:.055;
-      filter:saturate(1.15);
-      mask-image:linear-gradient(90deg, transparent, black 24%, black 76%, transparent);
-      pointer-events:none;
-    }
-    .chaos-cluster,
-    .system-platform {
-      position:relative;
-      z-index:1;
-      min-height:500px;
-      border:1px solid var(--line);
-      border-radius:30px;
-      background:
-        radial-gradient(circle at 20% 20%, rgba(139,92,246,.12), transparent 34%),
-        linear-gradient(180deg, rgba(255,255,255,.075), rgba(255,255,255,.032));
-      overflow:hidden;
-      box-shadow:0 30px 90px rgba(0,0,0,.28);
-      backdrop-filter:blur(16px);
-    }
-    .chaos-label {
-      position:absolute;
-      left:18px;
-      top:18px;
-      z-index:2;
-      padding:7px 10px;
-      border:1px solid rgba(255,255,255,.1);
-      border-radius:999px;
-      color:#9fb0c5;
-      background:rgba(255,255,255,.04);
-      font-size:.7rem;
-      font-weight:950;
-      letter-spacing:.12em;
-    }
-    .chaos-cluster::before,
-    .system-platform::before {
-      content:"";
-      position:absolute;
-      inset:0;
-      background-image:
-        linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
-      background-size:42px 42px;
-      mask-image:linear-gradient(to bottom, black, transparent 86%);
-      pointer-events:none;
-    }
-    .chaos-item {
-      position:absolute;
-      width:210px;
-      min-height:96px;
-      padding:14px;
-      border:1px solid rgba(148,163,184,.16);
-      border-radius:18px;
-      background:rgba(8,13,28,.82);
-      color:#cbd5e1;
-      box-shadow:0 22px 60px rgba(0,0,0,.3);
-      transform:
-        translate3d(calc(var(--p) * var(--tx)), calc(var(--p) * var(--ty)), 0)
-        rotate(calc(var(--rot) * (1 - var(--p))));
-      opacity:calc(1 - (var(--p) * .42));
-      transition:box-shadow .2s ease, border-color .2s ease;
-    }
-    .chaos-item b {
-      display:block;
-      color:#fff;
-      margin-bottom:6px;
-      font-size:.95rem;
-    }
-    .chaos-item small {
-      color:#94a3b8;
-      font-weight:760;
-    }
-    .chaos-item::after {
-      content:"";
-      position:absolute;
-      right:14px;
-      top:14px;
-      width:9px;
-      height:9px;
-      border-radius:50%;
-      background:var(--cyan);
-      box-shadow:0 0 20px rgba(34,211,238,.8);
-    }
-    .ci-1 { left:26px; top:32px; --rot:-8deg; --tx:78px; --ty:42px; }
-    .ci-2 { right:24px; top:86px; --rot:7deg; --tx:-68px; --ty:40px; }
-    .ci-3 { left:28%; top:202px; --rot:-4deg; --tx:20px; --ty:-20px; }
-    .ci-4 { left:42px; bottom:94px; --rot:6deg; --tx:70px; --ty:-50px; }
-    .ci-5 { right:42px; bottom:48px; --rot:-6deg; --tx:-78px; --ty:-60px; }
-    .story-beam {
-      position:relative;
-      z-index:3;
-      min-height:360px;
-      display:grid;
-      place-items:center;
-    }
-    .story-beam::before {
-      content:"";
-      width:2px;
-      height:100%;
-      background:linear-gradient(180deg, transparent, rgba(34,211,238,.9), rgba(139,92,246,.9), transparent);
-      box-shadow:0 0 34px rgba(34,211,238,.54);
-      transform:rotate(22deg);
-      opacity:calc(.46 + var(--p) * .5);
-    }
-    .story-beam span {
-      position:absolute;
-      display:grid;
-      place-items:center;
-      width:58px;
-      height:58px;
-      border:1px solid rgba(34,211,238,.28);
-      border-radius:50%;
-      background:rgba(5,8,22,.72);
-      box-shadow:0 0 45px rgba(34,211,238,.24);
-      color:#e0faff;
-      font-weight:950;
-      animation:pulseRing 3s ease-in-out infinite;
-    }
-    .story-beam b {
-      position:absolute;
-      width:12px;
-      height:12px;
-      border-radius:50%;
-      background:var(--cyan);
-      box-shadow:0 0 0 8px rgba(34,211,238,.08), 0 0 30px rgba(34,211,238,.82);
-      transform:
-        translate3d(calc((var(--p) - .5) * 220px), calc((var(--p) - .5) * -190px), 0)
-        scale(calc(.7 + var(--p) * .5));
-      opacity:calc(.25 + var(--p) * .75);
-      transition:transform .08s linear, opacity .08s linear;
-    }
-    .story-beam b:nth-of-type(2) {
-      background:var(--violet);
-      transform:translate3d(calc((var(--p) - .5) * 180px), calc((var(--p) - .5) * 150px), 0) scale(calc(.72 + var(--p) * .5));
-    }
-    .story-beam b:nth-of-type(3) {
-      background:var(--green);
-      transform:translate3d(calc((var(--p) - .5) * -150px), calc((var(--p) - .5) * 70px), 0) scale(calc(.72 + var(--p) * .5));
-    }
-    .system-platform {
-      padding:20px;
-      transform:translateY(calc((1 - var(--p)) * 18px));
-      opacity:calc(.78 + var(--p) * .22);
-    }
-    .system-platform::after {
-      content:"";
-      position:absolute;
-      inset:auto 20px 20px;
-      height:3px;
-      border-radius:999px;
-      background:linear-gradient(90deg, var(--blue), var(--cyan), var(--green));
-      box-shadow:0 0 26px rgba(34,211,238,.32);
-      transform:scaleX(calc(.18 + var(--p) * .82));
-      transform-origin:left;
-      opacity:calc(.4 + var(--p) * .6);
-      z-index:1;
-    }
-    .platform-header {
-      position:relative;
-      z-index:1;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:12px;
-      margin-bottom:14px;
-      color:#dbeafe;
-      font-weight:950;
-    }
-    .platform-header span {
-      padding:7px 10px;
-      border:1px solid rgba(0,245,160,.2);
-      border-radius:999px;
-      color:#afffde;
-      background:rgba(0,245,160,.07);
-      font-size:.72rem;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-    }
-    .platform-grid {
-      position:relative;
-      z-index:1;
-      display:grid;
-      grid-template-columns:1.1fr .9fr;
-      gap:12px;
-    }
-    .platform-card {
-      min-height:126px;
-      padding:14px;
-      border:1px solid rgba(148,163,184,.14);
-      border-radius:18px;
-      background:rgba(255,255,255,.045);
-      color:#dbeafe;
-      font-weight:900;
-      overflow:hidden;
-    }
-    .platform-card p {
-      color:#94a3b8;
+    .seg-label {
+      color:var(--muted);
       font-size:.8rem;
-      margin-top:6px;
+      font-weight:600;
+      letter-spacing:.02em;
     }
-    .platform-card.wide { grid-column:1 / -1; min-height:150px; }
-    .process-line {
-      display:flex;
-      align-items:center;
-      gap:8px;
-      margin-top:18px;
-    }
-    .process-line i {
-      flex:1;
-      height:2px;
+    .seg {
+      padding:6px 13px;
       border-radius:999px;
-      background:linear-gradient(90deg, var(--blue), var(--cyan), var(--violet));
-      box-shadow:0 0 18px rgba(34,211,238,.36);
-    }
-    .process-line b {
-      width:14px;
-      height:14px;
-      border-radius:50%;
-      background:var(--cyan);
-      box-shadow:0 0 0 8px rgba(34,211,238,.08), 0 0 24px rgba(34,211,238,.8);
-    }
-    .chaos-board, .ordered-board {
-      min-height:450px;
       border:1px solid var(--line);
-      border-radius:28px;
-      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.035));
-      box-shadow:0 28px 80px rgba(0,0,0,.26);
-      backdrop-filter:blur(16px);
-      overflow:hidden;
-      position:relative;
-    }
-    .chaos-board { padding:24px; }
-    .messy-card {
-      position:absolute;
-      width:210px;
-      min-height:92px;
-      padding:14px;
-      border:1px solid rgba(148,163,184,.16);
-      border-radius:18px;
-      background:rgba(11,16,32,.82);
+      background:rgba(11,16,32,.5);
+      font-size:.8rem;
+      font-weight:700;
       color:#cbd5e1;
-      box-shadow:0 18px 50px rgba(0,0,0,.28);
     }
-    .messy-card b { display:block; color:#fff; margin-bottom:5px; }
-    .messy-card small { color:#94a3b8; font-weight:700; }
-    .messy-card:nth-child(1) { left:24px; top:32px; transform:rotate(-7deg); }
-    .messy-card:nth-child(2) { right:46px; top:76px; transform:rotate(5deg); }
-    .messy-card:nth-child(3) { left:32%; top:182px; transform:rotate(-3deg); }
-    .messy-card:nth-child(4) { left:48px; bottom:76px; transform:rotate(6deg); }
-    .messy-card:nth-child(5) { right:70px; bottom:42px; transform:rotate(-5deg); }
-    .ordered-board { padding:20px; display:grid; align-content:stretch; gap:14px; }
-    .ordered-top {
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      color:#dbeafe;
-      font-weight:900;
+    .seg.seg-strong {
+      border-color:rgba(139,92,246,.45);
+      background:linear-gradient(120deg, rgba(59,130,246,.16), rgba(139,92,246,.16));
+      color:#fff;
     }
-    .pipeline {
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:10px;
-    }
-    .pipeline div, .data-row {
-      border:1px solid rgba(148,163,184,.14);
-      border-radius:16px;
-      background:rgba(255,255,255,.045);
-      padding:14px;
-    }
-    .pipeline div b { display:block; margin-bottom:4px; color:#fff; }
-    .pipeline div span, .data-row span { color:#94a3b8; font-size:.82rem; font-weight:750; }
-    .data-grid { display:grid; gap:10px; }
-    .data-row { display:flex; justify-content:space-between; align-items:center; }
-    .data-row strong { color:#a5f3fc; }
 
-    .bento-grid {
-      margin-top:40px;
-      display:grid;
-      grid-template-columns:1.15fr .85fr 1fr;
-      grid-auto-rows:minmax(220px, auto);
-      gap:16px;
-    }
-    .bento-card {
-      position:relative;
-      min-height:230px;
-      padding:22px;
-      border:1px solid var(--line);
-      border-radius:28px;
-      background:
-        radial-gradient(circle at 75% 10%, rgba(59,130,246,.14), transparent 35%),
-        linear-gradient(180deg, rgba(255,255,255,.075), rgba(255,255,255,.035));
-      box-shadow:0 24px 70px rgba(0,0,0,.22);
-      overflow:hidden;
-      transition:transform .22s ease, border-color .22s ease, box-shadow .22s ease;
-    }
-    .bento-card::before,
-    .product-card::before,
-    .value-card::before {
-      content:"";
-      position:absolute;
-      inset:0;
-      border-radius:inherit;
-      background:radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgba(34,211,238,.16), transparent 42%);
-      opacity:0;
-      transition:opacity .2s ease;
-      pointer-events:none;
-    }
-    .bento-card:hover::before,
-    .product-card:hover::before,
-    .value-card:hover::before { opacity:1; }
-    .bento-card:hover {
-      transform:translateY(-6px);
-      border-color:rgba(34,211,238,.34);
-      box-shadow:0 34px 90px rgba(34,211,238,.1);
-    }
-    .bento-card h3 { margin-bottom:8px; }
-    .bento-card p { color:#aeb8c8; font-size:.94rem; max-width:440px; }
-    .bento-card.large { grid-column:span 2; }
-    .bento-card.tall { grid-row:span 2; }
-    .bento-icon {
-      width:40px;
-      height:40px;
-      display:grid;
-      place-items:center;
-      margin-bottom:14px;
-      border:1px solid rgba(34,211,238,.22);
-      border-radius:14px;
-      color:#a5f3fc;
-      background:rgba(34,211,238,.08);
-      box-shadow:0 0 28px rgba(34,211,238,.12);
-      font-weight:950;
-      animation:iconFloat 4.8s ease-in-out infinite;
-    }
-    .mini-ui {
-      position:absolute;
-      left:22px;
-      right:22px;
-      bottom:20px;
-      display:grid;
-      gap:8px;
-    }
-    .mini-ui span {
-      display:block;
-      height:12px;
-      border-radius:999px;
-      background:rgba(255,255,255,.12);
-      overflow:hidden;
-    }
-    .mini-ui span::before {
-      content:"";
-      display:block;
-      height:100%;
-      width:70%;
-      border-radius:inherit;
-      background:linear-gradient(90deg, var(--blue), var(--cyan));
-    }
-    .mini-ui span:nth-child(2)::before { width:52%; background:linear-gradient(90deg, var(--violet), var(--blue)); }
-    .mini-ui span:nth-child(3)::before { width:82%; background:linear-gradient(90deg, var(--green), var(--cyan)); }
-    .mini-table { margin-top:22px; display:grid; gap:8px; }
-    .mini-table div {
+    .hero-trust {
       display:flex;
-      justify-content:space-between;
-      padding:10px;
-      border:1px solid rgba(148,163,184,.12);
-      border-radius:12px;
-      background:rgba(255,255,255,.04);
-      color:#cbd5e1;
-      font-size:.82rem;
-      font-weight:800;
-    }
-    .mini-command-center,
-    .mini-modules,
-    .mini-portal {
+      flex-wrap:wrap;
+      align-items:center;
+      gap:8px 16px;
       margin-top:22px;
-      display:grid;
-      gap:9px;
-    }
-    .mini-command-center {
-      grid-template-columns:repeat(5, minmax(0,1fr));
-      align-items:end;
-      min-height:108px;
-    }
-    .mini-command-center span {
-      position:relative;
-      display:grid;
-      place-items:end center;
-      min-height:62px;
-      padding:10px 6px;
-      border:1px solid rgba(34,211,238,.16);
-      border-radius:16px;
-      background:
-        linear-gradient(180deg, rgba(34,211,238,.12), rgba(255,255,255,.035)),
-        rgba(255,255,255,.035);
-      color:#dffbff;
-      font-size:.7rem;
-      font-weight:950;
-      overflow:hidden;
-    }
-    .mini-command-center span::before {
-      content:"";
-      position:absolute;
-      left:10px;
-      right:10px;
-      bottom:34px;
-      height:calc(18px + var(--h, 20px));
-      border-radius:999px 999px 8px 8px;
-      background:linear-gradient(180deg, var(--cyan), var(--blue));
-      opacity:.68;
-      animation:barPulse 3.4s ease-in-out infinite;
-    }
-    .mini-command-center span:nth-child(1) { --h:14px; }
-    .mini-command-center span:nth-child(2) { --h:38px; }
-    .mini-command-center span:nth-child(3) { --h:24px; }
-    .mini-command-center span:nth-child(4) { --h:46px; }
-    .mini-command-center span:nth-child(5) { --h:30px; }
-    .mini-pipeline {
-      margin-top:24px;
-      display:flex;
-      align-items:center;
-      gap:8px;
-    }
-    .mini-pipeline i {
-      flex:1;
-      min-height:76px;
-      display:grid;
-      place-items:end center;
-      padding:10px 5px;
-      border:1px solid rgba(148,163,184,.14);
-      border-radius:14px;
-      color:#cbd5e1;
-      background:linear-gradient(180deg, rgba(59,130,246,.16), rgba(255,255,255,.035));
-      font-size:.65rem;
-      font-style:normal;
-      font-weight:900;
-      animation:pipelineRise 4s ease-in-out infinite;
-    }
-    .mini-pipeline i:nth-child(2) { min-height:96px; animation-delay:-.8s; background:linear-gradient(180deg, rgba(34,211,238,.16), rgba(255,255,255,.035)); }
-    .mini-pipeline i:nth-child(3) { min-height:112px; animation-delay:-1.6s; background:linear-gradient(180deg, rgba(139,92,246,.16), rgba(255,255,255,.035)); }
-    .mini-pipeline i:nth-child(4) { min-height:86px; animation-delay:-2.4s; background:linear-gradient(180deg, rgba(0,245,160,.13), rgba(255,255,255,.035)); }
-    .mini-modules {
-      grid-template-columns:1fr 1fr;
-    }
-    .mini-modules span,
-    .mini-portal span {
-      padding:11px;
-      border:1px solid rgba(148,163,184,.14);
-      border-radius:13px;
-      background:rgba(255,255,255,.045);
-      color:#dbeafe;
-      font-size:.76rem;
-      font-weight:900;
-    }
-    .mini-chart-bars {
-      margin-top:24px;
-      min-height:118px;
-      display:flex;
-      align-items:end;
-      gap:10px;
-    }
-    .mini-chart-bars i {
-      flex:1;
-      height:var(--bar, 58%);
-      border-radius:999px 999px 10px 10px;
-      background:linear-gradient(180deg, var(--cyan), rgba(59,130,246,.28));
-      box-shadow:0 0 24px rgba(34,211,238,.12);
-      animation:barPulse 3.4s ease-in-out infinite;
-    }
-    .mini-chart-bars i:nth-child(1) { --bar:46%; }
-    .mini-chart-bars i:nth-child(2) { --bar:76%; animation-delay:-.6s; background:linear-gradient(180deg, var(--blue), rgba(59,130,246,.2)); }
-    .mini-chart-bars i:nth-child(3) { --bar:58%; animation-delay:-1.2s; }
-    .mini-chart-bars i:nth-child(4) { --bar:88%; animation-delay:-1.8s; background:linear-gradient(180deg, var(--violet), rgba(139,92,246,.18)); }
-    .mini-chart-bars i:nth-child(5) { --bar:68%; animation-delay:-2.4s; background:linear-gradient(180deg, var(--green), rgba(0,245,160,.14)); }
-    .mini-phone {
-      width:122px;
-      min-height:186px;
-      margin:18px auto 0;
-      padding:14px 10px;
-      border:1px solid rgba(34,211,238,.2);
-      border-radius:24px;
-      background:linear-gradient(180deg, rgba(34,211,238,.11), rgba(255,255,255,.035));
-      box-shadow:0 18px 54px rgba(34,211,238,.08);
-    }
-    .mini-phone span {
-      display:block;
-      width:38px;
-      height:5px;
-      margin:0 auto 18px;
-      border-radius:999px;
-      background:rgba(226,232,240,.4);
-    }
-    .mini-phone b {
-      display:block;
-      margin-bottom:14px;
-      color:#fff;
-      font-size:.74rem;
-    }
-    .mini-phone i {
-      display:block;
-      height:26px;
-      margin-top:8px;
-      border-radius:10px;
-      background:rgba(255,255,255,.07);
-      border:1px solid rgba(148,163,184,.12);
-    }
-    .mini-portal span {
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-    }
-    .mini-portal span::after {
-      content:"";
-      width:44px;
-      height:7px;
-      border-radius:999px;
-      background:linear-gradient(90deg, var(--blue), var(--cyan));
-    }
-    .automation-flow {
-      margin-top:28px;
-      display:flex;
-      align-items:center;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-    .automation-flow span {
-      min-height:48px;
-      display:grid;
-      place-items:center;
-      padding:0 14px;
-      border:1px solid rgba(34,211,238,.2);
-      border-radius:16px;
-      color:#e0faff;
-      background:rgba(34,211,238,.07);
-      font-weight:950;
-      font-size:.8rem;
-    }
-    .automation-flow i {
-      flex:1;
-      min-width:46px;
-      height:2px;
-      border-radius:999px;
-      background:linear-gradient(90deg, var(--blue), var(--cyan), var(--violet));
-      box-shadow:0 0 18px rgba(34,211,238,.34);
-      position:relative;
-    }
-    .automation-flow i::after {
-      content:"";
-      position:absolute;
-      right:-1px;
-      top:50%;
-      width:8px;
-      height:8px;
-      border-top:2px solid var(--cyan);
-      border-right:2px solid var(--cyan);
-      transform:translateY(-50%) rotate(45deg);
-    }
-
-    .segment-shell {
-      margin-top:42px;
-      display:grid;
-      grid-template-columns:310px 1fr;
-      gap:24px;
-      align-items:start;
-    }
-    .segment-tabs { display:grid; gap:9px; }
-    .segment-tabs button {
-      min-height:50px;
-      padding:0 16px;
-      border:1px solid rgba(148,163,184,.14);
-      border-radius:16px;
-      color:#cbd5e1;
-      background:rgba(255,255,255,.045);
-      font-weight:850;
-      text-align:left;
-      cursor:pointer;
-      transition:background .2s ease, border-color .2s ease, color .2s ease;
-    }
-    .segment-tabs button.active, .segment-tabs button:hover {
-      color:#fff;
-      border-color:rgba(34,211,238,.32);
-      background:rgba(34,211,238,.09);
-    }
-    .segment-visual {
-      position:relative;
-      min-height:445px;
-      border:1px solid var(--line);
-      border-radius:30px;
-      background:
-        radial-gradient(circle at 74% 16%, rgba(139,92,246,.18), transparent 34%),
-        linear-gradient(180deg, rgba(255,255,255,.075), rgba(255,255,255,.035));
-      padding:24px;
-      overflow:hidden;
-    }
-    .segment-orbit {
-      position:absolute;
-      right:8%;
-      top:50%;
-      width:520px;
-      height:330px;
-      border:1px solid rgba(34,211,238,.12);
-      border-radius:50%;
-      transform:translateY(-50%) rotateX(62deg) rotateZ(-6deg);
-      box-shadow:0 0 70px rgba(34,211,238,.08), inset 0 0 34px rgba(139,92,246,.08);
-      animation:ringSpin 30s linear infinite;
-      pointer-events:none;
-    }
-    .segment-visual::before {
-      content:"";
-      position:absolute;
-      inset:0;
-      background:url("/assets/roma-segments-showcase.webp") center / cover no-repeat;
-      opacity:.08;
-      filter:saturate(1.15);
-      pointer-events:none;
-      mask-image:linear-gradient(90deg, transparent, black 30%, black 70%, transparent);
-    }
-    .segment-art {
-      min-height:370px;
-      border-radius:24px;
-      margin-bottom:14px;
-    }
-    .segment-art img { min-height:370px; object-position:center; }
-    .segment-screen.compact {
-      min-height:auto;
-      grid-template-columns:1fr;
-    }
-    .segment-title { display:flex; align-items:center; justify-content:space-between; margin-bottom:18px; }
-    .segment-title, .segment-screen { position:relative; z-index:1; }
-    .segment-title strong { font-family:"Space Grotesk", Inter, sans-serif; font-size:1.5rem; }
-    .segment-title span { color:#a5f3fc; font-size:.82rem; font-weight:900; }
-    .segment-screen {
-      min-height:330px;
-      display:grid;
-      grid-template-columns:1fr 1.1fr;
-      gap:16px;
-    }
-    .segment-panel {
-      border:1px solid rgba(148,163,184,.14);
-      border-radius:20px;
-      background:rgba(5,8,22,.44);
-      padding:16px;
-    }
-    .segment-panel h4 { margin-bottom:12px; }
-    .segment-list { display:grid; gap:9px; }
-    .segment-list div {
-      padding:10px;
-      border-radius:12px;
-      background:rgba(255,255,255,.045);
-      color:#cbd5e1;
+      color:var(--muted);
       font-size:.82rem;
-      font-weight:800;
+      font-weight:600;
     }
-    .real-segment-screen {
-      position:relative;
-      display:grid;
-      grid-template-columns:.82fr 1.18fr;
-      gap:16px;
-      min-height:350px;
-    }
-    .segment-mockup {
-      position:relative;
-      border:1px solid rgba(148,163,184,.16);
-      border-radius:24px;
+    .hero-trust b { color:#e2e8f0; font-weight:800; }
+    .hero-trust .sep { width:4px; height:4px; border-radius:50%; background:var(--soft); }
+
+    /* ---------- abertura: boot do sistema ---------- */
+    .boot-intro {
+      position:fixed;
+      inset:0;
+      z-index:120;
+      display:none;
+      align-items:center;
+      justify-content:center;
       background:
-        radial-gradient(circle at 50% 0%, rgba(34,211,238,.16), transparent 38%),
-        rgba(5,8,22,.56);
+        radial-gradient(circle at 50% 42%, rgba(59,130,246,.18), transparent 62%),
+        linear-gradient(180deg, #050816, #070a13 58%, #050816);
       overflow:hidden;
-      padding:16px;
-      transform:perspective(1000px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) translateZ(0);
-      transition:transform .28s ease, border-color .28s ease, box-shadow .28s ease;
     }
-    .segment-mockup.is-changing {
-      transform:perspective(1000px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) scale(.985);
-      border-color:rgba(139,92,246,.3);
-      box-shadow:0 0 80px rgba(139,92,246,.1);
-    }
-    .segment-mockup::before {
+    .boot-intro.on { display:flex; }
+    .boot-intro::before {
       content:"";
       position:absolute;
       inset:0;
       background-image:
-        linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
-      background-size:38px 38px;
-      pointer-events:none;
+        linear-gradient(rgba(96,165,250,.09) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(96,165,250,.09) 1px, transparent 1px);
+      background-size:52px 52px;
+      mask-image:radial-gradient(circle at 50% 45%, black, transparent 72%);
+      -webkit-mask-image:radial-gradient(circle at 50% 45%, black, transparent 72%);
     }
-    .segment-mock-header {
-      position:relative;
-      z-index:1;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      margin-bottom:14px;
-      color:#fff;
-      font-weight:950;
-    }
-    .segment-mock-header span {
-      color:#86efff;
-      font-size:.78rem;
-    }
-    .segment-lanes {
+    .boot-scan {
       position:absolute;
-      inset:64px 18px 18px;
-      pointer-events:none;
-      opacity:.54;
-    }
-    .segment-lanes i {
-      position:absolute;
-      left:10%;
-      right:10%;
+      left:0;
+      right:0;
+      top:0;
       height:2px;
-      border-radius:999px;
-      background:linear-gradient(90deg, transparent, rgba(34,211,238,.72), rgba(139,92,246,.62), transparent);
-      box-shadow:0 0 18px rgba(34,211,238,.28);
-      animation:laneSweep 5s ease-in-out infinite;
+      background:linear-gradient(90deg, transparent, rgba(34,211,238,.85), transparent);
+      opacity:0;
     }
-    .segment-lanes i:nth-child(1) { top:24%; }
-    .segment-lanes i:nth-child(2) { top:50%; animation-delay:-1.6s; }
-    .segment-lanes i:nth-child(3) { top:76%; animation-delay:-3.2s; }
-    .segment-nodes {
+    .boot-core {
       position:relative;
-      z-index:1;
-      min-height:245px;
-    }
-    .segment-node {
-      position:absolute;
-      min-width:124px;
-      padding:12px;
-      border:1px solid rgba(34,211,238,.22);
-      border-radius:16px;
-      background:rgba(34,211,238,.075);
-      color:#e0faff;
-      font-size:.78rem;
-      font-weight:900;
-      box-shadow:0 18px 50px rgba(34,211,238,.08);
-      animation:floatModule 5s ease-in-out infinite;
-      transition:transform .24s ease, opacity .24s ease, border-color .24s ease;
-    }
-    .segment-node:hover {
-      transform:translateY(-8px);
-      border-color:rgba(34,211,238,.48);
-      box-shadow:0 24px 70px rgba(34,211,238,.16);
-    }
-    .segment-node:nth-child(1) { left:3%; top:8%; }
-    .segment-node:nth-child(2) { right:6%; top:14%; animation-delay:-1s; border-color:rgba(139,92,246,.28); background:rgba(139,92,246,.08); }
-    .segment-node:nth-child(3) { left:34%; top:42%; animation-delay:-2s; border-color:rgba(0,245,160,.24); background:rgba(0,245,160,.065); }
-    .segment-node:nth-child(4) { left:8%; bottom:8%; animation-delay:-3s; }
-    .segment-node:nth-child(5) { right:8%; bottom:9%; animation-delay:-1.8s; }
-    .segment-diagram {
-      position:relative;
-      border:1px solid rgba(148,163,184,.14);
-      border-radius:20px;
-      background-image:
-        linear-gradient(rgba(255,255,255,.055) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.055) 1px, transparent 1px);
-      background-size:36px 36px;
-      overflow:hidden;
-    }
-    .diagram-node {
-      position:absolute;
-      min-width:110px;
-      padding:10px;
-      border:1px solid rgba(34,211,238,.22);
-      border-radius:14px;
-      background:rgba(34,211,238,.08);
-      color:#e0faff;
-      font-size:.78rem;
-      font-weight:900;
+      width:min(440px, calc(100% - 40px));
       text-align:center;
     }
-    .diagram-node:nth-child(1) { left:8%; top:18%; }
-    .diagram-node:nth-child(2) { right:8%; top:22%; }
-    .diagram-node:nth-child(3) { left:36%; top:48%; background:rgba(139,92,246,.1); border-color:rgba(139,92,246,.28); }
-    .diagram-node:nth-child(4) { left:14%; bottom:14%; background:rgba(0,245,160,.07); border-color:rgba(0,245,160,.22); }
-    .diagram-node:nth-child(5) { right:10%; bottom:16%; }
-
-    .method-wrap {
-      margin-top:42px;
-      display:grid;
-      grid-template-columns:360px 1fr;
-      gap:32px;
-      align-items:start;
-      min-height:1500px;
-    }
-    .timeline { display:grid; gap:10px; position:sticky; top:100px; }
-    .timeline button {
-      display:grid;
-      grid-template-columns:38px 1fr;
-      gap:12px;
-      align-items:center;
-      min-height:72px;
-      padding:12px;
-      border:1px solid rgba(148,163,184,.14);
-      border-radius:18px;
-      background:rgba(255,255,255,.045);
-      color:#cbd5e1;
-      text-align:left;
-      cursor:pointer;
-      transition:.2s ease;
-    }
-    .timeline button.active {
-      color:#fff;
-      border-color:rgba(59,130,246,.42);
-      background:rgba(59,130,246,.1);
-      box-shadow:0 18px 60px rgba(59,130,246,.12);
-    }
-    .timeline b {
-      width:38px;
-      height:38px;
+    .boot-mark {
+      width:82px;
+      height:82px;
+      margin:0 auto 22px;
       display:grid;
       place-items:center;
-      border-radius:50%;
-      background:linear-gradient(135deg, var(--blue), var(--violet));
-      color:#fff;
+      border-radius:22px;
+      background:linear-gradient(160deg, rgba(30,41,72,.92), rgba(11,16,32,.95));
+      border:1px solid rgba(96,165,250,.5);
+      box-shadow:0 0 44px rgba(59,130,246,.4), inset 0 0 22px rgba(59,130,246,.15);
+      font-family:"Space Grotesk", Inter, sans-serif;
+      font-weight:800;
+      font-size:2.5rem;
+      color:#dbeafe;
+      opacity:0;
     }
-    .timeline strong { display:block; line-height:1.2; }
-    .timeline span { color:#94a3b8; font-size:.8rem; }
-    .method-screen {
-      position:sticky;
-      top:110px;
-      min-height:610px;
-      border:1px solid var(--line);
-      border-radius:32px;
-      padding:24px;
-      background:
-        radial-gradient(circle at 70% 18%, rgba(59,130,246,.18), transparent 35%),
-        linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.035));
+    .boot-title {
+      font-family:"Space Grotesk", Inter, sans-serif;
+      font-weight:800;
+      font-size:1.35rem;
+      letter-spacing:.14em;
+      color:var(--ink);
+      opacity:0;
+    }
+    .boot-console {
+      margin:22px auto 0;
+      max-width:340px;
+      text-align:left;
+      font-family:ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+      font-size:.85rem;
+      line-height:1.9;
+      color:#7dd3fc;
+    }
+    .boot-line { opacity:0; }
+    .boot-line .ok { color:var(--green); font-weight:700; }
+    .boot-bar {
+      margin:20px auto 0;
+      max-width:340px;
+      height:4px;
+      border-radius:99px;
+      background:rgba(148,163,184,.16);
       overflow:hidden;
     }
-    .method-canvas {
-      min-height:430px;
-      margin-top:22px;
-      border:1px solid rgba(148,163,184,.14);
-      border-radius:24px;
-      background-image:
-        linear-gradient(rgba(255,255,255,.055) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.055) 1px, transparent 1px);
-      background-size:42px 42px;
-      position:relative;
-      overflow:hidden;
-    }
-    .method-dashboard {
-      min-height:430px;
-      margin-top:22px;
-      display:grid;
-      grid-template-columns:170px 1fr;
-      border:1px solid rgba(148,163,184,.14);
-      border-radius:24px;
-      background:rgba(5,8,22,.46);
-      overflow:hidden;
-      position:relative;
-      transform:perspective(1200px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
-      transition:background .28s ease, transform .18s ease;
-    }
-    .method-dashboard::before {
-      content:"";
-      position:absolute;
-      inset:0;
-      background-image:
-        linear-gradient(rgba(255,255,255,.048) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.048) 1px, transparent 1px);
-      background-size:38px 38px;
-      mask-image:linear-gradient(to bottom, black, transparent 90%);
-      pointer-events:none;
-    }
-    .method-side {
-      position:relative;
-      z-index:1;
-      border-right:1px solid rgba(148,163,184,.12);
-      padding:16px;
-      display:grid;
-      align-content:start;
-      gap:10px;
-      background:rgba(255,255,255,.025);
-    }
-    .method-side span {
-      height:34px;
-      display:flex;
-      align-items:center;
-      padding:0 10px;
-      border-radius:12px;
-      color:#94a3b8;
-      font-size:.78rem;
-      font-weight:850;
-      background:rgba(255,255,255,.035);
-    }
-    .method-side span.active {
-      color:#e0faff;
-      background:rgba(34,211,238,.1);
-      border:1px solid rgba(34,211,238,.16);
-    }
-    .method-workspace {
-      position:relative;
-      z-index:1;
-      padding:18px;
-      overflow:hidden;
-    }
-    .method-workspace h4 {
-      color:#fff;
-      font-size:1rem;
-      margin-bottom:12px;
-    }
-    .method-flow {
-      position:relative;
-      min-height:298px;
-    }
-    .method-flow::before {
-      content:"";
-      position:absolute;
-      left:12%;
-      right:12%;
-      top:52%;
-      height:2px;
-      background:linear-gradient(90deg, var(--blue), var(--cyan), var(--violet));
-      box-shadow:0 0 22px rgba(34,211,238,.32);
-    }
-    .method-node {
-      position:absolute;
-      width:150px;
-      min-height:74px;
-      padding:12px;
-      border:1px solid rgba(34,211,238,.22);
-      border-radius:16px;
-      background:rgba(34,211,238,.075);
-      color:#dffbff;
-      font-size:.78rem;
-      font-weight:900;
-      box-shadow:0 18px 45px rgba(34,211,238,.08);
-      transition:transform .28s ease, opacity .28s ease, border-color .28s ease, background .28s ease;
-    }
-    .method-node small {
+    .boot-bar i {
       display:block;
-      margin-top:6px;
-      color:#94a3b8;
-      font-weight:760;
-    }
-    .method-node.n1 { left:3%; top:8%; }
-    .method-node.n2 { left:34%; top:18%; border-color:rgba(139,92,246,.25); background:rgba(139,92,246,.08); }
-    .method-node.n3 { right:5%; top:8%; }
-    .method-node.n4 { left:18%; bottom:8%; border-color:rgba(0,245,160,.23); background:rgba(0,245,160,.06); }
-    .method-node.n5 { right:18%; bottom:8%; border-color:rgba(139,92,246,.25); background:rgba(139,92,246,.08); }
-    .method-screen[data-step="0"] .n1,
-    .method-screen[data-step="1"] .n2,
-    .method-screen[data-step="2"] .n3,
-    .method-screen[data-step="3"] .n4,
-    .method-screen[data-step="4"] .n5,
-    .method-screen[data-step="5"] .n2,
-    .method-screen[data-step="6"] .n5 {
-      transform:translateY(-8px) scale(1.04);
-      border-color:rgba(34,211,238,.46);
-      background:rgba(34,211,238,.12);
-      box-shadow:0 24px 70px rgba(34,211,238,.18);
-    }
-    .canvas-block {
-      position:absolute;
-      border:1px solid rgba(34,211,238,.24);
-      border-radius:18px;
-      background:rgba(34,211,238,.08);
-      box-shadow:0 18px 60px rgba(34,211,238,.08);
-      color:#e0faff;
-      font-weight:900;
-      font-size:.82rem;
-      padding:14px;
-    }
-    .canvas-block.a { left:8%; top:12%; width:220px; min-height:100px; }
-    .canvas-block.b { right:10%; top:20%; width:190px; min-height:86px; border-color:rgba(139,92,246,.25); background:rgba(139,92,246,.09); }
-    .canvas-block.c { left:24%; bottom:18%; width:260px; min-height:96px; border-color:rgba(0,245,160,.22); background:rgba(0,245,160,.06); }
-    .method-label {
-      display:inline-flex;
-      padding:8px 11px;
-      border:1px solid rgba(34,211,238,.22);
-      border-radius:999px;
-      color:#a5f3fc;
-      background:rgba(34,211,238,.08);
-      font-size:.78rem;
-      font-weight:900;
-    }
-    .method-title { margin-top:14px; font-family:"Space Grotesk", Inter, sans-serif; font-size:2rem; line-height:1.05; }
-    .method-text { margin-top:10px; color:#b8c4d5; max-width:620px; }
-    .method-progress {
-      height:5px;
-      margin-top:18px;
-      border-radius:999px;
-      background:rgba(148,163,184,.12);
-      overflow:hidden;
-    }
-    .method-progress span {
-      display:block;
-      width:calc(var(--method-progress, 14.3) * 1%);
       height:100%;
+      width:0;
       border-radius:inherit;
-      background:linear-gradient(90deg, var(--blue), var(--cyan), var(--violet));
-      box-shadow:0 0 26px rgba(34,211,238,.36);
-      transition:width .32s ease;
+      background:linear-gradient(90deg, var(--blue), var(--cyan));
     }
-    .method-stage-pill {
+    .boot-skip {
       position:absolute;
-      right:18px;
-      top:18px;
-      z-index:2;
-      padding:7px 10px;
-      border:1px solid rgba(34,211,238,.18);
+      bottom:24px;
+      right:26px;
+      color:var(--soft);
+      font-size:.78rem;
+      letter-spacing:.08em;
+      padding:8px 12px;
       border-radius:999px;
-      color:#a5f3fc;
-      background:rgba(34,211,238,.075);
-      font-size:.72rem;
-      font-weight:950;
-      letter-spacing:.04em;
-    }
-    .method-screen[data-step="0"] { --method-progress:14.3; }
-    .method-screen[data-step="1"] { --method-progress:28.6; }
-    .method-screen[data-step="2"] { --method-progress:42.9; }
-    .method-screen[data-step="3"] { --method-progress:57.2; }
-    .method-screen[data-step="4"] { --method-progress:71.5; }
-    .method-screen[data-step="5"] { --method-progress:85.8; }
-    .method-screen[data-step="6"] { --method-progress:100; }
-    .method-screen[data-step="0"] .method-dashboard { background:radial-gradient(circle at 30% 20%, rgba(139,92,246,.12), transparent 38%), rgba(5,8,22,.46); }
-    .method-screen[data-step="1"] .method-dashboard { background:radial-gradient(circle at 45% 35%, rgba(34,211,238,.14), transparent 40%), rgba(5,8,22,.46); }
-    .method-screen[data-step="2"] .method-dashboard { background:radial-gradient(circle at 62% 30%, rgba(59,130,246,.15), transparent 40%), rgba(5,8,22,.46); }
-    .method-screen[data-step="3"] .method-dashboard { background:radial-gradient(circle at 50% 55%, rgba(0,245,160,.1), transparent 40%), rgba(5,8,22,.46); }
-    .method-screen[data-step="4"] .method-dashboard { background:radial-gradient(circle at 70% 30%, rgba(139,92,246,.15), transparent 42%), rgba(5,8,22,.46); }
-    .method-screen[data-step="5"] .method-dashboard { background:radial-gradient(circle at 38% 64%, rgba(34,211,238,.14), transparent 42%), rgba(5,8,22,.46); }
-    .method-screen[data-step="6"] .method-dashboard { background:radial-gradient(circle at 50% 50%, rgba(0,245,160,.12), transparent 42%), rgba(5,8,22,.46); }
-
-    .product-grid {
-      margin-top:42px;
-      display:grid;
-      gap:22px;
-    }
-    .product-card {
-      position:relative;
-      min-height:460px;
-      display:grid;
-      grid-template-columns:.82fr 1.18fr;
-      gap:22px;
-      align-items:stretch;
-      padding:24px;
       border:1px solid var(--line);
-      border-radius:34px;
-      background:
-        radial-gradient(circle at 78% 18%, rgba(59,130,246,.18), transparent 34%),
-        linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.035));
-      overflow:hidden;
-      box-shadow:0 24px 70px rgba(0,0,0,.22);
-      transition:transform .28s ease, border-color .28s ease, box-shadow .28s ease;
+      background:rgba(11,16,32,.5);
     }
-    .product-card:hover {
-      transform:translateY(-6px);
-      border-color:rgba(34,211,238,.32);
-      box-shadow:0 36px 110px rgba(34,211,238,.12), 0 30px 90px rgba(0,0,0,.28);
+    .boot-skip:hover { color:var(--ink); }
+
+    /* ---------- seções de conteúdo (cases, método, sobre, faq) ---------- */
+    .section { padding:82px 0; border-top:1px solid rgba(148,163,184,.08); }
+    .section-inner { width:min(1120px, 100% - 40px); margin:0 auto; }
+    .section-head { text-align:center; max-width:720px; margin:0 auto 44px; }
+    .section-head h2 {
+      font-family:"Space Grotesk", Inter, sans-serif;
+      font-size:clamp(1.7rem, 3.4vw, 2.5rem);
+      letter-spacing:-.015em;
+      margin:16px 0 10px;
     }
-    .product-copy {
-      position:relative;
-      z-index:2;
+    .section-head p { color:var(--muted); font-size:1rem; }
+
+    /* cases */
+    .cases-grid { display:grid; grid-template-columns:repeat(2, 1fr); gap:20px; }
+    .case {
       display:flex;
       flex-direction:column;
-      justify-content:center;
-      align-items:flex-start;
-      min-width:0;
-    }
-    .product-card h3,
-    .product-card p,
-    .product-card .product-tags,
-    .product-card .btn {
+      padding:28px 26px;
+      border-radius:20px;
+      border:1px solid var(--line);
+      background:linear-gradient(165deg, rgba(20,28,52,.6), rgba(9,13,28,.6));
       position:relative;
-      z-index:2;
-    }
-    .product-card h3 { font-size:clamp(2.1rem, 4vw, 4rem); }
-    .product-card p { margin-top:10px; color:#aeb8c8; }
-    .product-kicker {
-      display:inline-flex;
-      margin-bottom:14px;
-      padding:8px 11px;
-      border:1px solid rgba(34,211,238,.18);
-      border-radius:999px;
-      color:#a5f3fc;
-      background:rgba(34,211,238,.07);
-      font-size:.76rem;
-      font-weight:950;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-    }
-    .product-tags {
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-      margin:16px 0;
-    }
-    .product-tags span {
-      padding:7px 9px;
-      border:1px solid rgba(148,163,184,.16);
-      border-radius:999px;
-      color:#cbd5e1;
-      background:rgba(255,255,255,.045);
-      font-size:.72rem;
-      font-weight:900;
-    }
-    .product-art {
-      position:relative;
-      z-index:1;
-      min-height:410px;
-      border:1px solid rgba(148,163,184,.14);
-      border-radius:28px;
       overflow:hidden;
-      background:rgba(255,255,255,.045);
-      box-shadow:inset 0 1px 0 rgba(255,255,255,.1), 0 26px 70px rgba(0,0,0,.24);
     }
-    .product-art::after {
+    .case::before {
       content:"";
       position:absolute;
-      inset:0;
-      background:
-        linear-gradient(180deg, rgba(5,8,22,.22), rgba(5,8,22,.1) 42%, rgba(5,8,22,.82)),
-        linear-gradient(90deg, rgba(5,8,22,.72), transparent 52%);
-      pointer-events:none;
+      inset:0 0 auto 0;
+      height:3px;
+      background:linear-gradient(90deg, var(--blue), var(--violet));
+      opacity:.85;
     }
-    .product-art img {
-      --zoom:1.04;
-      --hover-zoom:1.1;
-      --shift-x:0%;
-      width:100%;
-      height:100%;
-      min-height:410px;
-      object-fit:cover;
-      filter:brightness(.58) saturate(1.02);
-      transform:scale(var(--zoom)) translateX(var(--shift-x));
-      transition:transform .7s ease, filter .7s ease;
+    .case-featured { grid-column:1 / -1; display:grid; grid-template-columns:1.15fr .85fr; gap:30px; }
+    .case-featured::before { background:linear-gradient(90deg, var(--cyan), var(--violet)); height:4px; }
+    .case-tag { font-size:.7rem; font-weight:800; letter-spacing:.11em; text-transform:uppercase; color:var(--cyan); }
+    .case h3 { font-family:"Space Grotesk", Inter, sans-serif; font-size:1.5rem; margin:8px 0 4px; }
+    .case-meta { color:var(--muted); font-size:.82rem; font-weight:600; margin-bottom:14px; display:flex; gap:9px; flex-wrap:wrap; align-items:center; }
+    .case-meta .dot { width:4px; height:4px; border-radius:50%; background:var(--soft); }
+    .case p.case-text { color:#cbd5e1; font-size:.94rem; flex:1; }
+    .case-result {
+      margin-top:18px;
+      padding-top:15px;
+      border-top:1px solid var(--line);
+      display:flex; gap:9px; align-items:flex-start;
+      color:#a7f3d0; font-size:.87rem; font-weight:600;
     }
-    .product-art.romasystem img { --zoom:1.2; --hover-zoom:1.28; --shift-x:-6%; object-position:72% center; }
-    .product-art.drawsecurity img { --zoom:1.14; --hover-zoom:1.22; --shift-x:-8%; object-position:75% center; }
-    .product-art.sobmedida img { --zoom:1.05; --hover-zoom:1.1; object-position:center; opacity:.72; }
-    .product-card:hover .product-art img { transform:scale(var(--hover-zoom)) translateX(var(--shift-x)); filter:brightness(.7) saturate(1.12) contrast(1.04); }
-    .product-flow {
-      position:absolute;
-      left:16px;
-      right:16px;
-      bottom:16px;
-      z-index:2;
-      display:grid;
-      gap:8px;
+    .case-result svg { flex:none; width:17px; height:17px; margin-top:1px; stroke:#00f5a0; fill:none; }
+    .case-person { display:flex; align-items:center; gap:11px; margin-top:16px; }
+    .case-avatar {
+      width:40px; height:40px; flex:none; border-radius:50%;
+      display:grid; place-items:center;
+      background:linear-gradient(120deg, var(--blue), var(--violet));
+      font-family:"Space Grotesk", Inter, sans-serif; font-weight:800; font-size:.82rem; color:#fff;
+      box-shadow:0 6px 16px rgba(59,130,246,.3);
     }
-    .product-flow span {
-      display:flex;
-      justify-content:space-between;
-      gap:10px;
-      padding:9px 10px;
-      border:1px solid rgba(148,163,184,.16);
-      border-radius:13px;
-      color:#dbeafe;
-      background:rgba(5,8,22,.62);
-      backdrop-filter:blur(12px);
-      font-size:.76rem;
-      font-weight:900;
-    }
-    .product-flow span::after {
-      content:"";
-      width:42px;
-      height:7px;
+    .case-person .who { font-size:.82rem; line-height:1.3; }
+    .case-person .who b { color:#fff; font-weight:700; display:block; }
+    .case-person .who span { color:var(--muted); }
+    .case-products {
       align-self:center;
-      border-radius:999px;
-      background:linear-gradient(90deg, var(--blue), var(--cyan));
-      box-shadow:0 0 14px rgba(34,211,238,.28);
-      animation:barPulse 3s ease-in-out infinite;
-    }
-    .custom-art {
-      min-height:190px;
       display:grid;
-      place-items:center;
-      position:relative;
-      background:
-        radial-gradient(circle at 50% 50%, rgba(59,130,246,.22), transparent 36%),
-        radial-gradient(circle at 70% 30%, rgba(139,92,246,.2), transparent 32%),
-        rgba(255,255,255,.04);
+      gap:10px;
+      padding:22px;
+      border-radius:16px;
+      border:1px solid rgba(96,165,250,.28);
+      background:rgba(9,13,28,.5);
     }
-    .custom-art::before {
-      content:"Sistema próprio";
-      padding:12px 16px;
-      border:1px solid rgba(34,211,238,.22);
-      border-radius:999px;
-      color:#dffbff;
-      background:rgba(34,211,238,.08);
-      font-weight:900;
+    .cp-label { font-size:.68rem; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-bottom:2px; }
+    .cp {
+      display:flex; align-items:center; gap:11px;
+      padding:11px 14px; border-radius:12px;
+      border:1px solid var(--line); background:linear-gradient(160deg, rgba(20,28,52,.7), rgba(11,16,32,.7));
+      font-weight:700;
+    }
+    .cp .cp-badge {
+      width:30px; height:30px; flex:none; border-radius:9px;
+      display:grid; place-items:center;
+      background:linear-gradient(120deg, var(--blue), var(--violet));
+      font-family:"Space Grotesk", Inter, sans-serif; font-size:.85rem; font-weight:800; color:#fff;
     }
 
-    .value-grid {
-      margin-top:40px;
-      display:grid;
-      grid-template-columns:repeat(3, minmax(0,1fr));
-      gap:14px;
+    /* método / como funciona */
+    .how-grid { display:grid; grid-template-columns:repeat(4, 1fr); gap:18px; }
+    .how-step {
+      padding:24px 22px;
+      border-radius:18px;
+      border:1px solid var(--line);
+      background:rgba(11,16,32,.5);
     }
-    .value-card {
-      position:relative;
-      min-height:135px;
-      padding:20px;
-      border:1px solid rgba(148,163,184,.15);
-      border-radius:22px;
-      background:
-        radial-gradient(circle at 82% 18%, rgba(34,211,238,.12), transparent 32%),
-        rgba(255,255,255,.045);
-      color:#e2e8f0;
-      font-weight:900;
-      font-size:1.05rem;
-      overflow:hidden;
-      transition:transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+    .how-step .num {
+      width:40px; height:40px; border-radius:12px;
+      display:grid; place-items:center;
+      background:linear-gradient(120deg, var(--blue), var(--violet));
+      font-family:"Space Grotesk", Inter, sans-serif; font-weight:800; font-size:1.1rem;
+      margin-bottom:15px;
+      box-shadow:0 8px 20px rgba(59,130,246,.28);
     }
-    .value-card span {
-      display:block;
-      margin-bottom:22px;
-      color:#86efff;
-      font-size:.76rem;
-      letter-spacing:.12em;
-    }
-    .value-card::after {
-      content:"";
-      position:absolute;
-      left:20px;
-      right:20px;
-      bottom:18px;
-      height:2px;
-      border-radius:999px;
-      background:linear-gradient(90deg, var(--blue), var(--cyan), transparent);
-      transform:scaleX(.32);
-      transform-origin:left;
-      transition:transform .24s ease;
-    }
-    .value-card:hover {
-      transform:translateY(-5px);
-      border-color:rgba(34,211,238,.32);
-      box-shadow:0 24px 80px rgba(34,211,238,.1);
-    }
-    .value-card:hover::after {
-      transform:scaleX(1);
-    }
-
-    .final-cta {
-      padding:120px 0;
+    .how-step h3 { font-size:1.08rem; margin-bottom:6px; }
+    .how-step p { color:var(--muted); font-size:.88rem; }
+    .how-note {
+      margin-top:26px;
+      display:flex; gap:11px; align-items:center; justify-content:center;
       text-align:center;
-      position:relative;
-      overflow:hidden;
+      padding:17px 24px;
+      border-radius:14px;
+      border:1px solid rgba(0,245,160,.28);
+      background:rgba(0,245,160,.07);
+      color:#a7f3d0; font-weight:600; font-size:.96rem;
     }
-    .final-cta::before {
-      content:"";
-      position:absolute;
-      left:50%;
-      top:50%;
-      width:820px;
-      height:420px;
-      transform:translate(-50%,-50%);
-      border-radius:50%;
-      background:radial-gradient(circle, rgba(59,130,246,.2), transparent 68%);
-      pointer-events:none;
-    }
-    .final-cta .container { position:relative; z-index:1; }
-    .final-cta h2 { margin-inline:auto; }
-    .final-cta p { max-width:720px; margin:0 auto 28px; color:#b8c4d5; font-size:1.08rem; }
-    .final-actions { display:flex; justify-content:center; gap:12px; flex-wrap:wrap; }
+    .how-note svg { flex:none; width:20px; height:20px; stroke:#00f5a0; fill:none; }
 
-    .site-footer {
-      padding:44px 0;
-      border-top:1px solid rgba(148,163,184,.12);
-      color:#94a3b8;
-      background:rgba(5,8,22,.5);
+    /* quem é a roma */
+    .about-card {
+      padding:44px;
+      border-radius:24px;
+      border:1px solid rgba(96,165,250,.3);
+      background:
+        radial-gradient(circle at 88% 12%, rgba(139,92,246,.16), transparent 55%),
+        linear-gradient(160deg, rgba(20,28,52,.72), rgba(9,13,28,.72));
     }
-    .footer-grid {
-      display:grid;
-      grid-template-columns:1.2fr repeat(3, minmax(140px,.35fr));
-      gap:28px;
+    .about-card .eyebrow { margin-bottom:4px; }
+    .about-card h2 {
+      font-family:"Space Grotesk", Inter, sans-serif;
+      font-size:clamp(1.6rem, 3.2vw, 2.3rem);
+      letter-spacing:-.015em;
+      margin:14px 0 14px;
     }
-    .site-footer .logo {
-      width:300px;
-      height:92px;
+    .about-lead { color:#cbd5e1; font-size:1.06rem; max-width:680px; }
+    .about-stats { display:flex; flex-wrap:wrap; gap:16px 40px; margin-top:26px; }
+    .about-stat strong {
+      display:block;
+      font-family:"Space Grotesk", Inter, sans-serif;
+      font-size:1.6rem; line-height:1;
+      background:linear-gradient(120deg, #dbeafe, var(--cyan));
+      -webkit-background-clip:text; background-clip:text; color:transparent;
     }
-    .footer-column { display:grid; align-content:start; gap:10px; min-width:0; }
-    .footer-column strong { color:#fff; font-size:.95rem; }
-    .footer-column p { max-width:360px; }
-    .footer-links { display:grid; gap:8px; }
-    .footer-links a { overflow-wrap:anywhere; }
-    .footer-links a:hover { color:#fff; }
+    .about-stat span { color:var(--muted); font-size:.82rem; }
+    .about-sign { margin-top:22px; color:var(--muted); font-size:.92rem; font-style:italic; }
 
-    .reveal {
-      opacity:0;
-      transform:translateY(24px);
-      transition:opacity .7s ease, transform .7s ease;
+    /* faq */
+    .faq-list { max-width:780px; margin:0 auto; display:grid; gap:12px; }
+    .faq-item { border:1px solid var(--line); border-radius:14px; background:rgba(11,16,32,.5); overflow:hidden; }
+    .faq-item summary {
+      list-style:none; cursor:pointer;
+      padding:18px 22px; font-weight:700; font-size:1rem;
+      display:flex; justify-content:space-between; align-items:center; gap:16px;
+      transition:color .15s ease;
     }
-    .reveal.visible { opacity:1; transform:translateY(0); }
+    .faq-item summary::-webkit-details-marker { display:none; }
+    .faq-item summary::after {
+      content:"+"; flex:none;
+      font-size:1.5rem; font-weight:400; line-height:1; color:var(--cyan);
+      transition:transform .2s ease;
+    }
+    .faq-item[open] summary::after { content:"−"; }
+    .faq-item summary:hover { color:#fff; }
+    .faq-item[open] summary { color:#fff; }
+    .faq-item p { padding:0 22px 20px; color:var(--muted); font-size:.93rem; line-height:1.6; }
 
-    @keyframes dash { to { stroke-dashoffset:-180; } }
-    @keyframes wordIn {
-      to { opacity:1; transform:translateY(0); filter:blur(0); }
+    /* cta final */
+    .final { text-align:center; }
+    .final h2 {
+      font-family:"Space Grotesk", Inter, sans-serif;
+      font-size:clamp(1.8rem, 3.8vw, 2.7rem);
+      letter-spacing:-.02em;
+      margin:16px 0 12px;
     }
-    @keyframes auroraPulse {
-      from { transform:scale(.96) translate3d(0,0,0); opacity:.72; }
-      to { transform:scale(1.06) translate3d(-24px,18px,0); opacity:1; }
+    .final p { color:var(--muted); max-width:560px; margin:0 auto 28px; font-size:1.02rem; }
+    .final .hero-ctas { justify-content:center; }
+
+    /* ---------- responsivo ---------- */
+    @media (max-width: 980px) {
+      .stage { padding-bottom:34px; }
+      .stage-grid { grid-template-columns:1fr; gap:36px; }
+      .lede { max-width:none; }
+      .os-map { max-width:480px; }
+
+      .case-featured { grid-template-columns:1fr; gap:22px; }
+      .how-grid { grid-template-columns:repeat(2, 1fr); }
     }
-    @keyframes auroraDrift {
-      from { transform:translate3d(-28px,-12px,0) rotate(-2deg); }
-      to { transform:translate3d(34px,18px,0) rotate(3deg); }
+    @media (max-width: 640px) {
+      .logo img { width:138px; }
+      .header-actions .btn-ghost { display:none; }
+      .btn { padding:10px 18px; font-size:.9rem; }
+      .site-header .btn-primary { padding:9px 15px; font-size:.82rem; }
+
+      /* mapa vira grade de módulos */
+      .os-map { aspect-ratio:auto; max-width:none; }
+      .os-map svg.wires, .hub { display:none; }
+      .os-map .nodes {
+        display:grid;
+        grid-template-columns:repeat(2, minmax(0,1fr));
+        gap:10px;
+      }
+      .node {
+        position:static;
+        transform:none;
+        animation:none;
+        width:100%;
+        min-width:0;
+      }
+      .node:hover, .node:focus-visible, .node.active { transform:none; }
+
+      /* popup vira folha inferior */
+      .popover {
+        left:0 !important;
+        right:0;
+        top:auto !important;
+        bottom:0;
+        width:100%;
+        max-height:82dvh;
+        border-radius:22px 22px 0 0;
+        padding:26px 22px calc(24px + env(safe-area-inset-bottom));
+        transform:translateY(24px);
+      }
+      .popover.open { transform:none; }
+      .popover .pop-close { display:grid; place-items:center; }
+      .scrim.open { opacity:1; visibility:visible; }
+
+      .proof { padding-top:56px; }
+      .stats-grid { grid-template-columns:1fr; }
+      .stat { padding:26px 14px; border-left:0; border-top:1px solid rgba(96,165,250,.22); }
+      .stat:first-child { border-top:0; }
+      .proof-cta { flex-direction:column; align-items:stretch; text-align:center; padding:22px; }
+      .proof-cta .btn { width:100%; }
+
+      .section { padding:56px 0; }
+      .cases-grid { grid-template-columns:1fr; }
+      .case-featured { grid-column:auto; }
+      .how-grid { grid-template-columns:1fr; }
+      .about-card { padding:28px 22px; }
+      .final .hero-ctas .btn { width:100%; }
+
+      .boot-core { width:min(360px, calc(100% - 32px)); }
+      .boot-console, .boot-bar { max-width:300px; }
+      .boot-console { font-size:.78rem; }
+      .boot-mark { width:70px; height:70px; font-size:2.1rem; }
     }
-    @keyframes floatCore {
-      0%,100% { transform:translate(-50%, -50%) rotateX(58deg) rotateZ(-10deg) translateY(0); }
-      50% { transform:translate(-50%, -50%) rotateX(58deg) rotateZ(-10deg) translateY(-14px); }
-    }
-    @keyframes floatModule {
-      0%,100% { transform:translate3d(0,0,0); }
-      50% { transform:translate3d(0,-12px,18px); }
-    }
-    @keyframes drawLine {
-      to { stroke-dashoffset:0; }
-    }
-    @keyframes barPulse {
-      0%,100% { transform:scaleX(.72); transform-origin:left; opacity:.78; }
-      50% { transform:scaleX(1); opacity:1; }
-    }
-    @keyframes scanMove {
-      0%,100% { transform:translateX(-58%) skewX(-8deg); opacity:.25; }
-      45%,55% { opacity:.64; }
-      50% { transform:translateX(58%) skewX(-8deg); }
-    }
-    @keyframes imageDrift {
-      from { transform:scale(1.015) translate3d(0,0,0); }
-      to { transform:scale(1.04) translate3d(-10px,7px,0); }
-    }
-    @keyframes iconFloat {
-      0%,100% { transform:translate3d(0,0,0); }
-      50% { transform:translate3d(0,-12px,0); }
-    }
-    @keyframes pulseDot {
-      0%,100% { transform:scale(.78); opacity:.7; }
-      50% { transform:scale(1.15); opacity:1; }
-    }
-    @keyframes pulseRing {
-      0%,100% { transform:scale(.92); opacity:.72; }
-      50% { transform:scale(1.28); opacity:1; }
-    }
-    @keyframes particleFloat {
-      0%,100% { transform:translate3d(0,0,0) scale(.8); opacity:.35; }
-      40% { opacity:1; }
-      50% { transform:translate3d(28px,-34px,0) scale(1.18); }
-    }
-    @keyframes ringSpin {
-      to { transform:translate(-50%, -50%) rotateX(64deg) rotateZ(352deg); }
-    }
-    @keyframes coreBreath {
-      0%,100% { transform:translate(-50%, -50%) scale(.92); opacity:.62; }
-      50% { transform:translate(-50%, -50%) scale(1.08); opacity:1; }
-    }
-    @keyframes nodeTravel {
-      0%,100% { transform:translate3d(0,0,0) scale(.86); opacity:.56; }
-      50% { transform:translate3d(16px,-12px,0) scale(1.22); opacity:1; }
-    }
-    @keyframes pipelineRise {
-      0%,100% { transform:translateY(0); filter:saturate(1); }
-      50% { transform:translateY(-8px); filter:saturate(1.32); }
-    }
-    @keyframes laneSweep {
-      0%,100% { transform:translateX(-14px) scaleX(.8); opacity:.32; }
-      50% { transform:translateX(18px) scaleX(1.08); opacity:.86; }
-    }
+
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
-        animation-duration:.01ms !important;
-        animation-iteration-count:1 !important;
+        animation:none !important;
+        transition:none !important;
         scroll-behavior:auto !important;
-        transition-duration:.01ms !important;
       }
-      .reveal { opacity:1; transform:none; }
-    }
-    @media (max-width:1060px) {
-      .nav-links, .header-actions { display:none; }
-      .mobile-toggle {
-        display:inline-flex;
-        width:46px;
-        height:46px;
-        align-items:center;
-        justify-content:center;
-        border:1px solid var(--line);
-        border-radius:50%;
-        color:#fff;
-        background:rgba(255,255,255,.06);
-      }
-      .mobile-menu {
-        position:fixed;
-        top:var(--header);
-        left:0;
-        right:0;
-        z-index:45;
-        display:none;
-        flex-direction:column;
-        gap:4px;
-        padding:16px;
-        border-bottom:1px solid var(--line);
-        background:rgba(5,8,22,.96);
-        backdrop-filter:blur(18px);
-      }
-      .mobile-menu.open { display:flex; }
-      .mobile-menu a { padding:14px; border-radius:14px; color:#cbd5e1; font-weight:850; }
-      .hero-grid, .segment-shell, .method-wrap { grid-template-columns:1fr; }
-      .os-scene { min-height:560px; }
-      .roma-os-visual { min-height:620px; }
-      .hero-frame, .hero-frame img { min-height:520px; }
-      .chaos-live { grid-template-columns:1fr; }
-      .story-beam { min-height:80px; }
-      .story-beam::before { width:100%; height:2px; transform:none; }
-      .real-segment-screen { grid-template-columns:1fr; }
-      .timeline, .method-screen { position:relative; top:auto; }
-      .method-wrap { min-height:auto; }
-      .method-dashboard { grid-template-columns:1fr; }
-      .method-side { grid-template-columns:repeat(5, minmax(0,1fr)); border-right:0; border-bottom:1px solid rgba(148,163,184,.12); }
-      .bento-grid { grid-template-columns:1fr 1fr; }
-      .bento-card.large, .bento-card.tall { grid-column:auto; grid-row:auto; }
-      .product-card { grid-template-columns:1fr; }
-      .value-grid { grid-template-columns:1fr; }
-      .footer-grid { grid-template-columns:1fr 1fr; }
-    }
-    @media (max-width:680px) {
-      .container { width:min(100% - 28px, 1180px); }
-      .section { padding:76px 0; }
-      .logo { width:178px; height:54px; }
-      .site-footer .logo { width:240px; height:74px; }
-      .hero { padding-top:calc(var(--header) + 40px); }
-      h1 { font-size:3rem; }
-      h2 { font-size:2.35rem; }
-      .hero-copy { font-size:1rem; }
-      .hero-actions .btn, .final-actions .btn { width:100%; }
-      .os-scene { min-height:auto; }
-      .roma-os-visual { min-height:auto; }
-      .roma-os-visual::before { inset:0; opacity:.1; }
-      .particle-field, .scene-ring, .core-glow { display:none; }
-      .os-connection-layer { display:none; }
-      .os-dashboard {
-        position:relative;
-        left:auto;
-        top:auto;
-        width:100%;
-        min-height:auto;
-        transform:none;
-        margin:18px 0 16px;
-        animation:none;
-      }
-      .dash-content, .dash-dock { grid-template-columns:1fr; }
-      .module-card {
-        position:relative;
-        left:auto;
-        right:auto;
-        top:auto;
-        bottom:auto;
-        min-width:0;
-        margin:8px 0;
-        animation:none;
-      }
-      .roma-os-visual .module-card { display:inline-grid; width:calc(50% - 6px); margin-right:6px; vertical-align:top; }
-      .mini-command-center { grid-template-columns:1fr 1fr; }
-      .mini-command-center span { min-height:58px; }
-      .automation-flow { display:grid; grid-template-columns:1fr; }
-      .automation-flow i { min-height:28px; width:2px; justify-self:center; }
-      .automation-flow i::after { right:50%; top:auto; bottom:-1px; transform:translateX(50%) rotate(135deg); }
-      .hero-frame, .hero-frame img { min-height:430px; }
-      .wide-showcase, .wide-showcase img { min-height:260px; }
-      .showcase-caption { position:relative; left:auto; right:auto; bottom:auto; margin:10px; align-items:flex-start; flex-direction:column; }
-      .floating-icon { font-size:.66rem; padding:7px 9px; }
-      .fi-1 { left:5%; top:8%; }
-      .fi-2 { right:5%; top:10%; }
-      .fi-3 { right:6%; bottom:14%; }
-      .fi-4 { left:6%; bottom:12%; }
-      .fi-5, .fi-6 { display:none; }
-      .core-panel { width:96%; min-height:330px; transform:translate(-50%,-50%) rotateX(50deg) rotateZ(-8deg) scale(.82); }
-      .module { min-width:108px; font-size:.72rem; padding:10px; }
-      .m1 { left:0; top:36px; }
-      .m2 { left:36%; top:4px; }
-      .m3 { right:0; top:52px; }
-      .m4 { left:0; bottom:126px; }
-      .m5 { right:0; bottom:132px; }
-      .m6 { left:34%; bottom:72px; }
-      .m7 { right:5%; top:278px; }
-      .m8 { left:5%; top:274px; }
-      .chip-cloud { bottom:0; }
-      .chaos-board, .ordered-board { min-height:520px; }
-      .chaos-live { min-height:auto; }
-      .chaos-cluster, .system-platform { min-height:470px; }
-      .chaos-item { width:178px; }
-      .platform-grid { grid-template-columns:1fr; }
-      .segment-art, .segment-art img { min-height:260px; }
-      .messy-card { width:190px; }
-      .pipeline, .bento-grid, .segment-screen, .core-body, .core-footer, .dash-grid, .workflow-preview, .value-grid, .footer-grid { grid-template-columns:1fr; }
-      .segment-tabs { grid-template-columns:1fr; }
-      .segment-nodes { min-height:320px; }
-      .method-side { display:none; }
-      .method-screen { min-height:auto; }
-      .method-canvas { min-height:360px; }
-      .method-dashboard { display:block; min-height:auto; }
-      .method-flow { min-height:420px; }
-      .method-node { width:138px; }
-      .method-node.n1 { left:3%; top:4%; }
-      .method-node.n2 { right:3%; left:auto; top:18%; }
-      .method-node.n3 { left:3%; right:auto; top:40%; }
-      .method-node.n4 { left:auto; right:3%; bottom:20%; }
-      .method-node.n5 { left:18%; right:auto; bottom:4%; }
-      .product-card { min-height:0; }
-      .product-art, .product-art img { min-height:230px; }
     }
   </style>
 </head>
 <body>
+
+  <div class="boot-intro" role="presentation" aria-hidden="true">
+    <div class="boot-scan"></div>
+    <div class="boot-core">
+      <div class="boot-mark">R</div>
+      <div class="boot-title">ROMA SOLUTION</div>
+      <div class="boot-console">
+        <div class="boot-line">&gt; inicializando Roma Solution</div>
+        <div class="boot-line">&gt; compilando CRM · ERP · automações</div>
+        <div class="boot-line">&gt; conectando dados da operação</div>
+        <div class="boot-line">&gt; montando sistema sob medida</div>
+        <div class="boot-line"><span class="ok">✓</span> pronto para escalar</div>
+      </div>
+      <div class="boot-bar"><i></i></div>
+    </div>
+    <button class="boot-skip" type="button" tabindex="-1">pular ›</button>
+  </div>
+
   <header class="site-header">
     <div class="header-inner">
       <a class="logo" href="/" aria-label="Roma Solution — Sistemas sob medida para empresas e projetos">
-        <img src="/assets/brand/roma-solution-logo.webp" alt="" width="600" height="176">
-        <span class="sr-only">Roma Solution — Sistemas sob medida para empresas e projetos</span>
+        <img src="/assets/brand/roma-solution-logo.webp" alt="" width="600" height="176" decoding="async">
+        <span class="sr-only">Roma Solution</span>
       </a>
-      <nav class="nav-links" aria-label="Navegação principal">
-        <a href="#solucoes">Soluções</a>
-        <a href="#segmentos">Segmentos</a>
-        <a href="#metodo">Método</a>
-        <a href="#produtos">Produtos</a>
-        <a href="#contato">Contato</a>
-        <a href="https://app.romasolution.com" target="_blank" rel="noopener">Entrar</a>
-      </nav>
       <div class="header-actions">
         <a class="btn btn-primary" href="https://wa.me/5513978099969?text=Ol%C3%A1%2C%20quero%20agendar%20um%20diagn%C3%B3stico%20com%20a%20Roma%20Solution." target="_blank" rel="noopener">Agendar diagnóstico</a>
       </div>
-      <button class="mobile-toggle" id="menuButton" type="button" aria-label="Abrir menu" aria-expanded="false">☰</button>
     </div>
-    <nav class="mobile-menu" id="mobileMenu" aria-label="Menu mobile">
-      <a href="#solucoes">Soluções</a>
-      <a href="#segmentos">Segmentos</a>
-      <a href="#metodo">Método</a>
-      <a href="#produtos">Produtos</a>
-      <a href="#contato">Contato</a>
-      <a href="https://app.romasolution.com" target="_blank" rel="noopener">Entrar</a>
-      <a href="https://wa.me/5513978099969?text=Ol%C3%A1%2C%20quero%20agendar%20um%20diagn%C3%B3stico%20com%20a%20Roma%20Solution." target="_blank" rel="noopener">Agendar diagnóstico</a>
-    </nav>
   </header>
 
-  <main>
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="reveal">
-          <div class="eyebrow"><i aria-hidden="true"></i> Sistemas sob medida para empresas e projetos</div>
-          <h1 class="hero-title" aria-label="Vamos desenhar o sistema que sua empresa deveria estar usando?">
-            <span class="word" style="--i:0">Vamos</span>
-            <span class="word" style="--i:1">desenhar</span>
-            <span class="word" style="--i:2">o</span>
-            <span class="word gradient-text focus-word" style="--i:3">sistema</span>
-            <span class="word" style="--i:4">que</span>
-            <span class="word" style="--i:5">sua</span>
-            <span class="word" style="--i:6">empresa</span>
-            <span class="word gradient-text focus-word" style="--i:7">deveria</span>
-            <span class="word gradient-text focus-word" style="--i:8">estar</span>
-            <span class="word gradient-text focus-word" style="--i:9">usando?</span>
-          </h1>
-          <p class="hero-copy">A Roma Solution cria sistemas sob medida para empresas que não cabem em software pronto. Transformamos planilhas, WhatsApp, processos manuais e controles espalhados em uma plataforma própria, clara e escalável.</p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="https://wa.me/5513978099969?text=Ol%C3%A1%2C%20quero%20agendar%20um%20diagn%C3%B3stico%20com%20a%20Roma%20Solution." target="_blank" rel="noopener">Agendar diagnóstico</a>
-            <a class="btn btn-secondary" href="#solucoes">Ver o que podemos criar</a>
-          </div>
-          <div class="hero-proof" aria-label="Pilares">
-            <span>CRM</span>
-            <span>ERP</span>
-            <span>Dashboard</span>
-            <span>Automação</span>
-            <span>Portal</span>
-            <span>App interno</span>
-            <span>IA</span>
-          </div>
+  <main class="stage">
+    <div class="stage-grid">
+      <section aria-label="Apresentação">
+        <span class="eyebrow">CRM · ERP · Automação · Dashboards · Apps</span>
+        <h1>
+          <span class="h1-line">Desenvolvemos <span class="grad">CRM, ERP</span> e sistemas</span>
+          <span class="h1-line">sob medida para <span class="rotator" aria-label="autônomos, pequenas, médias e grandes empresas"><span class="rotator-word grad">todos os portes</span></span></span>
+        </h1>
+        <p class="lede">Do autônomo à grande operação: transformamos planilhas, WhatsApp e processos manuais em plataformas próprias de gestão, automação e controle — desenhadas para a sua realidade.</p>
+        <div class="segments" role="group" aria-label="Portes atendidos pela Roma Solution">
+          <span class="seg-label">Feito para:</span>
+          <span class="seg">Autônomos</span>
+          <span class="seg">Pequenas</span>
+          <span class="seg">Médias</span>
+          <span class="seg">Grandes empresas</span>
         </div>
-
-        <div class="os-scene" aria-label="Sistema operacional empresarial Roma Solution">
-          <div class="particle-field" aria-hidden="true">
-            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
-          </div>
-          <div class="roma-os-visual">
-            <div class="scene-ring ring-one" aria-hidden="true"></div>
-            <div class="scene-ring ring-two" aria-hidden="true"></div>
-            <div class="core-glow" aria-hidden="true"></div>
-            <svg class="os-connection-layer" viewBox="0 0 680 620" fill="none" aria-hidden="true">
-              <path d="M58 120C162 130 238 222 340 305C464 404 536 218 628 132"/>
-              <path d="M70 486C186 408 252 410 340 305C428 200 526 430 624 476"/>
-              <path d="M178 48C242 166 264 236 340 305C410 368 374 492 342 574"/>
-              <path d="M134 304C244 302 282 310 340 305C448 296 476 250 566 270"/>
-              <path d="M92 270C176 250 248 272 340 305C448 344 520 350 616 334"/>
-              <circle cx="340" cy="305" r="138"/>
-              <circle cx="340" cy="305" r="226"/>
-            </svg>
-
-            <div class="os-dashboard">
-              <div class="dash-window-bar">
-                <span>Roma OS</span>
-                <div class="dash-dots" aria-hidden="true"><i></i><i></i><i></i></div>
-              </div>
-              <div class="dash-content">
-                <div class="live-chart">
-                  <div class="chart-title"><strong>Fluxo operacional</strong><span>conectado</span></div>
-                  <svg viewBox="0 0 320 138" aria-hidden="true">
-                    <defs>
-                      <linearGradient id="chartGradient" x1="0" x2="1" y1="0" y2="0">
-                        <stop stop-color="#3b82f6"/>
-                        <stop offset=".52" stop-color="#22d3ee"/>
-                        <stop offset="1" stop-color="#8b5cf6"/>
-                      </linearGradient>
-                      <linearGradient id="areaGradient" x1="0" x2="0" y1="0" y2="1">
-                        <stop stop-color="#22d3ee" stop-opacity=".32"/>
-                        <stop offset="1" stop-color="#22d3ee" stop-opacity="0"/>
-                      </linearGradient>
-                    </defs>
-                    <path class="chart-area" d="M10 112 C48 88 62 96 92 68 C126 36 150 90 184 58 C220 24 238 52 270 32 C294 18 306 24 318 16 L318 132 L10 132 Z"/>
-                    <path class="chart-line" d="M10 112 C48 88 62 96 92 68 C126 36 150 90 184 58 C220 24 238 52 270 32 C294 18 306 24 318 16"/>
-                  </svg>
-                </div>
-                <div class="ops-list">
-                  <div><span>Cliente</span><b>histórico único</b></div>
-                  <div><span>Equipe</span><b>rotina clara</b></div>
-                  <div><span>Financeiro</span><b>visão central</b></div>
-                  <div><span>Automação</span><b>menos retrabalho</b></div>
-                </div>
-              </div>
-              <div class="dash-dock">
-                <div class="dash-widget">Vendas<span></span></div>
-                <div class="dash-widget">Operação<span></span></div>
-                <div class="dash-widget">Dados<span></span></div>
-              </div>
-              <div class="dash-grid-flow" aria-hidden="true">
-                <i></i><i></i><i></i><i></i><i></i>
-              </div>
-            </div>
-
-            <div class="module-card mc-sales" data-icon="VD"><strong>Vendas</strong><span></span></div>
-            <div class="module-card mc-clients" data-icon="CL"><strong>Clientes</strong><span></span></div>
-            <div class="module-card mc-finance" data-icon="FI"><strong>Financeiro</strong><span></span></div>
-            <div class="module-card mc-team" data-icon="EQ"><strong>Equipe</strong><span></span></div>
-            <div class="module-card mc-operation" data-icon="OP"><strong>Operação</strong><span></span></div>
-            <div class="module-card mc-stock" data-icon="ES"><strong>Estoque</strong><span></span></div>
-            <div class="module-card mc-ai" data-icon="IA"><strong>IA</strong><span></span></div>
-            <div class="module-card mc-auto" data-icon="AU"><strong>Automação</strong><span></span></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="caos">
-      <div class="container">
-        <div class="section-kicker reveal">Antes do sistema</div>
-        <h2 class="reveal">Quando a empresa cresce, improviso vira gargalo.</h2>
-        <p class="lead reveal">Se vendas, financeiro, atendimento, equipe e operação estão espalhados em ferramentas diferentes, o empresário perde controle. A Roma transforma essa rotina em uma plataforma própria, clara e conectada.</p>
-        <div class="chaos-stage chaos-live reveal" id="chaosStory">
-          <svg class="chaos-lines" viewBox="0 0 1180 560" fill="none" aria-hidden="true">
-            <path d="M178 100 C360 96 450 176 578 280 C710 388 798 122 990 112"/>
-            <path d="M950 436 C760 432 696 332 578 280 C428 212 352 356 180 420"/>
-            <path d="M242 252 C386 232 474 246 578 280 C724 326 794 334 994 300"/>
-          </svg>
-          <div class="chaos-cluster" aria-label="Operação antes da Roma Solution">
-            <div class="chaos-label">ANTES</div>
-            <div class="chaos-item ci-1"><b>Planilha duplicada</b><small>Versões diferentes da mesma verdade</small></div>
-            <div class="chaos-item ci-2"><b>WhatsApp perdido</b><small>Cliente, equipe e gestor sem histórico</small></div>
-            <div class="chaos-item ci-3"><b>Tarefa sem dono</b><small>O processo depende de memória</small></div>
-            <div class="chaos-item ci-4"><b>Financeiro separado</b><small>Venda, cobrança e entrega não conversam</small></div>
-            <div class="chaos-item ci-5"><b>Documentos soltos</b><small>Informação importante fora do fluxo</small></div>
-          </div>
-
-          <div class="story-beam" aria-hidden="true"><span>Roma</span><b></b><b></b><b></b></div>
-
-          <div class="system-platform" aria-label="Operação reorganizada em plataforma Roma Solution">
-            <div class="platform-header"><strong>Plataforma própria</strong><span>organizada</span></div>
-            <div class="platform-grid">
-              <div class="platform-card"><strong>Vendas</strong><p>Funil, cliente, proposta e histórico no mesmo fluxo.</p><div class="process-line"><b></b><i></i><b></b></div></div>
-              <div class="platform-card"><strong>Operação</strong><p>Tarefas, responsáveis, prazos e execução visíveis.</p><div class="process-line"><b></b><i></i><b></b></div></div>
-              <div class="platform-card"><strong>Financeiro</strong><p>Cobrança, contratos e visão gerencial conectados.</p><div class="process-line"><b></b><i></i><b></b></div></div>
-              <div class="platform-card"><strong>Equipe</strong><p>Rotina clara para escritório, campo e gestão.</p><div class="process-line"><b></b><i></i><b></b></div></div>
-              <div class="platform-card wide"><strong>Dashboard executivo</strong><p>Dados em contexto para decidir sem caça à informação.</p><div class="process-line"><b></b><i></i><b></b><i></i><b></b></div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="solucoes">
-      <div class="container">
-        <div class="section-kicker reveal">O que a Roma cria</div>
-        <h2 class="reveal">Criamos sistemas que se encaixam no seu processo, não o contrário.</h2>
-        <p class="lead reveal">Cada empresa tem uma operação diferente. Por isso, a Roma Solution projeta sistemas próprios para o jeito real do seu negócio vender, atender, produzir, executar e crescer.</p>
-        <div class="bento-grid">
-          <article class="bento-card large reveal">
-            <div class="bento-icon">SG</div><h3>Sistemas de gestão</h3><p>Plataformas próprias para controlar vendas, operação, equipe, financeiro e processos críticos.</p>
-            <div class="mini-command-center"><span>Cliente</span><span>Venda</span><span>Operação</span><span>Financeiro</span><span>Gestão</span></div>
-          </article>
-          <article class="bento-card reveal">
-            <div class="bento-icon">CRM</div><h3>CRMs personalizados</h3><p>Funis, clientes, oportunidades, histórico e tarefas desenhados para seu modelo comercial.</p>
-            <div class="mini-pipeline"><i>Novo</i><i>Qualificado</i><i>Proposta</i><i>Fechamento</i></div>
-          </article>
-          <article class="bento-card tall reveal">
-            <div class="bento-icon">ERP</div><h3>ERPs sob medida</h3><p>Módulos de estoque, contratos, compras, faturamento, ordens e rotinas internas.</p>
-            <div class="mini-modules"><span>Estoque</span><span>Contratos</span><span>Compras</span><span>Faturamento</span><span>Ordens</span><span>Fiscal</span></div>
-          </article>
-          <article class="bento-card reveal">
-            <div class="bento-icon">DB</div><h3>Dashboards executivos</h3><p>Indicadores para enxergar gargalos, produtividade, receita e performance.</p>
-            <div class="mini-chart-bars"><i></i><i></i><i></i><i></i><i></i></div>
-          </article>
-          <article class="bento-card reveal">
-            <div class="bento-icon">APP</div><h3>Apps internos</h3><p>Ferramentas para operação, equipe externa, vendedores, gestores e atendimento.</p>
-            <div class="mini-phone"><span></span><b>Rotina do dia</b><i></i><i></i><i></i></div>
-          </article>
-          <article class="bento-card reveal">
-            <div class="bento-icon">PT</div><h3>Portais para clientes</h3><p>Ambientes para solicitações, documentos, acompanhamento, pagamentos e suporte.</p>
-            <div class="mini-portal"><span>Pedido</span><span>Documento</span><span>Suporte</span></div>
-          </article>
-          <article class="bento-card large reveal">
-            <div class="bento-icon">IA</div><h3>Automações, integrações e IA</h3><p>Fluxos que conectam ferramentas, reduzem trabalho manual e aplicam inteligência à operação.</p>
-            <div class="automation-flow"><span>Evento</span><i></i><span>Ação</span><i></i><span>Resultado</span></div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="segmentos">
-      <div class="container">
-        <div class="section-kicker reveal">Segmentos</div>
-        <h2 class="reveal">Qualquer segmento. Um sistema feito para a sua realidade.</h2>
-        <p class="lead reveal">A Roma não vende um software pronto tentando encaixar sua empresa nele. Nós entendemos sua operação e criamos a ferramenta certa para ela.</p>
-        <div class="segment-shell reveal">
-          <div class="segment-tabs" role="tablist" aria-label="Segmentos atendidos">
-            <button class="active" type="button" data-segment="Varejo">Varejo</button>
-            <button type="button" data-segment="Serviços">Serviços</button>
-            <button type="button" data-segment="Segurança">Segurança</button>
-            <button type="button" data-segment="Saúde">Saúde</button>
-            <button type="button" data-segment="Educação">Educação</button>
-            <button type="button" data-segment="Indústria">Indústria</button>
-            <button type="button" data-segment="Logística">Logística</button>
-            <button type="button" data-segment="Financeiro">Financeiro</button>
-            <button type="button" data-segment="Operação técnica">Operação técnica</button>
-            <button type="button" data-segment="Equipes externas">Equipes externas</button>
-          </div>
-          <div class="segment-visual">
-            <div class="segment-orbit" aria-hidden="true"></div>
-            <div class="segment-title"><strong id="segmentTitle">Varejo</strong><span>modelo adaptável</span></div>
-            <div class="segment-screen real-segment-screen">
-              <div class="segment-panel"><h4>Fluxos possíveis</h4><div class="segment-list" id="segmentList"></div></div>
-              <div class="segment-mockup" aria-label="Mockup de sistema por segmento">
-                <div class="segment-mock-header"><strong id="segmentMockTitle">Operação de varejo</strong><span id="segmentMockBadge">Sistema sob medida</span></div>
-                <div class="segment-lanes" aria-hidden="true"><i></i><i></i><i></i></div>
-                <div class="segment-nodes" id="segmentNodes">
-                  <div class="segment-node">Clientes</div>
-                  <div class="segment-node">Pedidos</div>
-                  <div class="segment-node">Equipe</div>
-                  <div class="segment-node">Financeiro</div>
-                  <div class="segment-node">Dashboard</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="metodo">
-      <div class="container">
-        <div class="section-kicker reveal">Método Roma</div>
-        <h2 class="reveal">Do processo confuso ao sistema ideal.</h2>
-        <p class="lead reveal">Antes de desenvolver, entendemos como sua operação funciona. Depois transformamos a rotina em uma plataforma clara, usável e preparada para evoluir.</p>
-        <div class="method-wrap">
-          <div class="timeline reveal" aria-label="Etapas do método Roma">
-            <button class="active" type="button" data-step="0"><b>1</b><span><strong>Diagnóstico</strong>mapa de problemas</span></button>
-            <button type="button" data-step="1"><b>2</b><span><strong>Mapeamento</strong>fluxos conectados</span></button>
-            <button type="button" data-step="2"><b>3</b><span><strong>Protótipo visual</strong>telas tomando forma</span></button>
-            <button type="button" data-step="3"><b>4</b><span><strong>Desenvolvimento</strong>módulos criados</span></button>
-            <button type="button" data-step="4"><b>5</b><span><strong>Implantação</strong>usuários entrando</span></button>
-            <button type="button" data-step="5"><b>6</b><span><strong>Treinamento</strong>equipe usando</span></button>
-            <button type="button" data-step="6"><b>7</b><span><strong>Evolução contínua</strong>indicadores crescendo</span></button>
-          </div>
-          <div class="method-screen reveal" data-step="0">
-            <div class="method-label" id="methodLabel">Diagnóstico</div>
-            <div class="method-title" id="methodTitle">Mapa de problemas da operação</div>
-            <p class="method-text" id="methodText">Entendemos objetivos, gargalos, ferramentas atuais, usuários e prioridades do negócio antes de desenhar qualquer tela.</p>
-            <div class="method-progress" aria-hidden="true"><span id="methodProgressBar"></span></div>
-            <div class="method-dashboard">
-              <div class="method-side" aria-hidden="true">
-                <span class="active">Processos</span>
-                <span>Usuários</span>
-                <span>Telas</span>
-                <span>Fluxos</span>
-                <span>Indicadores</span>
-              </div>
-              <div class="method-workspace">
-                <h4 id="methodVisualTitle">Problemas virando mapa de decisão</h4>
-                <div class="method-stage-pill" id="methodStagePill">Cena 01 / Diagnóstico</div>
-                <div class="method-flow">
-                  <div class="method-node n1" id="blockA">Processos soltos<small>origem do gargalo</small></div>
-                  <div class="method-node n2" id="blockB">Fluxos conectados<small>ordem operacional</small></div>
-                  <div class="method-node n3" id="blockC">Protótipo validado<small>experiência antes do código</small></div>
-                  <div class="method-node n4" id="blockD">Módulos em uso<small>implantação assistida</small></div>
-                  <div class="method-node n5" id="blockE">Evolução contínua<small>melhorias por dados</small></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="produtos">
-      <div class="container">
-        <div class="section-kicker reveal">Produtos e verticais</div>
-        <h2 class="reveal">Produtos nascidos de problemas reais. Sistemas criados para qualquer operação.</h2>
-        <p class="lead reveal">RomaSystem e DrawSecurity mostram como a Roma transforma dores específicas em produtos digitais. A mesma lógica pode ser aplicada a outros segmentos e operações.</p>
-        <div class="product-grid">
-          <article class="product-card reveal product-wide"><div class="product-copy"><span class="product-kicker">Produto vertical</span><h3>RomaSystem</h3><p>Gestão para empresas de segurança eletrônica: CRM, OS, estoque, financeiro, equipe e dashboards.</p><div class="product-tags"><span>CRM</span><span>OS</span><span>Estoque</span><span>Financeiro</span><span>Equipe</span><span>Contratos</span></div><a class="btn btn-primary" href="https://app.romasolution.com">Ver RomaSystem</a></div><div class="product-art romasystem"><img src="/assets/romasystem-showcase.webp" alt="RomaSystem com dashboard e módulos conectados de CRM, orçamento, OS, agenda, estoque, financeiro, equipe, frota, contratos e dashboards" width="1672" height="941" loading="lazy" decoding="async"><div class="product-flow"><span>Lead vira orçamento</span><span>OS entra na agenda</span><span>Gestão fecha o ciclo</span></div></div></article>
-          <article class="product-card reveal product-wide"><div class="product-copy"><span class="product-kicker">App de campo</span><h3>DrawSecurity</h3><p>Ferramenta de campo para projetos, vistorias, IA, planta, memorial técnico e orçamento.</p><div class="product-tags"><span>Planta</span><span>IA</span><span>Memorial</span><span>Orçamento</span><span>3D</span><span>Mobile</span></div><a class="btn btn-primary" href="https://romasolution.com/drawsecurity/">Ver DrawSecurity</a></div><div class="product-art drawsecurity"><img src="/assets/drawsecurity-showcase.webp" alt="DrawSecurity com aplicativo mobile, planta técnica, câmeras, orçamento, memorial, proposta e visualização 3D" width="1672" height="941" loading="lazy" decoding="async"><div class="product-flow"><span>Vistoria em campo</span><span>Projeto visual</span><span>Proposta pronta</span></div></div></article>
-          <article class="product-card reveal product-wide"><div class="product-copy"><span class="product-kicker">Projeto exclusivo</span><h3>Sistemas sob medida</h3><p>Plataformas exclusivas para empresas que precisam de gestão própria, automações e dashboards específicos.</p><div class="product-tags"><span>ERP</span><span>Portal</span><span>App interno</span><span>Dashboard</span><span>Automação</span><span>IA</span></div><a class="btn btn-secondary" href="https://wa.me/5513978099969?text=Ol%C3%A1%2C%20quero%20criar%20um%20sistema%20sob%20medida%20para%20minha%20empresa." target="_blank" rel="noopener">Criar meu sistema</a></div><div class="product-art sobmedida"><img src="/assets/roma-solutions-showcase.webp" alt="Sistemas sob medida com módulos de CRM, ERP, portais, apps internos, automações, dashboards e IA" width="1672" height="941" loading="lazy" decoding="async"><div class="product-flow"><span>Diagnóstico</span><span>Protótipo</span><span>Sistema próprio</span></div></div></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="valor">
-      <div class="container">
-        <div class="section-kicker reveal">Prova de valor</div>
-        <h2 class="reveal">A Roma Solution não vende software pronto. Ela cria o sistema que a empresa deveria ter.</h2>
-        <div class="value-grid">
-          <div class="value-card reveal"><span>01</span>Sistema próprio, sem gambiarra.</div>
-          <div class="value-card reveal"><span>02</span>Fluxos desenhados para sua operação.</div>
-          <div class="value-card reveal"><span>03</span>Gestão, equipe e financeiro no mesmo lugar.</div>
-          <div class="value-card reveal"><span>04</span>Dashboards para decisões reais.</div>
-          <div class="value-card reveal"><span>05</span>Automações que reduzem trabalho manual.</div>
-          <div class="value-card reveal"><span>06</span>Evolução contínua conforme a empresa cresce.</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="final-cta" id="contato">
-      <div class="container">
-        <div class="section-kicker reveal">Próximo passo</div>
-        <h2 class="reveal">Pronto para tirar sua operação do improviso?</h2>
-        <p class="reveal">Fale com a Roma Solution e descubra como seria uma plataforma própria desenhada para o jeito real da sua empresa vender, atender, operar e crescer.</p>
-        <div class="final-actions reveal">
+        <div class="hero-ctas">
           <a class="btn btn-primary" href="https://wa.me/5513978099969?text=Ol%C3%A1%2C%20quero%20agendar%20um%20diagn%C3%B3stico%20com%20a%20Roma%20Solution." target="_blank" rel="noopener">Agendar diagnóstico</a>
-          <a class="btn btn-secondary" href="https://wa.me/5513978099969?text=Ol%C3%A1%2C%20quero%20falar%20com%20a%20Roma%20Solution%20sobre%20um%20sistema%20sob%20medida." target="_blank" rel="noopener">Chamar no WhatsApp</a>
+          <a class="btn btn-ghost" href="https://wa.me/5513978099969?text=Ol%C3%A1!%20Quero%20entender%20o%20que%20a%20Roma%20Solution%20pode%20criar%20para%20minha%20empresa." target="_blank" rel="noopener">Falar no WhatsApp</a>
         </div>
-      </div>
-    </section>
+        <div class="hero-trust" aria-label="Prova social">
+          <span><b>15 anos</b> de origem</span>
+          <span class="sep" aria-hidden="true"></span>
+          <span><b>+4.000</b> clientes</span>
+          <span class="sep" aria-hidden="true"></span>
+          <span><b>R$ 1 bi+</b> movimentados nas plataformas</span>
+        </div>
+        <p class="hint">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg>
+          <span class="mouse-label">Passe o mouse sobre cada módulo e descubra o que podemos construir.</span>
+          <span class="touch-label">Toque em cada módulo e descubra o que podemos construir.</span>
+        </p>
+      </section>
+
+      <section class="os-map" aria-label="Módulos que a Roma Solution constrói">
+        <svg class="wires" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="wire-grad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#22d3ee"></stop>
+              <stop offset="1" stop-color="#8b5cf6"></stop>
+            </linearGradient>
+          </defs>
+          <line x1="50" y1="50" x2="18" y2="16" data-wire="crm"></line>
+          <line x1="50" y1="50" x2="60" y2="9" data-wire="erp"></line>
+          <line x1="50" y1="50" x2="90" y2="28" data-wire="automacao"></line>
+          <line x1="50" y1="50" x2="92" y2="66" data-wire="dashboards"></line>
+          <line x1="50" y1="50" x2="66" y2="93" data-wire="apps"></line>
+          <line x1="50" y1="50" x2="26" y2="90" data-wire="portais"></line>
+          <line x1="50" y1="50" x2="8" y2="55" data-wire="ia"></line>
+        </svg>
+
+        <div class="hub" aria-hidden="true">
+          <div>
+            <strong>Roma Solution</strong>
+            <span>sua operação conectada</span>
+            <div class="dot-row"><i></i><i></i><i></i></div>
+          </div>
+        </div>
+
+        <div class="nodes">
+          <button class="node" data-key="crm" style="--x:18; --y:16; --d:.0s" aria-haspopup="dialog" aria-expanded="false">
+            <span class="tag">CRM</span>
+            <span class="name">CRM personalizado</span>
+            <span class="bar" aria-hidden="true"></span>
+          </button>
+          <button class="node" data-key="erp" style="--x:60; --y:9; --d:.6s" aria-haspopup="dialog" aria-expanded="false">
+            <span class="tag">ERP</span>
+            <span class="name">ERP &amp; gestão</span>
+            <span class="bar" aria-hidden="true"></span>
+          </button>
+          <button class="node" data-key="automacao" style="--x:90; --y:28; --d:1.2s" aria-haspopup="dialog" aria-expanded="false">
+            <span class="tag">AU</span>
+            <span class="name">Automação</span>
+            <span class="bar" aria-hidden="true"></span>
+          </button>
+          <button class="node" data-key="dashboards" style="--x:92; --y:66; --d:1.8s" aria-haspopup="dialog" aria-expanded="false">
+            <span class="tag">BI</span>
+            <span class="name">Dashboards</span>
+            <span class="bar" aria-hidden="true"></span>
+          </button>
+          <button class="node" data-key="apps" style="--x:66; --y:93; --d:2.4s" aria-haspopup="dialog" aria-expanded="false">
+            <span class="tag">AP</span>
+            <span class="name">Apps internos</span>
+            <span class="bar" aria-hidden="true"></span>
+          </button>
+          <button class="node" data-key="portais" style="--x:26; --y:90; --d:3s" aria-haspopup="dialog" aria-expanded="false">
+            <span class="tag">PT</span>
+            <span class="name">Portais de clientes</span>
+            <span class="bar" aria-hidden="true"></span>
+          </button>
+          <button class="node" data-key="ia" style="--x:8; --y:55; --d:3.6s" aria-haspopup="dialog" aria-expanded="false">
+            <span class="tag">IA</span>
+            <span class="name">IA aplicada</span>
+            <span class="bar" aria-hidden="true"></span>
+          </button>
+        </div>
+      </section>
+    </div>
+
+    <div class="products-row" role="group" aria-label="Produtos e método da Roma Solution">
+      <span>Conheça também:</span>
+      <button class="chip" data-key="romasystem" aria-haspopup="dialog" aria-expanded="false"><span class="dot" aria-hidden="true"></span>RomaSystem</button>
+      <button class="chip" data-key="drawsecurity" aria-haspopup="dialog" aria-expanded="false"><span class="dot" aria-hidden="true"></span>DrawSecurity</button>
+      <button class="chip" data-key="metodo" aria-haspopup="dialog" aria-expanded="false"><span class="dot" aria-hidden="true"></span>Método Roma</button>
+    </div>
   </main>
 
+  <section class="section cases" aria-label="Cases reais da Roma Solution">
+    <div class="section-inner">
+      <div class="section-head">
+        <span class="eyebrow">Cases reais</span>
+        <h2>Empresas de verdade, rodando em sistemas nossos.</h2>
+        <p>Não é vitrine. São operações reais que confiaram na Roma e hoje trabalham melhor por causa disso.</p>
+      </div>
+      <div class="cases-grid">
+        <article class="case case-featured">
+          <div class="case-main">
+            <span class="case-tag">Segurança eletrônica · a origem da Roma</span>
+            <h3>Alarmes Roma</h3>
+            <p class="case-meta">15 anos de mercado <span class="dot"></span> +4.000 clientes</p>
+            <p class="case-text">Foi para a nossa própria operação de segurança — 15 anos de estrada e mais de 4.000 clientes — que a Roma construiu seu primeiro sistema. Desenvolvemos quatro plataformas próprias que trouxeram agilidade e controle total para o dia a dia da empresa.</p>
+            <div class="case-result">
+              <svg viewBox="0 0 24 24" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              Quatro sistemas próprios em produção — a operação inteira sob controle.
+            </div>
+            <div class="case-person">
+              <span class="case-avatar" aria-hidden="true">RM</span>
+              <span class="who"><b>Roberto Martins</b><span>Diretor · Alarmes Roma</span></span>
+            </div>
+          </div>
+          <div class="case-products">
+            <span class="cp-label">Sistemas desenvolvidos</span>
+            <div class="cp"><span class="cp-badge">RS</span>RomaSystem</div>
+            <div class="cp"><span class="cp-badge">IP</span>RomaIP</div>
+            <div class="cp"><span class="cp-badge">TK</span>RomaTrack</div>
+            <div class="cp"><span class="cp-badge">SM</span>RomaSmart</div>
+          </div>
+        </article>
+
+        <article class="case">
+          <span class="case-tag">Higienização &amp; impermeabilização</span>
+          <h3>Mais Clean</h3>
+          <p class="case-meta">Estofados · serviços</p>
+          <p class="case-text">Trocaram um sistema fraco e sem recursos por uma plataforma sob medida. O resultado foi direto: a empresa expandiu e a equipe ganhou tempo para conquistar novos clientes.</p>
+          <div class="case-result">
+            <svg viewBox="0 0 24 24" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            De um sistema genérico a uma plataforma que acompanha o crescimento.
+          </div>
+          <div class="case-person">
+            <span class="case-avatar" aria-hidden="true">RR</span>
+            <span class="who"><b>Edna &amp; Leandro Rufino</b><span>Diretores · Mais Clean</span></span>
+          </div>
+        </article>
+
+        <article class="case">
+          <span class="case-tag">Mercado imobiliário</span>
+          <h3>Trimarx Imóveis</h3>
+          <p class="case-meta">+1.000 imóveis cadastrados <span class="dot"></span> Litoral Sul de SP</p>
+          <p class="case-text">Imobiliária do litoral sul de SP que migrou toda a operação para a Roma — sem perder um dado sequer. Hoje a diretoria enxerga a imobiliária inteira na palma da mão.</p>
+          <div class="case-result">
+            <svg viewBox="0 0 24 24" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            Migração sem perder um dado e a diretoria com visão total da operação.
+          </div>
+          <div class="case-person">
+            <span class="case-avatar" aria-hidden="true">JB</span>
+            <span class="who"><b>João Bosco</b><span>Diretor · Trimarx Imóveis</span></span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section how" aria-label="Como a Roma trabalha">
+    <div class="section-inner">
+      <div class="section-head">
+        <span class="eyebrow">Como funciona</span>
+        <h2>Do processo confuso ao sistema rodando — sem risco pra você.</h2>
+        <p>Um método em etapas curtas, em que você acompanha e aprova cada passo.</p>
+      </div>
+      <div class="how-grid">
+        <div class="how-step">
+          <div class="num">1</div>
+          <h3>Diagnóstico</h3>
+          <p>Entendemos sua operação, os gargalos e as prioridades. Sem custo e sem compromisso.</p>
+        </div>
+        <div class="how-step">
+          <div class="num">2</div>
+          <h3>Protótipo visual</h3>
+          <p>Você vê as telas do seu sistema e aprova antes de escrevermos uma linha de código.</p>
+        </div>
+        <div class="how-step">
+          <div class="num">3</div>
+          <h3>Desenvolvimento</h3>
+          <p>Construímos em etapas. Você já usa os primeiros módulos em semanas, não em meses.</p>
+        </div>
+        <div class="how-step">
+          <div class="num">4</div>
+          <h3>Evolução</h3>
+          <p>O sistema cresce junto com a empresa — e a plataforma é sua, para sempre.</p>
+        </div>
+      </div>
+      <p class="how-note">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>
+        Você aprova o protótipo antes de desenvolver e o sistema é seu. Sem risco, sem ficar refém de ninguém.
+      </p>
+    </div>
+  </section>
+
+  <section class="proof" aria-label="Nossos números">
+    <div class="proof-inner">
+      <span class="eyebrow">Nossos números</span>
+      <h2>Menos promessa, mais sistema rodando.</h2>
+      <p class="proof-note">O volume que os sistemas dos nossos clientes já cadastram e movimentam.</p>
+      <div class="stats-grid">
+        <div class="stat">
+          <strong data-count="50" data-suffix="+">50+</strong>
+          <span>projetos entregues</span>
+        </div>
+        <div class="stat">
+          <strong data-count="1" data-prefix="R$ " data-suffix=" bi+">R$ 1 bi+</strong>
+          <span>em negócios movimentados dentro das plataformas</span>
+        </div>
+        <div class="stat">
+          <strong data-count="100" data-suffix="%">100%</strong>
+          <span>dos sistemas feitos sob medida</span>
+        </div>
+      </div>
+      <div class="proof-cta">
+        <div class="proof-cta-text">
+          <strong>Seu negócio pode ser o próximo a entrar nesses números.</strong>
+          <span>Diagnóstico sem compromisso: mapeamos sua operação e mostramos o sistema ideal para ela.</span>
+        </div>
+        <a class="btn btn-primary" href="https://wa.me/5513978099969?text=Ol%C3%A1%2C%20quero%20agendar%20um%20diagn%C3%B3stico%20com%20a%20Roma%20Solution." target="_blank" rel="noopener">Agendar diagnóstico</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section about" aria-label="Quem é a Roma Solution">
+    <div class="section-inner">
+      <!-- Espaço pronto para foto + nome do fundador quando quiser adicionar -->
+      <div class="about-card">
+        <span class="eyebrow">Quem é a Roma</span>
+        <h2>Nascemos dentro de uma operação real.</h2>
+        <p class="about-lead">A Roma Solution nasceu da Alarmes Roma — empresa de segurança com 15 anos de mercado e mais de 4.000 clientes. Precisávamos de sistemas que nenhum software pronto entregava, então construímos os nossos. Deu tão certo que passamos a criar plataformas sob medida para outras empresas. Não somos teóricos: sabemos o que é operar de verdade.</p>
+        <div class="about-stats">
+          <div class="about-stat"><strong>15 anos</strong><span>de operação na origem</span></div>
+          <div class="about-stat"><strong>+4.000</strong><span>clientes na empresa-mãe</span></div>
+          <div class="about-stat"><strong>4 sistemas</strong><span>próprios em produção</span></div>
+        </div>
+        <p class="about-sign">— Feito por quem vive o dia a dia de uma operação, não só o código.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section faq" aria-label="Perguntas frequentes">
+    <div class="section-inner">
+      <div class="section-head">
+        <span class="eyebrow">Dúvidas frequentes</span>
+        <h2>O que todo mundo pergunta antes de começar.</h2>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Por que um sistema sob medida e não um pronto?</summary>
+          <p>Sistema pronto te obriga a encaixar a sua empresa no software — e a pagar mensalidade pra sempre por recursos que você nem usa. O sob medida faz o contrário: encaixa no seu processo, a plataforma é sua e ela cresce junto com o negócio. No fim, você acaba com a gambiarra de planilhas e apps soltos e tem uma coisa só, do seu jeito.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Quanto custa um sistema sob medida?</summary>
+          <p>Depende do que a sua operação precisa — cada sistema é único. Por isso começamos com um diagnóstico gratuito: entendemos o escopo, definimos o essencial e apresentamos o investimento com clareza, sem surpresa depois.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Quanto tempo demora para ficar pronto?</summary>
+          <p>Trabalhamos em etapas. Em vez de esperar meses por um sistema completo, você começa a usar os primeiros módulos em algumas semanas e o restante vai entrando aos poucos.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Já tenho planilhas ou um sistema. Dá pra migrar?</summary>
+          <p>Dá. Migramos seus dados com segurança, sem perder nada — foi exatamente o que fizemos na Trimarx Imóveis, com mais de mil imóveis cadastrados.</p>
+        </details>
+        <details class="faq-item">
+          <summary>O sistema fica sendo meu?</summary>
+          <p>Sim. A plataforma é sua. Você não fica refém de mensalidade de software de terceiros nem preso a ninguém.</p>
+        </details>
+        <details class="faq-item">
+          <summary>E depois de pronto, tem suporte?</summary>
+          <p>Sim. A gente acompanha, dá suporte e evolui o sistema conforme a sua empresa cresce. A Roma continua do seu lado.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section final" aria-label="Fale com a Roma Solution">
+    <div class="section-inner">
+      <span class="eyebrow">Próximo passo</span>
+      <h2>Vamos desenhar o sistema que a sua empresa merece.</h2>
+      <p>Um diagnóstico gratuito, sem compromisso. Você sai sabendo exatamente como seria a sua plataforma.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="https://wa.me/5513978099969?text=Ol%C3%A1%2C%20quero%20agendar%20um%20diagn%C3%B3stico%20gratuito%20com%20a%20Roma%20Solution." target="_blank" rel="noopener">Agendar diagnóstico gratuito</a>
+        <a class="btn btn-ghost" href="https://wa.me/5513978099969?text=Ol%C3%A1!%20Quero%20falar%20com%20a%20Roma%20Solution%20sobre%20um%20sistema%20para%20minha%20empresa." target="_blank" rel="noopener">Falar no WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="scrim" hidden></div>
+
+  <aside class="popover" role="dialog" aria-modal="false" aria-label="Detalhes do módulo" hidden>
+    <button class="pop-close" type="button" aria-label="Fechar">×</button>
+    <span class="pop-tag"></span>
+    <h3></h3>
+    <p></p>
+    <ul></ul>
+    <a class="pop-cta" href="#" target="_blank" rel="noopener"></a>
+  </aside>
+
+  <!-- conteúdo dos módulos (também legível por buscadores) -->
+  <div id="module-details" hidden>
+    <section data-detail="crm" data-tag="Comercial" data-cta="Quero um CRM assim" data-link="https://wa.me/5513978099969?text=Ol%C3%A1!%20Quero%20um%20CRM%20personalizado%20para%20minha%20empresa.">
+      <h3>CRM personalizado</h3>
+      <p>Funil, clientes, propostas e histórico no mesmo fluxo — desenhado para o jeito que o seu comercial realmente vende.</p>
+      <ul>
+        <li>Funil com as etapas do seu processo, não de um software genérico</li>
+        <li>Histórico único por cliente: conversas, propostas e pendências</li>
+        <li>Follow-ups, metas e comissões calculados sozinhos</li>
+        <li>Lead do site e do WhatsApp caindo direto no funil</li>
+      </ul>
+    </section>
+    <section data-detail="erp" data-tag="Operação" data-cta="Quero organizar minha gestão" data-link="https://wa.me/5513978099969?text=Ol%C3%A1!%20Quero%20um%20sistema%20de%20gest%C3%A3o%20sob%20medida%20para%20minha%20empresa.">
+      <h3>ERP &amp; gestão sob medida</h3>
+      <p>Vendas, financeiro, estoque e operação em uma plataforma própria — sem planilha duplicada e sem improviso.</p>
+      <ul>
+        <li>Financeiro com visão real: cobranças, contratos e fluxo de caixa</li>
+        <li>Estoque, pedidos e ordens de serviço conectados</li>
+        <li>Permissões por função: cada equipe vê o que precisa</li>
+        <li>Processos críticos com dono, prazo e rastreio</li>
+      </ul>
+    </section>
+    <section data-detail="automacao" data-tag="Produtividade" data-cta="Quero automatizar rotinas" data-link="https://wa.me/5513978099969?text=Ol%C3%A1!%20Quero%20automatizar%20processos%20manuais%20da%20minha%20empresa.">
+      <h3>Automação de processos</h3>
+      <p>Rotinas manuais viram fluxos que rodam sozinhos — sua equipe para de digitar e passa a decidir.</p>
+      <ul>
+        <li>Cobranças, lembretes e avisos disparados automaticamente</li>
+        <li>Integração com WhatsApp, e-mail e sistemas que você já usa</li>
+        <li>Contratos, propostas e documentos gerados em um clique</li>
+        <li>Menos retrabalho, menos erro humano</li>
+      </ul>
+    </section>
+    <section data-detail="dashboards" data-tag="Decisão" data-cta="Quero enxergar meus números" data-link="https://wa.me/5513978099969?text=Ol%C3%A1!%20Quero%20dashboards%20com%20os%20indicadores%20da%20minha%20empresa.">
+      <h3>Dashboards &amp; indicadores</h3>
+      <p>A visão do dono em tempo real: vendas, operação e financeiro em painéis que mostram o que importa.</p>
+      <ul>
+        <li>Indicadores ao vivo, sem esperar fechamento de planilha</li>
+        <li>Metas por área com acompanhamento automático</li>
+        <li>Dados confiáveis: uma única fonte de verdade</li>
+        <li>Visões por diretoria, gestor e equipe</li>
+      </ul>
+    </section>
+    <section data-detail="apps" data-tag="Equipe" data-cta="Quero um app para meu time" data-link="https://wa.me/5513978099969?text=Ol%C3%A1!%20Quero%20um%20app%20interno%20para%20minha%20equipe.">
+      <h3>Apps internos</h3>
+      <p>Ferramentas para o seu time executar: campo, balcão ou escritório, cada função com a tela certa.</p>
+      <ul>
+        <li>App para equipe externa: OS, checklists e fotos no celular</li>
+        <li>Rotina clara por função, sem depender de grupo de WhatsApp</li>
+        <li>Apontamentos que alimentam gestão e financeiro na hora</li>
+        <li>Funciona no aparelho que sua equipe já tem</li>
+      </ul>
+    </section>
+    <section data-detail="portais" data-tag="Atendimento" data-cta="Quero um portal para clientes" data-link="https://wa.me/5513978099969?text=Ol%C3%A1!%20Quero%20um%20portal%20de%20clientes%20para%20minha%20empresa.">
+      <h3>Portais de clientes</h3>
+      <p>Seu cliente acompanha tudo sozinho, com a sua marca — sem precisar te chamar no WhatsApp para cada status.</p>
+      <ul>
+        <li>Pedidos, contratos e andamento em área logada</li>
+        <li>Segunda via, boletos e documentos self-service</li>
+        <li>Solicitações que entram direto na sua operação</li>
+        <li>Experiência profissional com a identidade da sua empresa</li>
+      </ul>
+    </section>
+    <section data-detail="ia" data-tag="Inteligência" data-cta="Quero IA no meu sistema" data-link="https://wa.me/5513978099969?text=Ol%C3%A1!%20Quero%20aplicar%20IA%20nos%20processos%20da%20minha%20empresa.">
+      <h3>IA aplicada ao negócio</h3>
+      <p>Inteligência artificial dentro do seu sistema, resolvendo tarefas reais — não um chatbot genérico.</p>
+      <ul>
+        <li>Triagem e resumo automático de atendimentos e documentos</li>
+        <li>Assistentes internos treinados nos seus processos</li>
+        <li>Previsões e alertas que ajudam a decidir antes do problema</li>
+        <li>IA embutida no fluxo, sem mudar a rotina da equipe</li>
+      </ul>
+    </section>
+    <section data-detail="romasystem" data-tag="Produto vertical" data-cta="Conhecer o RomaSystem" data-link="/romasystem/">
+      <h3>RomaSystem</h3>
+      <p>Gestão completa para empresas de segurança eletrônica: CRM, orçamentos, O.S., estoque, frota e equipe técnica.</p>
+      <ul>
+        <li>Do lead ao contrato: comercial e operação no mesmo sistema</li>
+        <li>Ordens de serviço com técnico, prazo e histórico</li>
+        <li>Cobranças e contratos sem controle manual</li>
+      </ul>
+    </section>
+    <section data-detail="drawsecurity" data-tag="Produto mobile" data-cta="Conhecer o DrawSecurity" data-link="/drawsecurity/">
+      <h3>DrawSecurity</h3>
+      <p>App que transforma a visita técnica em proposta profissional: planta, IA, memorial técnico, orçamento e 3D.</p>
+      <ul>
+        <li>Câmeras, sensores e cabos marcados direto na planta</li>
+        <li>Memorial técnico e orçamento gerados no celular</li>
+        <li>Simulação 3D do projeto para impressionar o cliente</li>
+      </ul>
+    </section>
+    <section data-detail="metodo" data-tag="Como trabalhamos" data-cta="Começar pelo diagnóstico" data-link="https://wa.me/5513978099969?text=Ol%C3%A1%2C%20quero%20agendar%20um%20diagn%C3%B3stico%20com%20a%20Roma%20Solution.">
+      <h3>Método Roma</h3>
+      <p>Do processo confuso ao sistema ideal, em etapas curtas e com você vendo o resultado antes do código.</p>
+      <ul>
+        <li>1 · Diagnóstico: mapa de problemas da operação</li>
+        <li>2 · Protótipo visual: telas validadas antes de desenvolver</li>
+        <li>3 · Sistema próprio: módulos entrando em uso rápido</li>
+        <li>4 · Evolução contínua conforme a empresa cresce</li>
+      </ul>
+    </section>
+  </div>
+
   <footer class="site-footer">
-    <div class="container footer-grid">
-      <div class="footer-column">
-        <a class="logo" href="/" aria-label="Roma Solution — Sistemas sob medida para empresas e projetos">
-          <img src="/assets/brand/roma-solution-logo.webp" alt="" width="600" height="176" loading="lazy" decoding="async">
-          <span class="sr-only">Roma Solution — Sistemas sob medida para empresas e projetos</span>
-        </a>
-        <p>Sistemas sob medida para empresas e projetos que querem controle, gestão e escala.</p>
-      </div>
-      <div class="footer-column">
-        <strong>Links</strong>
-        <nav class="footer-links" aria-label="Links principais">
-          <a href="#solucoes">Soluções</a>
-          <a href="#segmentos">Segmentos</a>
-          <a href="#metodo">Método</a>
-          <a href="#produtos">Produtos</a>
-        </nav>
-      </div>
-      <div class="footer-column">
-        <strong>Produtos</strong>
-        <nav class="footer-links" aria-label="Produtos">
-          <a href="https://app.romasolution.com">RomaSystem</a>
-          <a href="https://romasolution.com/drawsecurity/">DrawSecurity</a>
-          <a href="https://app.romasolution.com" target="_blank" rel="noopener">Entrar</a>
-        </nav>
-      </div>
-      <div class="footer-column">
-        <strong>Contato</strong>
-        <nav class="footer-links" aria-label="Contato">
-          <a href="https://wa.me/5513978099969?text=Ol%C3%A1%2C%20quero%20agendar%20um%20diagn%C3%B3stico%20com%20a%20Roma%20Solution." target="_blank" rel="noopener">WhatsApp</a>
-          <a href="mailto:contato@romasolution.com.br">contato@romasolution.com.br</a>
-        </nav>
-      </div>
+    <div class="footer-inner">
+      <span>© 2026 Roma Solution — sistemas sob medida para empresas e projetos.</span>
+      <nav class="footer-links" aria-label="Contato e produtos">
+        <a href="/romasystem/">RomaSystem</a>
+        <a href="/drawsecurity/">DrawSecurity</a>
+        <a href="https://wa.me/5513978099969?text=Ol%C3%A1%2C%20quero%20falar%20com%20a%20Roma%20Solution." target="_blank" rel="noopener">WhatsApp</a>
+        <a href="mailto:contato@romasolution.com.br">contato@romasolution.com.br</a>
+      </nav>
     </div>
   </footer>
 
+  <script src="/assets/vendor/anime.umd.min.js"></script>
   <script>
-    const menuButton = document.getElementById('menuButton');
-    const mobileMenu = document.getElementById('mobileMenu');
-    const siteHeader = document.querySelector('.site-header');
-    const magneticButtons = document.querySelectorAll('.btn');
-    const glowSelector = '.bento-card, .product-card, .value-card, .module-card, .platform-card, .segment-node, .method-node';
-
-    function updateHeader() {
-      siteHeader?.classList.toggle('scrolled', window.scrollY > 12);
-    }
-    updateHeader();
-    window.addEventListener('scroll', updateHeader, { passive:true });
-
-    menuButton?.addEventListener('click', () => {
-      const open = mobileMenu.classList.toggle('open');
-      menuButton.setAttribute('aria-expanded', String(open));
-      document.body.style.overflow = open ? 'hidden' : '';
+    const popover = document.querySelector('.popover');
+    const scrim = document.querySelector('.scrim');
+    const details = {};
+    document.querySelectorAll('#module-details [data-detail]').forEach((section) => {
+      details[section.dataset.detail] = {
+        tag: section.dataset.tag,
+        title: section.querySelector('h3').textContent,
+        text: section.querySelector('p').textContent,
+        items: [...section.querySelectorAll('li')].map((li) => li.textContent),
+        cta: section.dataset.cta,
+        link: section.dataset.link,
+      };
     });
-    mobileMenu?.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.remove('open');
-        menuButton?.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
+
+    const triggers = [...document.querySelectorAll('.node, .chip')];
+    const wires = [...document.querySelectorAll('.wires line')];
+    const hoverable = window.matchMedia('(hover: hover)');
+    const sheetMode = window.matchMedia('(max-width: 640px)');
+    let current = null;
+    let closeTimer = null;
+    let firePulse = () => {}; /* substituída pela seção de animação quando ativa */
+
+    function fillPopover(key) {
+      const d = details[key];
+      if (!d) return false;
+      popover.querySelector('.pop-tag').textContent = d.tag;
+      popover.querySelector('h3').textContent = d.title;
+      popover.querySelector('p').textContent = d.text;
+      const ul = popover.querySelector('ul');
+      ul.innerHTML = '';
+      d.items.forEach((item) => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        ul.appendChild(li);
+      });
+      const cta = popover.querySelector('.pop-cta');
+      cta.textContent = d.cta + ' →';
+      cta.href = d.link;
+      if (d.link.startsWith('/')) {
+        cta.removeAttribute('target');
+        cta.removeAttribute('rel');
+      } else {
+        cta.target = '_blank';
+        cta.rel = 'noopener';
+      }
+      return true;
+    }
+
+    function placePopover(trigger) {
+      if (sheetMode.matches) {
+        popover.style.left = '';
+        popover.style.top = '';
+        popover.style.bottom = '';
+        return;
+      }
+      const r = trigger.getBoundingClientRect();
+      const pw = 360;
+      const gap = 14;
+      popover.style.bottom = 'auto';
+      let x = r.right + gap;
+      if (x + pw > window.innerWidth - 16) x = r.left - pw - gap;
+      if (x < 16) x = Math.min(Math.max(16, r.left), window.innerWidth - pw - 16);
+      popover.style.left = x + 'px';
+      popover.style.top = '0px';
+      const ph = popover.offsetHeight;
+      let y = r.top + r.height / 2 - ph / 2;
+      y = Math.max(16, Math.min(y, window.innerHeight - ph - 16));
+      popover.style.top = y + 'px';
+    }
+
+    function openPopover(trigger) {
+      clearTimeout(closeTimer);
+      const key = trigger.dataset.key;
+      if (!fillPopover(key)) return;
+      if (current && current !== trigger) deactivate(current);
+      current = trigger;
+      trigger.classList.add('active');
+      trigger.setAttribute('aria-expanded', 'true');
+      wires.forEach((w) => w.classList.toggle('lit', w.dataset.wire === key));
+      firePulse(key);
+      popover.hidden = false;
+      placePopover(trigger);
+      requestAnimationFrame(() => {
+        if (current === trigger) popover.classList.add('open');
+      });
+      if (sheetMode.matches) {
+        scrim.hidden = false;
+        requestAnimationFrame(() => {
+          if (current === trigger) scrim.classList.add('open');
+        });
+      }
+    }
+
+    function deactivate(trigger) {
+      trigger.classList.remove('active');
+      trigger.setAttribute('aria-expanded', 'false');
+    }
+
+    function closePopover() {
+      if (!current) return;
+      deactivate(current);
+      current = null;
+      wires.forEach((w) => w.classList.remove('lit'));
+      popover.classList.remove('open');
+      scrim.classList.remove('open');
+      setTimeout(() => {
+        if (!current) {
+          popover.hidden = true;
+          scrim.hidden = true;
+        }
+      }, 200);
+    }
+
+    function scheduleClose() {
+      clearTimeout(closeTimer);
+      closeTimer = setTimeout(closePopover, 140);
+    }
+
+    triggers.forEach((trigger) => {
+      trigger.addEventListener('pointerenter', (event) => {
+        if (event.pointerType !== 'mouse') return;
+        if (hoverable.matches && !sheetMode.matches) openPopover(trigger);
+      });
+      trigger.addEventListener('pointerleave', (event) => {
+        if (event.pointerType !== 'mouse') return;
+        if (hoverable.matches && !sheetMode.matches) scheduleClose();
+      });
+      trigger.addEventListener('click', () => {
+        /* no modo hover o clique nunca fecha (senão fecharia o popup que o
+           usuário acabou de abrir com o mouse); toggle só em modo toque/sheet */
+        const hoverMode = hoverable.matches && !sheetMode.matches;
+        if (!hoverMode && current === trigger && popover.classList.contains('open')) closePopover();
+        else openPopover(trigger);
+      });
+      trigger.addEventListener('focus', () => openPopover(trigger));
+      trigger.addEventListener('blur', (event) => {
+        const next = event.relatedTarget;
+        if (next && (popover.contains(next) || (next.closest && next.closest('.node, .chip')))) return;
+        scheduleClose();
       });
     });
 
+    popover.addEventListener('pointerenter', () => clearTimeout(closeTimer));
+    popover.addEventListener('pointerleave', (event) => {
+      if (event.pointerType !== 'mouse') return;
+      if (hoverable.matches && !sheetMode.matches) scheduleClose();
+    });
+    popover.addEventListener('focusin', () => clearTimeout(closeTimer));
+    popover.addEventListener('focusout', (event) => {
+      const next = event.relatedTarget;
+      if (next && (popover.contains(next) || (next.closest && next.closest('.node, .chip')))) return;
+      scheduleClose();
+    });
+    sheetMode.addEventListener('change', closePopover);
+    popover.querySelector('.pop-close').addEventListener('click', closePopover);
+    scrim.addEventListener('click', closePopover);
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') closePopover();
+    });
+    document.addEventListener('pointerdown', (event) => {
+      if (current && !popover.contains(event.target) && !event.target.closest('.node, .chip')) closePopover();
+    });
+    window.addEventListener('resize', () => {
+      if (current) placePopover(current);
+    });
+
+    /* ===== abertura "boot do sistema" → boot do site → vida contínua =====
+       Regra de ouro (aprendida em revisão): hub/nós/chips centralizam e fazem
+       hover via transform de CLASSE — o anime nunca anima transform neles
+       direto. Escalas rodam em wrappers internos criados aqui via JS. */
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (!reducedMotion) {
-      const observer = new IntersectionObserver((entries) => {
+    if (!reducedMotion && window.anime && document.visibilityState === 'visible') {
+      const { animate, stagger, svg } = window.anime;
+      const desktopMap = window.innerWidth > 640;
+      const wiresSvg = document.querySelector('.wires');
+      const SVG_NS = 'http://www.w3.org/2000/svg';
+
+      function makeDot(r) {
+        const dot = document.createElementNS(SVG_NS, 'circle');
+        dot.setAttribute('class', 'pulse');
+        dot.setAttribute('r', r);
+        dot.setAttribute('cx', 50);
+        dot.setAttribute('cy', 50);
+        wiresSvg.appendChild(dot);
+        return dot;
+      }
+
+      function runPulse(line, r, speed, onDone) {
+        const dot = makeDot(r);
+        animate(dot, {
+          cx: [50, +line.getAttribute('x2')],
+          cy: [50, +line.getAttribute('y2')],
+          opacity: [{ to: 1, duration: 90 }, { to: 0, duration: 200, delay: speed - 290 }],
+          duration: speed,
+          ease: 'inOutQuad',
+          onComplete: () => { dot.remove(); if (onDone) onDone(); },
+        });
+      }
+
+      /* wrapper interno de cada nó recebe o "pop" de escala */
+      document.querySelectorAll('.node').forEach((node) => {
+        const core = document.createElement('span');
+        core.className = 'node-core';
+        while (node.firstChild) core.appendChild(node.firstChild);
+        node.appendChild(core);
+      });
+
+      /* pré-oculta o que anima na entrada (fica escondido sob o overlay de boot) */
+      const HERO_HIDDEN = ['.h1-line', '.stage .eyebrow', '.lede', '.segments', '.stage .hero-ctas', '.hero-trust', '.hint', '.hub', '.node', '.chip'];
+      HERO_HIDDEN.forEach((sel) => document.querySelectorAll(sel).forEach((el) => { el.style.opacity = '0'; }));
+
+      /* palavra rotativa do headline: cicla o porte do cliente */
+      let rotatorTimer = null;
+      function startRotator() {
+        const rw = document.querySelector('.rotator-word');
+        if (!rw || rotatorTimer) return;
+        const words = ['autônomos', 'pequenas empresas', 'médias empresas', 'grandes empresas'];
+        const segs = [...document.querySelectorAll('.seg')];
+        let ri = -1;
+        const tick = () => {
+          ri = (ri + 1) % words.length;
+          animate(rw, {
+            opacity: [1, 0], y: [0, -10], duration: 240, ease: 'inQuad',
+            onComplete: () => {
+              rw.textContent = words[ri];
+              /* o chip destacado acompanha a palavra que gira */
+              segs.forEach((s, i) => s.classList.toggle('seg-strong', i === ri));
+              animate(rw, { opacity: [0, 1], y: [12, 0], duration: 340, ease: 'outCubic' });
+            },
+          });
+        };
+        tick();
+        rotatorTimer = setInterval(tick, 2400);
+      }
+
+      /* boot do site: dispara quando a abertura termina de revelar */
+      function runHeroBoot() {
+        animate('.h1-line', { opacity: [0, 1], y: [24, 0], duration: 640, delay: stagger(150), ease: 'outCubic' });
+        animate(['.stage .eyebrow', '.lede', '.segments', '.stage .hero-ctas', '.hero-trust', '.hint'], {
+          opacity: [0, 1], y: [16, 0], delay: stagger(90, { start: 260 }), duration: 560, ease: 'outCubic',
+        });
+
+        const NODES_AT = desktopMap ? 900 : 240;
+        animate('.node', { opacity: [0, 1], delay: stagger(80, { start: NODES_AT }), duration: 340, ease: 'outQuad' });
+        animate('.node-core', { scale: [0.55, 1], delay: stagger(80, { start: NODES_AT }), duration: 620, ease: 'outBack(1.7)' });
+        animate('.chip', { opacity: [0, 1], delay: stagger(90, { start: desktopMap ? 1500 : 820 }), duration: 440, ease: 'outQuad' });
+
+        if (desktopMap) {
+          const hub = document.querySelector('.hub');
+          const burst = document.createElement('div');
+          burst.className = 'hub-burst';
+          hub.appendChild(burst);
+
+          animate('.hub', { opacity: [0, 1], duration: 360, delay: 120, ease: 'outQuad' });
+          animate('.hub > div:not(.hub-burst)', { scale: [0, 1], duration: 860, delay: 180, ease: 'outElastic(1, .6)' });
+          animate(burst, { scale: [0.4, 2.1], opacity: [0.85, 0], duration: 900, delay: 360, ease: 'outCubic' });
+
+          animate(svg.createDrawable('.wires line'), {
+            draw: ['0 0', '0 1'], delay: stagger(80, { start: 420 }), duration: 540, ease: 'inOutQuad',
+          });
+          wires.forEach((line, i) => setTimeout(() => runPulse(line, 1.5, 540), 420 + i * 80));
+
+          const spawnAmbient = () => {
+            if (document.visibilityState !== 'visible') { setTimeout(spawnAmbient, 3000); return; }
+            const line = wires[Math.floor(Math.random() * wires.length)];
+            runPulse(line, 1.1, 900, () => setTimeout(spawnAmbient, 700 + Math.random() * 1900));
+          };
+          setTimeout(spawnAmbient, 2200);
+          setTimeout(spawnAmbient, 3100);
+
+          firePulse = (key) => {
+            const line = wires.find((w) => w.dataset.wire === key);
+            if (line) runPulse(line, 1.6, 420);
+          };
+
+          const map = document.querySelector('.os-map');
+          const grid = document.querySelector('.stage-grid');
+          grid.addEventListener('pointermove', (event) => {
+            if (event.pointerType !== 'mouse') return;
+            const r = map.getBoundingClientRect();
+            const clamp = (v) => Math.max(-0.5, Math.min(0.5, v));
+            const x = clamp((event.clientX - r.left) / r.width - 0.5);
+            const y = clamp((event.clientY - r.top) / r.height - 0.5);
+            map.style.setProperty('--ty', (x * 4).toFixed(2) + 'deg');
+            map.style.setProperty('--tx', (y * -4).toFixed(2) + 'deg');
+          });
+          grid.addEventListener('pointerleave', () => {
+            map.style.setProperty('--tx', '0deg');
+            map.style.setProperty('--ty', '0deg');
+          });
+        }
+
+        setTimeout(startRotator, 900);
+      }
+
+      /* a abertura: compila o Roma OS e "inicializa" no site */
+      function playIntro(done) {
+        const intro = document.querySelector('.boot-intro');
+        if (!intro) { done(); return; }
+        intro.classList.add('on');
+        let finished = false;
+        const finish = () => {
+          if (finished) return;
+          finished = true;
+          document.removeEventListener('keydown', onKey);
+          try {
+            animate(intro, { opacity: [1, 0], scale: [1, 1.07], duration: 520, ease: 'inCubic', onComplete: () => intro.remove() });
+          } catch (e) { intro.remove(); }
+          setTimeout(done, 170);
+        };
+        const onKey = () => finish();
+
+        /* failsafe PRIMEIRO: mesmo que alguma animação falhe, o overlay some e o
+           site aparece (nunca deixa a página coberta) */
+        const timer = setTimeout(finish, 2650);
+        const skip = () => { clearTimeout(timer); finish(); };
+        intro.querySelector('.boot-skip').addEventListener('click', (e) => { e.stopPropagation(); skip(); });
+        intro.addEventListener('click', skip);
+        document.addEventListener('keydown', onKey, { once: true });
+        window.addEventListener('wheel', skip, { once: true, passive: true });
+        window.addEventListener('touchmove', skip, { once: true, passive: true });
+
+        try {
+          animate('.boot-mark', { opacity: [0, 1], scale: [0.6, 1], duration: 620, ease: 'outBack(1.6)' });
+          animate('.boot-title', { opacity: [0, 1], y: [10, 0], duration: 520, delay: 280, ease: 'outCubic' });
+          animate('.boot-scan', {
+            top: ['-2%', '102%'],
+            opacity: [{ to: 0.9, duration: 220 }, { to: 0, duration: 520, delay: 520 }],
+            duration: 1500, delay: 180, ease: 'inOutQuad',
+          });
+          animate('.boot-line', { opacity: [0, 1], x: [-10, 0], delay: stagger(300, { start: 520 }), duration: 300, ease: 'outQuad' });
+          animate('.boot-bar i', { width: ['0%', '100%'], duration: 2000, delay: 360, ease: 'inOutQuad' });
+        } catch (e) { finish(); }
+      }
+
+      playIntro(runHeroBoot);
+    }
+
+    /* ===== prova social: contadores dos números =====
+       Contador manual com requestAnimationFrame — robusto e sem depender de
+       animar objeto JS puro (que não tickeia nesta build do anime.js v4). */
+    const statEls = [...document.querySelectorAll('.stat strong[data-count]')];
+    const statText = (el, v) => (el.dataset.prefix || '') + v.toLocaleString('pt-BR') + (el.dataset.suffix || '');
+    if (statEls.length && !reducedMotion && 'IntersectionObserver' in window && window.requestAnimationFrame) {
+      /* NÃO zeramos no load — os valores finais do HTML ficam visíveis até a
+         seção entrar em tela. Só então conta de 0 até o alvo, com uma rede de
+         segurança (setTimeout) que crava o valor final mesmo se o rAF falhar
+         (aba em segundo plano etc.) — assim o usuário nunca vê "0". */
+      const rampTo = (el) => {
+        const target = +el.dataset.count;
+        const dur = 1500;
+        let start = null, done = false;
+        const finalize = () => { if (!done) { done = true; el.textContent = statText(el, target); } };
+        el.textContent = statText(el, 0);
+        const step = (ts) => {
+          if (done) return;
+          if (start === null) start = ts;
+          const p = Math.min(1, (ts - start) / dur);
+          const eased = 1 - Math.pow(1 - p, 3); /* outCubic */
+          el.textContent = statText(el, Math.round(target * eased));
+          if (p < 1) requestAnimationFrame(step);
+          else finalize();
+        };
+        requestAnimationFrame(step);
+        setTimeout(finalize, dur + 500);
+      };
+      const statObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) entry.target.classList.add('visible');
+          if (!entry.isIntersecting) return;
+          statObserver.unobserve(entry.target);
+          rampTo(entry.target);
         });
-      }, { threshold: 0.16 });
-      document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
-    } else {
-      document.querySelectorAll('.reveal').forEach((el) => el.classList.add('visible'));
-      document.querySelectorAll('.hero-title .word').forEach((el) => {
-        el.style.opacity = '1';
-        el.style.transform = 'none';
-        el.style.filter = 'none';
-      });
+      }, { threshold: 0.5 });
+      statEls.forEach((el) => statObserver.observe(el));
     }
-
-    function bindGlowCards(scope = document) {
-      scope.querySelectorAll(glowSelector).forEach((card) => {
-        if (card.dataset.glowBound) return;
-        card.dataset.glowBound = 'true';
-        card.addEventListener('pointermove', (event) => {
-          const rect = card.getBoundingClientRect();
-          card.style.setProperty('--mx', `${event.clientX - rect.left}px`);
-          card.style.setProperty('--my', `${event.clientY - rect.top}px`);
-        });
-      });
-    }
-    bindGlowCards();
-
-    document.querySelectorAll('.os-scene, .segment-mockup, .method-dashboard').forEach((panel) => {
-      panel.addEventListener('pointermove', (event) => {
-        if (reducedMotion || window.innerWidth < 900) return;
-        const rect = panel.getBoundingClientRect();
-        const x = (event.clientX - rect.left) / rect.width - .5;
-        const y = (event.clientY - rect.top) / rect.height - .5;
-        panel.style.setProperty('--tilt-x', `${y * -3}deg`);
-        panel.style.setProperty('--tilt-y', `${x * 4}deg`);
-      });
-    });
-
-    magneticButtons.forEach((button) => {
-      button.addEventListener('pointermove', (event) => {
-        if (reducedMotion || window.innerWidth < 900) return;
-        const rect = button.getBoundingClientRect();
-        const x = event.clientX - rect.left - rect.width / 2;
-        const y = event.clientY - rect.top - rect.height / 2;
-        button.style.transform = `translate(${x * .12}px, ${y * .18}px)`;
-      });
-      button.addEventListener('pointerleave', () => {
-        button.style.transform = '';
-      });
-    });
-
-    const segmentData = {
-      'Varejo': {
-        title:'Operação de varejo',
-        items:['CRM de clientes','Estoque e pedidos','Comissões e metas','Dashboard de venda'],
-        nodes:['Clientes','Pedidos','Estoque','Comissões','Dashboard']
-      },
-      'Serviços': {
-        title:'Gestão para serviços',
-        items:['Agenda operacional','Contratos recorrentes','Equipe em campo','Financeiro por cliente'],
-        nodes:['Agenda','Contratos','Equipe','Cliente','Financeiro']
-      },
-      'Segurança': {
-        title:'Operação de segurança',
-        items:['OS e técnicos','Clientes monitorados','Estoque de equipamentos','Contratos e cobranças'],
-        nodes:['Cliente','OS','Técnicos','Estoque','Contratos']
-      },
-      'Saúde': {
-        title:'Rotina clínica',
-        items:['Pacientes e atendimento','Agenda e prontuário operacional','Financeiro e repasses','Indicadores da clínica'],
-        nodes:['Paciente','Agenda','Atendimento','Repasses','Indicadores']
-      },
-      'Educação': {
-        title:'Gestão educacional',
-        items:['Alunos e turmas','Matrículas e cobranças','Atendimento e suporte','Relatórios pedagógicos'],
-        nodes:['Alunos','Turmas','Matrículas','Cobrança','Relatórios']
-      },
-      'Indústria': {
-        title:'Fluxo industrial',
-        items:['Produção e qualidade','Ordens internas','Estoque e compras','Indicadores de chão de fábrica'],
-        nodes:['Produção','Qualidade','Compras','Estoque','KPIs']
-      },
-      'Logística': {
-        title:'Operação logística',
-        items:['Rotas e entregas','Equipe externa','Status em tempo real','Custos operacionais'],
-        nodes:['Rotas','Entregas','Equipe','Custos','Status']
-      },
-      'Financeiro': {
-        title:'Esteira financeira',
-        items:['Clientes e contratos','Esteira de aprovação','Cobrança e recorrência','Relatórios gerenciais'],
-        nodes:['Contratos','Aprovação','Cobrança','Recorrência','Relatórios']
-      },
-      'Operação técnica': {
-        title:'Campo e execução',
-        items:['Vistoria e execução','Materiais reservados','Equipe alocada','Checklist e aprovação'],
-        nodes:['Vistoria','Materiais','Equipe','Checklist','Aprovação']
-      },
-      'Equipes externas': {
-        title:'Equipe externa conectada',
-        items:['App interno','Roteiros e tarefas','Comprovação em campo','Gestão de produtividade'],
-        nodes:['App','Rotas','Tarefas','Comprovação','Produtividade']
-      }
-    };
-    const segmentTitle = document.getElementById('segmentTitle');
-    const segmentList = document.getElementById('segmentList');
-    const segmentMockTitle = document.getElementById('segmentMockTitle');
-    const segmentMockBadge = document.getElementById('segmentMockBadge');
-    const segmentNodes = document.getElementById('segmentNodes');
-    const segmentMockup = document.querySelector('.segment-mockup');
-    function renderSegment(name) {
-      const segment = segmentData[name];
-      segmentMockup?.classList.add('is-changing');
-      segmentTitle.textContent = name;
-      segmentMockTitle.textContent = segment.title;
-      segmentMockBadge.textContent = `${name} sob medida`;
-      segmentList.innerHTML = segment.items.map((item) => `<div>${item}</div>`).join('');
-      segmentNodes.innerHTML = segment.nodes.map((item) => `<div class="segment-node">${item}</div>`).join('');
-      bindGlowCards(segmentNodes);
-      window.setTimeout(() => segmentMockup?.classList.remove('is-changing'), 260);
-    }
-    renderSegment('Varejo');
-    document.querySelectorAll('.segment-tabs button').forEach((button) => {
-      button.addEventListener('click', () => {
-        document.querySelectorAll('.segment-tabs button').forEach((item) => item.classList.remove('active'));
-        button.classList.add('active');
-        renderSegment(button.dataset.segment);
-      });
-    });
-
-    const methodSteps = [
-      ['Diagnóstico','Mapa de problemas da operação','Entendemos objetivos, gargalos, ferramentas atuais, usuários e prioridades do negócio antes de desenhar qualquer tela.','Problemas','Gargalos','Prioridades','Usuários','Decisão'],
-      ['Mapeamento','Fluxos conectados','Organizamos etapas, responsáveis, regras, integrações e indicadores para criar uma base clara de desenvolvimento.','Entrada','Regras','Fluxo','Responsáveis','Indicadores'],
-      ['Protótipo visual','Wireframe ganhando forma','Validamos telas, jornadas e hierarquia de informação antes de transformar o projeto em produto.','Jornada','Wireframe','Interface','Validação','Ajustes'],
-      ['Desenvolvimento','Módulos sendo criados','Construímos a plataforma com permissões, automações, integrações, relatórios e experiência de uso consistente.','Backend','Módulos','Permissões','Automação','Relatórios'],
-      ['Implantação','Usuários entrando no sistema','Configuramos dados, acessos, processos e rotinas para a operação começar com segurança.','Dados','Acessos','Rotina','Equipe','Go-live'],
-      ['Treinamento','Equipe usando com confiança','Treinamos usuários e gestores para que o sistema entre no dia a dia sem virar mais uma ferramenta esquecida.','Gestores','Equipe','Checklist','Suporte','Uso real'],
-      ['Evolução contínua','Indicadores crescendo','Acompanhamos melhorias, novos módulos e ajustes conforme a empresa cresce e a gestão amadurece.','Dados','Melhorias','Novos módulos','Escala','Gestão']
-    ];
-    const methodLabel = document.getElementById('methodLabel');
-    const methodTitle = document.getElementById('methodTitle');
-    const methodText = document.getElementById('methodText');
-    const methodScreen = document.querySelector('.method-screen');
-    const methodVisualTitle = document.getElementById('methodVisualTitle');
-    const methodStagePill = document.getElementById('methodStagePill');
-    const blockA = document.getElementById('blockA');
-    const blockB = document.getElementById('blockB');
-    const blockC = document.getElementById('blockC');
-    const blockD = document.getElementById('blockD');
-    const blockE = document.getElementById('blockE');
-    const timelineButtons = document.querySelectorAll('.timeline button');
-    let currentMethodStep = 0;
-    function setMethodStep(index) {
-      if (index === currentMethodStep && methodScreen?.dataset.step === String(index)) return;
-      currentMethodStep = index;
-      timelineButtons.forEach((item) => item.classList.toggle('active', Number(item.dataset.step) === index));
-      const step = methodSteps[index];
-      methodScreen.dataset.step = String(index);
-      methodLabel.textContent = step[0];
-      methodTitle.textContent = step[1];
-      methodText.textContent = step[2];
-      methodVisualTitle.textContent = step[1];
-      methodStagePill.textContent = `Cena 0${index + 1} / ${step[0]}`;
-      document.querySelectorAll('.method-side span').forEach((item, itemIndex) => {
-        item.classList.toggle('active', itemIndex === index % 5);
-      });
-      blockA.innerHTML = `${step[3]}<small>origem</small>`;
-      blockB.innerHTML = `${step[4]}<small>conexão</small>`;
-      blockC.innerHTML = `${step[5]}<small>validação</small>`;
-      blockD.innerHTML = `${step[6]}<small>uso real</small>`;
-      blockE.innerHTML = `${step[7]}<small>evolução</small>`;
-    }
-    timelineButtons.forEach((button) => {
-      button.addEventListener('click', () => {
-        setMethodStep(Number(button.dataset.step));
-      });
-    });
-    setMethodStep(0);
-
-    const chaosStory = document.getElementById('chaosStory');
-    function updateScrollStory() {
-      if (reducedMotion) return;
-      if (chaosStory) {
-        const rect = chaosStory.getBoundingClientRect();
-        const raw = 1 - ((rect.top + rect.height * .18) / (window.innerHeight + rect.height * .55));
-        const progress = Math.min(1, Math.max(0, raw));
-        chaosStory.style.setProperty('--p', progress.toFixed(3));
-      }
-      const methodSection = document.getElementById('metodo');
-      if (methodSection && window.innerWidth > 900) {
-        const rect = methodSection.getBoundingClientRect();
-        const progress = Math.min(1, Math.max(0, (window.innerHeight * .55 - rect.top) / Math.max(1, rect.height - window.innerHeight * .35)));
-        const nextStep = Math.min(methodSteps.length - 1, Math.max(0, Math.floor(progress * methodSteps.length)));
-        setMethodStep(nextStep);
-      }
-    }
-    updateScrollStory();
-    window.addEventListener('scroll', updateScrollStory, { passive:true });
-
-    window.addEventListener('pointermove', (event) => {
-      if (reducedMotion || window.innerWidth < 900) return;
-      const x = (event.clientX / window.innerWidth - .5) * 16;
-      const y = (event.clientY / window.innerHeight - .5) * 16;
-      document.querySelector('.os-scene')?.style.setProperty('transform', `translate3d(${x * .22}px, ${y * .22}px, 0)`);
-      document.querySelector('.roma-os-visual')?.style.setProperty('transform', `rotateX(${y * -.08}deg) rotateY(${x * .08}deg)`);
-    });
+    /* sem JS ou com reduced-motion, o HTML já traz os valores finais */
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
 </body>

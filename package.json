@@ -1,0 +1,11 @@
+{
+  "name": "romasolution-site",
+  "private": true,
+  "description": "Site estático da Roma Solution — o anime.js é vendorizado em assets/vendor/ (rode npm run vendor:anime após atualizar a dependência)",
+  "scripts": {
+    "vendor:anime": "cp node_modules/animejs/dist/bundles/anime.umd.min.js assets/vendor/anime.umd.min.js"
+  },
+  "dependencies": {
+    "animejs": "^4.5.0"
+  }
+}
